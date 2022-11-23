@@ -20,4 +20,14 @@ public class LoginController {
         System.out.println(username.getText());
         System.out.println(password.getText());
     }
+    public void register(ActionEvent actionEvent){
+        System.out.println(username.getText());
+        System.out.println(password.getText());
+    }
+
+    public void changPassword(ActionEvent actionEvent){
+        System.out.println(username.getText());
+        System.out.println(password.getText());
+    }
+
 }

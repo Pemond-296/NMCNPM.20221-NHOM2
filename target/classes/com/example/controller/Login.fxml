@@ -19,7 +19,7 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button layoutX="436.0" layoutY="307.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="92.0" text="Đăng ký" />
-      <Button layoutX="561.0" layoutY="307.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="92.0" text="Đổi mật khẩu" />
+      <Button id="register_button" layoutX="436.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="92.0" text="Đăng ký" />
+      <Button id="change_button" layoutX="561.0" layoutY="307.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="92.0" text="Đổi mật khẩu" />
    </children>
 </AnchorPane>
