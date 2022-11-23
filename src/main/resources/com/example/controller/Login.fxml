@@ -5,13 +5,19 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.LoginController">
    <children>
       <Button fx:id="loginButton" layoutX="316.0" layoutY="304.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="72.0" text="Login" />
       <TextField fx:id="username" layoutX="352.0" layoutY="120.0" prefHeight="26.0" prefWidth="182.0" />
       <PasswordField fx:id="password" layoutX="353.0" layoutY="207.0" prefHeight="26.0" prefWidth="182.0" />
       <Label layoutX="210.0" layoutY="114.0" prefHeight="38.0" prefWidth="62.0" text="Username" />
       <Label layoutX="210.0" layoutY="201.0" prefHeight="38.0" prefWidth="61.0" text="Password" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="263.0" layoutY="32.0" prefHeight="46.0" prefWidth="232.0" text="Quản lí khu dân cư" textOverrun="CLIP">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

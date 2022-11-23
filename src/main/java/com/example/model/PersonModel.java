@@ -21,6 +21,8 @@ public class PersonModel {
     private String note;
     private Long apartmentId;
 
+    public PersonModel(){}
+
     public Long getId() {
         return id;
     }
