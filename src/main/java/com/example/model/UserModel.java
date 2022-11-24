@@ -1,11 +1,21 @@
 package com.example.model;
 
 public class UserModel {
+    private Long id;
     private String userName;
     private String fullName;
     private String password;
     private int status;
     private Long roleId;
+    private RoleModel roleModel = new RoleModel();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
@@ -45,5 +55,13 @@ public class UserModel {
 
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
+    }
+
+    public RoleModel getRoleModel() {
+        return roleModel;
+    }
+
+    public void setRoleModel(RoleModel roleModel) {
+        this.roleModel = roleModel;
     }
 }
