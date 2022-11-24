@@ -23,6 +23,8 @@ public class PersonModel {
     private IdentifierModel identifierModel;
     private LocationModel locationModel;
 
+    public PersonModel(){}
+
     public Long getId() {
         return id;
     }
