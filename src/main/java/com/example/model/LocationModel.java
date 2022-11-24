@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class LocationModel {
     private Long id;
-    private Date moveDay;
+    private Date moveDate;
     private String movePlace;
     private String note;
     private Long personId;
@@ -17,12 +17,12 @@ public class LocationModel {
         this.id = id;
     }
 
-    public Date getMoveDay() {
-        return moveDay;
+    public Date getMoveDate() {
+        return moveDate;
     }
 
-    public void setMoveDay(Date moveDay) {
-        this.moveDay = moveDay;
+    public void setMoveDate(Date moveDate) {
+        this.moveDate = moveDate;
     }
 
     public String getMovePlace() {

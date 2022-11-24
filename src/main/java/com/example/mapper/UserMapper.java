@@ -18,15 +18,18 @@ public class UserMapper implements RowMapper<UserModel> {
             model.setFullName(rs.getString("fullname"));
             model.setStatus(rs.getInt("status"));
 
-            try {
-                RoleModel role = new RoleModel();
-                role.setId(rs.getLong("roleid"));
-                role.setCode(rs.getString("code"));
-                role.setName(rs.getString("name"));
-                model.setRoleModel(role);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                RoleModel role = new RoleModel();
+//                role.setId(rs.getLong("roleid"));
+//                role.setCode(rs.getString("code"));
+//                role.setName(rs.getString("name"));
+//                model.setRoleModel(role);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+
+            RoleModel role = new RoleMapper().mapRow(rs);
+            model.setRoleModel(role);
 
             return model;
         } catch (SQLException e) {

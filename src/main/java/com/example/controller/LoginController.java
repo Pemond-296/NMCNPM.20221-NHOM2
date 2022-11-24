@@ -6,11 +6,17 @@ import com.example.service.impl.UserService;
 import com.example.utils.SessionUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -22,7 +28,7 @@ public class LoginController {
 
     private IUserService userService = new UserService();
 
-    public void login(ActionEvent actionEvent) {
+    public void login(ActionEvent actionEvent) throws IOException {
         String user = username.getText();
         String pass = password.getText();
 
@@ -36,7 +42,14 @@ public class LoginController {
         if (model != null) {
             if (model.getRoleModel().getCode().equals("ADMIN")) {
                 SessionUtil.getInstance().setData(model);
-                System.out.println("Ban la admin");
+
+                Parent root = FXMLLoader.load(HomeController.class.getResource("Home.fxml"));
+                Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(String.valueOf(HomeController.class.getResource("home.css")));
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
             }
 
             else {

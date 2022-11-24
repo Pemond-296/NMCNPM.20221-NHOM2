@@ -1,0 +1,27 @@
+#top-nav {
+    -fx-background-color: #343a40;
+}
+
+#side-nav {
+    -fx-background-color: #212529;
+}
+
+#tra-cuu, #ql-ho-khau, #ql-phan-thuong {
+    -fx-text-fill: #fff;
+}
+
+#ho-khau, #nhan-khau, #them-nhan-khau, #doi-nhan-khau, #tach-khau,
+#tam-tru, #ql-dip, #ql-trao-thuong, #bao-cao {
+    -fx-text-fill: #ffffff80;
+}
+
+#ho-khau-box:hover Label, #nhan-khau-box:hover Label, #them-nhan-khau-box:hover Label,
+#doi-nhan-khau-box:hover Label, #tach-khau-box:hover Label,
+#tam-tru-box:hover Label, #ql-dip-box:hover Label, #ql-trao-thuong-box:hover Label, #bao-cao-box:hover Label{
+    -fx-text-fill: #fff;
+}
+
+#login-label {
+    -fx-background-color: #343a40;
+    -fx-text-fill: #ffffff80;
+}

@@ -1,12 +1,15 @@
 package com.example.controller;
 
 import com.example.model.ApartmentModel;
+import com.example.model.UserModel;
 import com.example.service.IApartmentService;
 import com.example.service.impl.ApartmentService;
+import com.example.utils.SessionUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     private final IApartmentService apartmentService = new ApartmentService();
+    @FXML
+    private Label loginLabel;
 
     @FXML
     private TableView<ApartmentModel> table;
@@ -32,6 +37,10 @@ public class HomeController implements Initializable {
         apartmentNumber.setCellValueFactory(new PropertyValueFactory<>("apartmentNumber"));
         roadName.setCellValueFactory(new PropertyValueFactory<>("roadName"));
         table.setItems(observableList);
+
+        UserModel model = SessionUtil.getInstance().getData();
+
+        loginLabel.setText("Logged in as:\n" + model.getFullName());
     }
 
     ObservableList<ApartmentModel> observableList = FXCollections.observableArrayList(apartmentService.findAll());
