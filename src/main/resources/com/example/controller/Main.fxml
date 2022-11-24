@@ -25,6 +25,6 @@
             <Button id="close" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#close" prefHeight="32.0" prefWidth="91.0" text="Thoát" />
          </children>
       </VBox>
-      <AnchorPane layoutX="192.0" prefHeight="681.0" prefWidth="700.0" />
+      <AnchorPane fx:id="application" layoutX="192.0" prefHeight="681.0" prefWidth="700.0" />
    </children>
 </AnchorPane>
