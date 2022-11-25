@@ -1,20 +1,23 @@
 package com.example.controller;
 
 import com.example.model.PersonModel;
+import com.example.service.IPersonService;
+import com.example.service.impl.PersonService;
+import com.example.utils.DateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-public class AddPersonController {
+import java.text.ParseException;
 
+public class AddPersonController {
+    private IPersonService personService = new PersonService();
     @FXML
     private AnchorPane AddPerson;
 
     @FXML
-    private TextField apartment;
+    private TextField apartmentId;
 
     @FXML
     private Button btnClear;
@@ -23,7 +26,7 @@ public class AddPersonController {
     private Button btnRegister;
 
     @FXML
-    private TextField date;
+    private DatePicker date;
 
     @FXML
     private TextField ethnic;
@@ -38,7 +41,7 @@ public class AddPersonController {
     private TextField hometown;
 
     @FXML
-    private TextField idnumber;
+    private TextField idNumber;
 
     @FXML
     private TextField job;
@@ -48,42 +51,40 @@ public class AddPersonController {
 
     @FXML
     private RadioButton other;
-
     @FXML
-    void gender_male(ActionEvent event) {
-        if (male.isSelected()) {
-            female.setSelected(false);
-            other.setSelected(false);
-        }
-    }
-
-    public void gender_female(ActionEvent event) {
-        if(female.isSelected())
-
-    {
-        male.setSelected(false);
-        other.setSelected(false);
-    }
-}
-    public void gender_other(ActionEvent event){
-        if(other.isSelected()){
-            female.setSelected(false);
-            male.setSelected(false);
-        }
-    }
+    private TextField note;
     @FXML
-    void setBtnClear(ActionEvent event) {
-        apartment.clear();
+    private TextField workPlace;
+    @FXML
+    private ToggleGroup genderGroup;
+
+    public void setBtnClear(ActionEvent event) {
+        apartmentId.clear();
         fullname.clear();
-        date.clear();
+        date.getEditor().clear();
         job.clear();
         ethnic.clear();
         hometown.clear();
-        idnumber.clear();
+        idNumber.clear();
+        note.clear();
+        workPlace.clear();
     }
+    public void setBtnRegister(ActionEvent event) throws ParseException {
+        PersonModel model = new PersonModel();
 
-    @FXML
-    void setBtnRegister(ActionEvent event) {
+        model.setName(fullname.getText());
+        model.setEthnic(ethnic.getText());
+        model.setBirthDate(DateUtil.asDate(date.getValue()));
+        model.setHometown(hometown.getText());
+
+        if(male.isSelected()) model.setGender(male.getText());
+        else if(female.isSelected()) model.setGender(female.getText());
+        else model.setGender(other.getText());
+
+        model.setJob(job.getText());
+        model.setWorkPlace(workPlace.getText());
+
+        personService.save(model);
     }
 
 }

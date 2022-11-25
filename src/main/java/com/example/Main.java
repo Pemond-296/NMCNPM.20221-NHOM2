@@ -1,8 +1,6 @@
 package com.example;
 
 import com.example.controller.LoginController;
-import com.example.service.IApartmentService;
-import com.example.service.impl.ApartmentService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

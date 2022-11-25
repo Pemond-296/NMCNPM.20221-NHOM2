@@ -8,17 +8,25 @@ import com.example.utils.SessionUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     private final IApartmentService apartmentService = new ApartmentService();
+    @FXML
+    private AnchorPane application;
     @FXML
     private Label loginLabel;
 
@@ -44,4 +52,17 @@ public class HomeController implements Initializable {
     }
 
     ObservableList<ApartmentModel> observableList = FXCollections.observableArrayList(apartmentService.findAll());
+
+    public void addPersonInfo(MouseEvent mouseEvent) {
+        application.getChildren().clear();
+        Parent rootChild = null;
+        try {
+            rootChild = FXMLLoader.load(Objects.requireNonNull(AddPersonController.class.getResource("AddPerson.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        table.setVisible(false);
+        application.getChildren().add(rootChild);
+
+    }
 }

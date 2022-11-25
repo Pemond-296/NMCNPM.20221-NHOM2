@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.HomeController">
+<AnchorPane id="root" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.HomeController">
    <children>
       <TableView fx:id="table" layoutX="624.0" layoutY="349.0" prefHeight="265.0" prefWidth="450.0">
         <columns>
@@ -19,11 +19,11 @@
           <TableColumn fx:id="apartmentNumber" prefWidth="137.5999755859375" text="Số nhà" />
         </columns>
       </TableView>
-      <VBox id="side-nav" layoutY="59.0" prefHeight="666.0" prefWidth="233.0">
+      <VBox id="side-nav" prefHeight="725.0" prefWidth="234.0">
          <children>
-            <HBox id="tra-cuu-box" prefHeight="40.0" prefWidth="126.0">
+            <HBox id="tra-cuu-box" prefHeight="51.0" prefWidth="126.0">
                <children>
-                  <Label id="tra-cuu" prefHeight="51.0" prefWidth="270.0" text="Tra cứu">
+                  <Label id="tra-cuu" prefHeight="51.0" prefWidth="235.0" text="Tra cứu">
                      <padding>
                         <Insets left="15.0" />
                      </padding>
@@ -33,7 +33,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="ho-khau-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="ho-khau-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="ho-khau" prefHeight="51.0" prefWidth="221.0" text="Hộ khẩu">
@@ -46,7 +46,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="nhan-khau-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="nhan-khau-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="nhan-khau" prefHeight="51.0" prefWidth="242.0" text="Nhân khẩu">
@@ -59,7 +59,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="126.0">
+            <HBox prefHeight="51.0" prefWidth="126.0">
                <children>
                   <Label id="ql-ho-khau" prefHeight="51.0" prefWidth="321.0" text="Quản lý hộ khẩu">
                      <padding>
@@ -71,7 +71,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="them-nhan-khau-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="them-nhan-khau-box" onMouseClicked="#addPersonInfo" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="them-nhan-khau" prefHeight="51.0" prefWidth="230.0" text="Thêm nhân khẩu/ hộ khẩu">
@@ -84,7 +84,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="doi-nhan-khau-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="doi-nhan-khau-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="doi-nhan-khau" prefHeight="51.0" prefWidth="230.0" text="Thay đổi nhân khẩu">
@@ -97,7 +97,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="tach-khau-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="tach-khau-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="tach-khau" prefHeight="51.0" prefWidth="236.0" text="Nhập tách khẩu">
@@ -110,7 +110,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="tam-tru-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="tam-tru-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="tam-tru" prefHeight="51.0" prefWidth="217.0" text="Tạm trú/ tạm vắng">
@@ -123,7 +123,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="126.0">
+            <HBox prefHeight="51.0" prefWidth="126.0">
                <children>
                   <Label id="ql-phan-thuong" prefHeight="51.0" prefWidth="237.0" text="Quản lý phần thưởng">
                      <padding>
@@ -135,7 +135,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="ql-dip-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="ql-dip-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="ql-dip" prefHeight="51.0" prefWidth="223.0" text="Quản lý dịp trao thưởng">
@@ -148,7 +148,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="ql-trao-thuong-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="ql-trao-thuong-box" prefHeight="51.0" prefWidth="126.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="ql-trao-thuong" prefHeight="51.0" prefWidth="223.0" text="Quản lý trao thưởng">
@@ -161,7 +161,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox id="bao-cao-box" prefHeight="40.0" prefWidth="126.0" style="-fx-cursor: hand;">
+            <HBox id="bao-cao-box" prefHeight="51.0" prefWidth="234.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                   <Label id="bao-cao" prefHeight="51.0" prefWidth="210.0" text="Báo cáo thống kê">
@@ -174,9 +174,9 @@
                   </Label>
                </children>
             </HBox>
-            <Label id="login-label" fx:id="loginLabel" prefHeight="70.0" prefWidth="223.0">
+            <Label id="login-label" fx:id="loginLabel" prefHeight="75.0" prefWidth="234.0">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="35.0" />
                </VBox.margin>
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -190,7 +190,7 @@
             <Insets top="25.0" />
          </padding>
       </VBox>
-      <AnchorPane id="top-nav" prefHeight="59.0" prefWidth="1300.0">
+      <AnchorPane id="top-nav" layoutX="233.0" prefHeight="59.0" prefWidth="1246.0">
          <children>
             <Label prefHeight="59.0" prefWidth="223.0" text="Management App" textFill="WHITE">
                <font>
@@ -207,5 +207,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="application" layoutX="431.0" layoutY="114.0" prefHeight="555.0" prefWidth="700.0" />
    </children>
 </AnchorPane>
