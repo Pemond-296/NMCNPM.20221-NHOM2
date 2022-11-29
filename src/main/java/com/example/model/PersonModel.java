@@ -16,12 +16,13 @@ public class PersonModel {
     private Date registerDate;
     private String registerPlace;
     private String prevPlace;
-    private Boolean monitor;
+    private String relationship;
     private Long apartmentId;
     private Long identifierId;
     private Long locationId;
     private IdentifierModel identifierModel;
     private LocationModel locationModel;
+    private String identifyId;
 
     public PersonModel(){}
 
@@ -129,12 +130,12 @@ public class PersonModel {
         this.prevPlace = prevPlace;
     }
 
-    public Boolean getMonitor() {
-        return monitor;
+    public String getRelationship() {
+        return relationship;
     }
 
-    public void setMonitor(Boolean monitor) {
-        this.monitor = monitor;
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
     }
 
     public IdentifierModel getIdentifierModel() {
@@ -175,5 +176,13 @@ public class PersonModel {
 
     public void setApartmentId(Long apartmentId) {
         this.apartmentId = apartmentId;
+    }
+
+    public String getIdentifyId() {
+        return identifyId;
+    }
+
+    public void setIdentifyId(String identifyId) {
+        this.identifyId = identifyId;
     }
 }

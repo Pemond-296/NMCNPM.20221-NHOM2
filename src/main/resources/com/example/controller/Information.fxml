@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="com.example.controller.InformationController" prefHeight="568.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="568.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.InformationController">
    <children>
       <Label layoutX="311.0" layoutY="14.0" text="Tra cứu thông tin">
          <font>
@@ -22,18 +21,17 @@
         <tabs>
           <Tab text="Nhân khẩu">
                <content>
-                  <AnchorPane prefHeight="482.0" prefWidth="815.0">
+                  <AnchorPane prefHeight="482.0" prefWidth="835.0">
                      <children>
-                        <TableView layoutX="3.0" layoutY="98.0" prefHeight="393.0" prefWidth="815.0">
+                        <TableView fx:id="personTable" layoutX="3.0" layoutY="98.0" prefHeight="393.0" prefWidth="815.0">
                           <columns>
-                            <TableColumn prefWidth="64.3999924659729" text="ID" />
-                            <TableColumn prefWidth="118.00000762939453" text="Họ và tên" />
-                              <TableColumn fx:id="personTable" prefWidth="99.99993896484375" text="Chủ hộ" />
-                              <TableColumn prefWidth="97.199951171875" text="Ngày sinh" />
-                              <TableColumn minWidth="0.0" prefWidth="111.199951171875" text="Nghề nghiệp" />
-                              <TableColumn prefWidth="70.80001831054688" text="Dân tộc" />
-                              <TableColumn prefWidth="108.39990234375" text="Quê quán" />
-                              <TableColumn prefWidth="138.39996337890625" text="CCCD/CMND" />
+                            <TableColumn fx:id="personId" prefWidth="64.3999924659729" text="ID" />
+                            <TableColumn fx:id="personName" prefWidth="111.19998168945312" text="Họ và tên" />
+                              <TableColumn fx:id="birthDate" prefWidth="104.79998779296875" text="Ngày sinh" />
+                              <TableColumn fx:id="job" minWidth="0.0" prefWidth="111.199951171875" text="Nghề nghiệp" />
+                              <TableColumn fx:id="ethnic" prefWidth="107.20001220703125" text="Dân tộc" />
+                              <TableColumn fx:id="homeTown" prefWidth="111.20001220703125" text="Quê quán" />
+                              <TableColumn fx:id="identifyNumber" prefWidth="205.5999755859375" text="CCCD/CMND" />
                           </columns>
                         </TableView>
                         <Label layoutX="14.0" layoutY="5.0" text="Tên nhân khẩu:" />
@@ -51,14 +49,14 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="4.0" layoutY="184.0" prefHeight="314.0" prefWidth="807.0">
+                        <TableView fx:id="apartmentTable" layoutX="4.0" layoutY="184.0" prefHeight="314.0" prefWidth="807.0">
                           <columns>
-                            <TableColumn fx:id="apartmentTable" prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="150.00000762939453" text="Chủ hộ" />
-                              <TableColumn prefWidth="115.5999755859375" text="Số nhà" />
-                              <TableColumn prefWidth="156.79998779296875" text="Đường phố" />
-                              <TableColumn prefWidth="142.79995727539062" text="Phường/Xã" />
-                              <TableColumn prefWidth="167.199951171875" text="Quận/Huyện" />
+                            <TableColumn fx:id="apartmentId" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="monitorName" prefWidth="150.00000762939453" text="Chủ hộ" />
+                              <TableColumn fx:id="apartmentNumber" prefWidth="115.5999755859375" text="Số nhà" />
+                              <TableColumn fx:id="roadName" prefWidth="156.79998779296875" text="Đường phố" />
+                              <TableColumn fx:id="wardsName" prefWidth="142.79995727539062" text="Phường/Xã" />
+                              <TableColumn fx:id="districtName" prefWidth="167.199951171875" text="Quận/Huyện" />
                           </columns>
                         </TableView>
                         <Label layoutX="4.0" layoutY="14.0" text="Họ và tên chủ hộ:" />
@@ -73,7 +71,8 @@
                         <TextField fx:id="ward" layoutX="537.0" layoutY="10.0" />
                         <TextField fx:id="district" layoutX="502.0" layoutY="54.0" />
                         <TextField fx:id="IDApartment" layoutX="437.0" layoutY="96.0" />
-                        <Button fx:id="searchApartment" layoutX="634.0" layoutY="142.0" mnemonicParsing="false" onAction="#searchApartment" text="Tra cứu" />
+                        <Button fx:id="searchApartment" layoutX="521.0" layoutY="142.0" mnemonicParsing="false" onAction="#searchApartment" text="Tra cứu" />
+                        <Button fx:id="details" layoutX="624.0" layoutY="142.0" mnemonicParsing="false" onAction="#showdetails" text="Chi tiết" />
                      </children>
                   </AnchorPane>
                </content>

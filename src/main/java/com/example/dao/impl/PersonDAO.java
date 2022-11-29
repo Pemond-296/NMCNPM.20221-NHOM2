@@ -1,18 +1,34 @@
 package com.example.dao.impl;
 
 import com.example.dao.IPersonDAO;
+import com.example.mapper.PersonMapper;
 import com.example.model.PersonModel;
 
-import java.util.Date;
+import java.util.List;
 
 public class PersonDAO extends AbstractDAO<PersonModel> implements IPersonDAO {
+
+    @Override
+    public List<PersonModel> findAll() {
+        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
+        sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
+        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau");
+        return query(sql.toString(), new PersonMapper());
+    }
+
+    @Override
+    public PersonModel findById(Long id) {
+        String sql = "SELECT * FROM nhankhau WHERE id = ?";
+        List<PersonModel> models = query(sql, new PersonMapper(), id);
+
+        return models.isEmpty() ? null : models.get(0);
+    }
 
     @Override
     public Long save(PersonModel personModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO nhankhau ([ho_ten], [dan_toc], [ngay_sinh], ");
         sql.append("nguyen_quan, gioi_tinh, nghe_nghiep, noi_lam_viec) ");
         sql.append("VALUES (?, ?, ?, ?, ?, ?, ?)");
-        System.out.println(personModel.getBirthDate() instanceof Date);
 
         return insert(sql.toString(), personModel.getName(), personModel.getEthnic(), personModel.getBirthDate(),
                 personModel.getHometown(), personModel.getGender(), personModel.getJob(), personModel.getWorkPlace());

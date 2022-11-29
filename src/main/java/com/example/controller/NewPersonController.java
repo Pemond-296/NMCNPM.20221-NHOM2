@@ -1,7 +1,13 @@
 package com.example.controller;
 
+import com.example.model.IdentifierModel;
+import com.example.model.LocationModel;
 import com.example.model.PersonModel;
+import com.example.service.IIdentifierService;
+import com.example.service.ILocationService;
 import com.example.service.IPersonService;
+import com.example.service.impl.IdentifierService;
+import com.example.service.impl.LocationService;
 import com.example.service.impl.PersonService;
 import com.example.utils.DateUtil;
 import javafx.event.ActionEvent;
@@ -11,8 +17,10 @@ import javafx.scene.layout.AnchorPane;
 
 import java.text.ParseException;
 
-public class AddPersonController {
+public class NewPersonController {
     private IPersonService personService = new PersonService();
+    private IIdentifierService identifierService = new IdentifierService();
+    private ILocationService locationService = new LocationService();
     @FXML
     private AnchorPane AddPerson;
 
@@ -71,11 +79,21 @@ public class AddPersonController {
     }
     public void setBtnRegister(ActionEvent event) throws ParseException {
         PersonModel model = new PersonModel();
+        LocationModel locationModel = new LocationModel();
+        IdentifierModel identifierModel = new IdentifierModel();
 
+        identifierModel.setIdentityNumber(idNumber.getText());
+        locationModel.setNote(note.getText());
+
+
+        model.setLocationModel(locationModel);
+        model.setIdentifierModel(identifierModel);
         model.setName(fullname.getText());
         model.setEthnic(ethnic.getText());
         model.setBirthDate(DateUtil.asDate(date.getValue()));
         model.setHometown(hometown.getText());
+
+
 
         if(male.isSelected()) model.setGender(male.getText());
         else if(female.isSelected()) model.setGender(female.getText());
@@ -84,7 +102,11 @@ public class AddPersonController {
         model.setJob(job.getText());
         model.setWorkPlace(workPlace.getText());
 
-        personService.save(model);
+        Long id = personService.save(model);
+        locationModel.setPersonId(id);
+        identifierModel.setPersonId(id);
+        locationService.save(locationModel);
+        identifierService.save(identifierModel);
     }
 
 }

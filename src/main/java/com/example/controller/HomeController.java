@@ -1,21 +1,15 @@
 package com.example.controller;
 
-import com.example.model.ApartmentModel;
 import com.example.model.UserModel;
 import com.example.service.IApartmentService;
 import com.example.service.impl.ApartmentService;
 import com.example.utils.SessionUtil;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -30,39 +24,44 @@ public class HomeController implements Initializable {
     @FXML
     private Label loginLabel;
 
-    @FXML
-    private TableView<ApartmentModel> table;
-    @FXML
-    private TableColumn<ApartmentModel, String> name;
-    @FXML
-    private TableColumn<ApartmentModel, Integer> apartmentNumber;
-    @FXML
-    private TableColumn<ApartmentModel, String> roadName;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        apartmentNumber.setCellValueFactory(new PropertyValueFactory<>("apartmentNumber"));
-        roadName.setCellValueFactory(new PropertyValueFactory<>("roadName"));
-        table.setItems(observableList);
-
         UserModel model = SessionUtil.getInstance().getData();
 
         loginLabel.setText("Logged in as:\n" + model.getFullName());
     }
 
-    ObservableList<ApartmentModel> observableList = FXCollections.observableArrayList(apartmentService.findAll());
 
-    public void addPersonInfo(MouseEvent mouseEvent) {
+    public void showInfo(ActionEvent event) {
         application.getChildren().clear();
         Parent rootChild = null;
         try {
-            rootChild = FXMLLoader.load(Objects.requireNonNull(AddPersonController.class.getResource("AddPerson.fxml")));
+            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("Information.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        table.setVisible(false);
         application.getChildren().add(rootChild);
+    }
 
+    public void addPerson(ActionEvent event) {
+        application.getChildren().clear();
+        Parent rootChild = null;
+        try {
+            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("NewPerson.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        application.getChildren().add(rootChild);
+    }
+
+    public void addApartment(ActionEvent event) {
+        application.getChildren().clear();
+        Parent rootChild = null;
+        try {
+            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("NewApartment.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        application.getChildren().add(rootChild);
     }
 }

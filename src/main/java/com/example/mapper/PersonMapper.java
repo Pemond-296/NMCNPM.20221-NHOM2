@@ -26,13 +26,14 @@ public class PersonMapper implements RowMapper<PersonModel> {
             model.setRegisterDate(rs.getDate("ngay_dk_thuong_tru"));
             model.setRegisterPlace(rs.getString("dia_chi_thuong_tru"));
             model.setPrevPlace(rs.getString("dia_chi_truoc"));
-            model.setMonitor(rs.getBoolean("chu_ho"));
+            model.setRelationship(rs.getString("quan_he"));
 
             IdentifierModel identifierModel = new IndentifierMapper().mapRow(rs);
             LocationModel locationModel = new LocationMapper().mapRow(rs);
 
             model.setIdentifierModel(identifierModel);
             model.setLocationModel(locationModel);
+            model.setIdentifyId(identifierModel.getIdentityNumber());
 
             return model;
 

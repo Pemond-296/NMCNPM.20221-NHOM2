@@ -10,7 +10,7 @@ public class ApartmentMapper implements RowMapper<ApartmentModel> {
     public ApartmentModel mapRow(ResultSet rs) {
     ApartmentModel model = new ApartmentModel();
         try {
-            model.setId(rs.getLong("id"));
+            model.setId(rs.getString("id"));
             model.setName(rs.getString("ten_chu_ho"));
             model.setApartmentNumber(rs.getInt("so_nha"));
             model.setRoadName(rs.getString("ten_duong"));
