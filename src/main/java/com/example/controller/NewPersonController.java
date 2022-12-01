@@ -12,8 +12,10 @@ import com.example.service.impl.PersonService;
 import com.example.utils.DateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.text.ParseException;
 
@@ -23,9 +25,6 @@ public class NewPersonController {
     private ILocationService locationService = new LocationService();
     @FXML
     private AnchorPane AddPerson;
-
-    @FXML
-    private TextField apartmentId;
 
     @FXML
     private Button btnClear;
@@ -60,22 +59,28 @@ public class NewPersonController {
     @FXML
     private RadioButton other;
     @FXML
-    private TextField note;
-    @FXML
     private TextField workPlace;
+    @FXML
+    private TextField registerPlace;
+    @FXML
+    public DatePicker registerDate;
+
+    @FXML
+    private TextField nickname;
     @FXML
     private ToggleGroup genderGroup;
 
     public void setBtnClear(ActionEvent event) {
-        apartmentId.clear();
         fullname.clear();
         date.getEditor().clear();
         job.clear();
         ethnic.clear();
         hometown.clear();
         idNumber.clear();
-        note.clear();
         workPlace.clear();
+        registerPlace.clear();
+        registerDate.getEditor().clear();
+        nickname.clear();
     }
     public void setBtnRegister(ActionEvent event) throws ParseException {
         PersonModel model = new PersonModel();
@@ -83,8 +88,6 @@ public class NewPersonController {
         IdentifierModel identifierModel = new IdentifierModel();
 
         identifierModel.setIdentityNumber(idNumber.getText());
-        locationModel.setNote(note.getText());
-
 
         model.setLocationModel(locationModel);
         model.setIdentifierModel(identifierModel);
@@ -92,7 +95,9 @@ public class NewPersonController {
         model.setEthnic(ethnic.getText());
         model.setBirthDate(DateUtil.asDate(date.getValue()));
         model.setHometown(hometown.getText());
-
+        model.setNickname(nickname.getText());
+        model.setRegisterPlace(registerPlace.getText());
+        model.setRegisterDate(DateUtil.asDate(registerDate.getValue()));
 
 
         if(male.isSelected()) model.setGender(male.getText());
@@ -107,6 +112,10 @@ public class NewPersonController {
         identifierModel.setPersonId(id);
         locationService.save(locationModel);
         identifierService.save(identifierModel);
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.close();
+
     }
 
 }

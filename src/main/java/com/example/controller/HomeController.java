@@ -43,22 +43,22 @@ public class HomeController implements Initializable {
         application.getChildren().add(rootChild);
     }
 
-    public void addPerson(ActionEvent event) {
+    public void showPersonInfo(ActionEvent event) {
         application.getChildren().clear();
         Parent rootChild = null;
         try {
-            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("NewPerson.fxml")));
+            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("Person.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         application.getChildren().add(rootChild);
     }
 
-    public void addApartment(ActionEvent event) {
+    public void showApartmentInfo(ActionEvent event) {
         application.getChildren().clear();
         Parent rootChild = null;
         try {
-            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("NewApartment.fxml")));
+            rootChild = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("Apartment.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface IPersonService {
     List<PersonModel> findAll();
-
     PersonModel findById(Long id);
     Long save(PersonModel personModel);
+    List<PersonModel> findMonitor();
+    void update(PersonModel personModel);
 
 }

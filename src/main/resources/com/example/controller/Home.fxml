@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.HomeController">
+<AnchorPane id="root" prefHeight="720.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.HomeController">
    <children>
-      <AnchorPane fx:id="application" layoutX="431.0" layoutY="114.0" prefHeight="555.0" prefWidth="990.0" />
+      <AnchorPane fx:id="application" layoutX="258.0" layoutY="117.0" prefHeight="555.0" prefWidth="990.0" />
       <AnchorPane layoutX="90.0" layoutY="14.0" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="68.0" layoutY="27.0" prefWidth="230.0" text="App Management" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -59,7 +59,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#addApartment" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Thêm hộ khẩu" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showApartmentInfo" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Hộ khẩu" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#addPerson" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Thêm nhân khẩu" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showPersonInfo" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Nhân khẩu" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

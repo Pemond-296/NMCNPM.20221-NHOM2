@@ -28,4 +28,14 @@ public class PersonService implements IPersonService {
     public Long save(PersonModel personModel) {
         return personDAO.save(personModel);
     }
+
+    @Override
+    public List<PersonModel> findMonitor() {
+        return personDAO.findMonitor();
+    }
+
+    @Override
+    public void update(PersonModel personModel) {
+        personDAO.update(personModel);
+    }
 }
