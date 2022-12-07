@@ -46,8 +46,9 @@ public class PersonDAO extends AbstractDAO<PersonModel> implements IPersonDAO {
 
     @Override
     public void update(PersonModel personModel) {
-        StringBuilder sql = new StringBuilder("UPDATE nhankhau SET id_hokhau = ?");
+        StringBuilder sql = new StringBuilder("UPDATE nhankhau SET id_hokhau = ?, quan_he = ? ");
+        sql.append("WHERE id = ?");
 
-        update(sql.toString(), personModel.getApartmentId());
+        update(sql.toString(), personModel.getApartmentId(),personModel.getRelationship(), personModel.getId());
     }
 }

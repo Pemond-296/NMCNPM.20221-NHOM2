@@ -56,27 +56,27 @@
       </Label>
       <TextField fx:id="wardsName" layoutX="604.0" layoutY="216.0" prefHeight="26.0" prefWidth="95.0" />
       <Button layoutX="184.0" layoutY="278.0" mnemonicParsing="false" onAction="#selectMonitor" prefHeight="26.0" prefWidth="59.0" text="Chọn" />
-      <TextField editable="false" layoutX="264.0" layoutY="278.0" prefHeight="26.0" prefWidth="264.0" style="-fx-background-color: #a7aeb8;" />
-      <TextField editable="false" layoutX="264.0" layoutY="325.0" prefHeight="26.0" prefWidth="264.0" style="-fx-background-color: #a7aeb8;" />
+      <TextField fx:id="monitorName" editable="false" layoutX="264.0" layoutY="278.0" prefHeight="26.0" prefWidth="264.0" style="-fx-background-color: #a7aeb8;" />
+      <TextField fx:id="monitorDate" editable="false" layoutX="264.0" layoutY="325.0" prefHeight="26.0" prefWidth="264.0" style="-fx-background-color: #a7aeb8;" />
       <Button layoutX="428.0" layoutY="689.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="59.0" text="Hủy" />
       <Label alignment="CENTER" layoutX="211.0" layoutY="14.0" prefHeight="64.0" prefWidth="310.0" text="Nhập thông tin hộ khẩu" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="279.0" layoutY="424.0" mnemonicParsing="false" onAction="#selectMonitor" prefHeight="26.0" prefWidth="59.0" text="Sửa" />
+      <Button layoutX="279.0" layoutY="424.0" mnemonicParsing="false" onAction="#selectMember" prefHeight="26.0" prefWidth="59.0" text="Sửa" />
       <Label layoutX="109.0" layoutY="427.0" prefHeight="20.0" prefWidth="150.0" text="Thông tin thành viên:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="264.0" layoutY="375.0" prefHeight="26.0" prefWidth="264.0" style="-fx-background-color: #a7aeb8;" />
+      <TextField fx:id="monitorIdNumber" editable="false" layoutX="264.0" layoutY="375.0" prefHeight="26.0" prefWidth="264.0" style="-fx-background-color: #a7aeb8;" />
       <Button layoutX="521.0" layoutY="689.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="59.0" text="Lưu" />
-      <TableView layoutX="120.0" layoutY="468.0" prefHeight="208.0" prefWidth="496.0">
+      <TableView fx:id="memberTable" layoutX="120.0" layoutY="468.0" prefHeight="208.0" prefWidth="496.0">
         <columns>
-          <TableColumn prefWidth="157.6000213623047" text="Họ tên" />
-          <TableColumn prefWidth="171.99993896484375" text="Ngày sinh" />
-            <TableColumn prefWidth="166.40008544921875" text="Quan hệ với chủ hộ" />
+          <TableColumn fx:id="memberName" prefWidth="157.6000213623047" text="Họ tên" />
+          <TableColumn fx:id="memberDate" prefWidth="171.99993896484375" text="Ngày sinh" />
+            <TableColumn fx:id="memberRelationship" prefWidth="166.40008544921875" text="Quan hệ với chủ hộ" />
         </columns>
       </TableView>
    </children>

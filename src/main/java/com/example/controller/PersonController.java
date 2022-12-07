@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.PersonModel;
 import com.example.service.impl.PersonService;
+import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -61,7 +62,15 @@ public class PersonController implements Initializable {
         stage.showAndWait();
 
         observablePersonList.clear();
-        observablePersonList.addAll(personService.findAll());
+        observablePersonList.addAll(PersonUtil.getInstance().getModels());
         personTable.setItems(observablePersonList);
+    }
+
+    public void registerAbsent(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(NewPersonController.class.getResource("Absent.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 }

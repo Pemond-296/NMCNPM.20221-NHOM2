@@ -37,7 +37,7 @@
       </Label>
       <ImageView fitHeight="271.0" fitWidth="300.0" layoutX="102.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/login.png" />
+            <Image url="@images/login.png" />
          </image>
       </ImageView>
       <Label id="text-label" layoutX="582.0" layoutY="379.0" text="Forgot">

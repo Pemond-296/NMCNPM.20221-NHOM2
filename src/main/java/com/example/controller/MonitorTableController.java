@@ -2,12 +2,14 @@ package com.example.controller;
 
 import com.example.model.PersonModel;
 import com.example.service.impl.PersonService;
+import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,7 +19,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-public class PersonTableController implements Initializable {
+public class MonitorTableController implements Initializable {
     private PersonService personService = new PersonService();
     @FXML
     private TableView<PersonModel> personTable;
@@ -56,11 +58,19 @@ public class PersonTableController implements Initializable {
     }
 
     public void save(ActionEvent event) {
-        PersonModel model = personTable.getSelectionModel().getSelectedItem();
-        personService.update(model);
+        try {
+            PersonModel model = personTable.getSelectionModel().getSelectedItem();
+            PersonUtil.getInstance().setMonitor(model);
 
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setContentText("Vui lòng chọn lại");
+            alert.showAndWait();
+            alert.setHeaderText(e.getMessage());
+        }
     }
 
     public void exit(ActionEvent event) {

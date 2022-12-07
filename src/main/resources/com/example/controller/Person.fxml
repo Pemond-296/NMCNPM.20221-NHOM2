@@ -18,7 +18,7 @@
             <TableColumn fx:id="job" minWidth="0.0" prefWidth="112.800048828125" text="Nghề nghiệp" />
             <TableColumn fx:id="ethnic" prefWidth="86.4000244140625" text="Dân tộc" />
             <TableColumn fx:id="homeTown" prefWidth="119.2000732421875" text="Quê quán" />
-            <TableColumn fx:id="identifyNumber" prefWidth="159.99993896484375" text="CCCD/CMND" />
+            <TableColumn fx:id="identifyNumber" prefWidth="155.99996337890627" text="CCCD/CMND" />
          </columns>
       </TableView>
       <Button layoutX="866.0" layoutY="80.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="40.0" prefWidth="110.0" text="Thêm mới">
@@ -26,7 +26,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="154.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm vắng">
+      <Button layoutX="865.0" layoutY="154.0" mnemonicParsing="false" onAction="#registerAbsent" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm vắng">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.ApartmentModel;
 import com.example.service.impl.ApartmentService;
+import com.example.utils.ApartmentUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -61,5 +62,9 @@ public class ApartmentController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.showAndWait();
+
+        observableApartmentList.clear();
+        observableApartmentList.addAll(ApartmentUtil.getInstance().getModels());
+        apartmentTable.setItems(observableApartmentList);
     }
 }

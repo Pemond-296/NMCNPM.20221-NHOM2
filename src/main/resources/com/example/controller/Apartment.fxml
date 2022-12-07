@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="555.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ApartmentController">
    <children>
@@ -19,8 +20,17 @@
          </columns>
       </TableView>
       <TextField layoutX="47.0" layoutY="39.0" prefHeight="26.0" prefWidth="197.0" />
-      <Button layoutX="839.0" layoutY="101.0" mnemonicParsing="false" onAction="#newApartment" prefHeight="40.0" prefWidth="110.0" text="Thêm mới" />
-      <Button layoutX="839.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Tách hộ khẩu" />
-      <Button layoutX="839.0" layoutY="278.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Chuyển đi" />
+      <Button layoutX="839.0" layoutY="101.0" mnemonicParsing="false" onAction="#newApartment" prefHeight="40.0" prefWidth="110.0" text="Thêm mới">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="839.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Tách hộ khẩu">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="839.0" layoutY="278.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Chuyển đi">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

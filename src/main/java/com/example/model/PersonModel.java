@@ -17,7 +17,7 @@ public class PersonModel {
     private String registerPlace;
     private String prevPlace;
     private String relationship;
-    private Long apartmentId;
+    private String apartmentId;
     private Long identifierId;
     private Long locationId;
     private IdentifierModel identifierModel;
@@ -170,11 +170,11 @@ public class PersonModel {
         this.locationModel = locationModel;
     }
 
-    public Long getApartmentId() {
+    public String getApartmentId() {
         return apartmentId;
     }
 
-    public void setApartmentId(Long apartmentId) {
+    public void setApartmentId(String apartmentId) {
         this.apartmentId = apartmentId;
     }
 
