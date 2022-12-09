@@ -13,4 +13,13 @@ public class ApartmentDAO extends AbstractDAO<ApartmentModel> implements IApartm
 
         return query(sql, new ApartmentMapper());
     }
+
+    @Override
+    public Long save(ApartmentModel apartmentModel) {
+        StringBuilder sql = new StringBuilder("INSERT INTO hokhau ");
+        sql.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        return insert(sql.toString(), apartmentModel.getId(), apartmentModel.getName(), apartmentModel.getApartmentNumber(),
+                                    apartmentModel.getRoadName(), apartmentModel.getWardsName(), apartmentModel.getDistrictName(),
+                                    apartmentModel.getContentChanges(), apartmentModel.getDateChanges());
+    }
 }

@@ -1,9 +1,9 @@
 package com.example.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ApartmentModel {
-    private Long id;
+    private String id;
     private String name;
     private Integer apartmentNumber;
     private String roadName;
@@ -12,11 +12,11 @@ public class ApartmentModel {
     private String contentChanges;
     private Date dateChanges;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
