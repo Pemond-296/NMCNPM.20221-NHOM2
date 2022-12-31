@@ -4,4 +4,7 @@ import com.example.model.IdentifierModel;
 
 public interface IIdentifierService {
     Long save(IdentifierModel identifierModel);
+
+    interface IGiftTableService {
+    }
 }

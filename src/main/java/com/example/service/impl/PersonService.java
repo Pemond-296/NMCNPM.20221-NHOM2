@@ -9,6 +9,7 @@ import com.example.dao.impl.PersonDAO;
 import com.example.model.PersonModel;
 import com.example.service.IPersonService;
 
+import java.sql.Date;
 import java.util.List;
 
 public class PersonService implements IPersonService {
@@ -37,5 +38,8 @@ public class PersonService implements IPersonService {
     @Override
     public void update(PersonModel personModel) {
         personDAO.update(personModel);
+    }
+    public List<PersonModel> findByAge(){
+        return personDAO.findByAge();
     }
 }
