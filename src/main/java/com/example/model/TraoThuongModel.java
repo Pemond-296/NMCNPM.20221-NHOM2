@@ -2,17 +2,20 @@ package com.example.model;
 
 public class TraoThuongModel {
     private Integer so_luong;
-    private Long id_dip;
     private Long id_minhChung;
     private Long id_phanQua;
+    private Integer trang_thai;
+
+    public Integer getTrang_thai() {
+        return trang_thai;
+    }
+
+    public void setTrang_thai(Integer trang_thai) {
+        this.trang_thai = trang_thai;
+    }
+
     public TraoThuongModel(){
 
-    }
-    public TraoThuongModel(Integer so_luong, Long id_dip, Long id_minhChung, Long id_phanQua) {
-        this.so_luong = so_luong;
-        this.id_dip = id_dip;
-        this.id_minhChung = id_minhChung;
-        this.id_phanQua = id_phanQua;
     }
 
     public Integer getSo_luong() {
@@ -23,13 +26,6 @@ public class TraoThuongModel {
         this.so_luong = so_luong;
     }
 
-    public Long getId_dip() {
-        return id_dip;
-    }
-
-    public void setId_dip(Long id_dip) {
-        this.id_dip = id_dip;
-    }
 
     public Long getId_minhChung() {
         return id_minhChung;

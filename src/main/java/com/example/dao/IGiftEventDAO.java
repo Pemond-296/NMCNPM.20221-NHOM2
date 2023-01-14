@@ -1,7 +1,6 @@
 package com.example.dao;
 
 import com.example.model.EventGiftModel;
-import com.example.model.GiftTableModel;
 
 import java.util.List;
 

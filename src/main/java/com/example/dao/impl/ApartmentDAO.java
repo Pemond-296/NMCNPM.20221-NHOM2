@@ -1,6 +1,5 @@
 package com.example.dao.impl;
 
-import com.example.dao.GenericDAO;
 import com.example.dao.IApartmentDAO;
 import com.example.mapper.ApartmentMapper;
 import com.example.model.ApartmentModel;

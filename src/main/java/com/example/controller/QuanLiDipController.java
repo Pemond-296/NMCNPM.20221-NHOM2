@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.model.EventGiftModel;
-import com.example.service.IEventGiftService;
 import com.example.service.impl.EventGiftService;
 import com.example.utils.DipUtil;
 import javafx.collections.FXCollections;
@@ -20,7 +19,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -97,7 +95,21 @@ public class QuanLiDipController implements Initializable {
         TenDipC.setCellValueFactory(new PropertyValueFactory<>("nameEvent"));
         ThoiGianC.setCellValueFactory(new PropertyValueFactory<>("date"));
         DoiTuongNhanC.setCellValueFactory(new PropertyValueFactory<>("ten_doi_tuong"));
-        PhanQuaC.setCellValueFactory(new PropertyValueFactory<>("ten_phan_thuong"));
+        PhanQuaC.setCellValueFactory(new PropertyValueFactory<>("ten_qua"));
         DipTable.setItems(observableListEvenGift);
+    }
+    @FXML
+    void MinhChungE(ActionEvent event) throws IOException {
+        DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
+        if(DipUtil.getInstance().getData().getLoai_dip() == 0){
+            System.out.println("Dịp này là dịp giữa năm, không cần minh chứng");
+        }
+        else{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("QuanLiMinhChung.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
     }
 }

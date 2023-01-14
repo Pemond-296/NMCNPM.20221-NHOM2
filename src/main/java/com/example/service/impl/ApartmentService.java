@@ -3,7 +3,6 @@ package com.example.service.impl;
 import com.example.dao.IApartmentDAO;
 import com.example.dao.impl.ApartmentDAO;
 import com.example.model.ApartmentModel;
-import com.example.model.PersonModel;
 import com.example.service.IApartmentService;
 
 import java.util.List;

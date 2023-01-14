@@ -6,33 +6,50 @@ public class EventGiftModel {
 
     private Long id;
     private String nameEvent;
+    private Integer tong_tien;
     private Date date;
     private String ten_doi_tuong;
-    private String ten_phan_thuong;
+    private Long idQua;
+    private String ten_qua;
+    private Integer loai_dip; // 0 - giua nam, 1 - cuoi nam
+
+    public Integer getTong_tien() {
+        return tong_tien;
+    }
+
+    public void setTong_tien(Integer tong_tien) {
+        this.tong_tien = tong_tien;
+    }
+
+    public String getTen_qua() {
+        return ten_qua;
+    }
+
+    public void setTen_qua(String ten_qua) {
+        this.ten_qua = ten_qua;
+    }
+
     public EventGiftModel(){
 
     }
 
-    public EventGiftModel(String nameEvent, Date date, String ten_doi_tuong, String ten_phan_thuong) {
-        this.nameEvent = nameEvent;
-        this.date = date;
-        this.ten_doi_tuong = ten_doi_tuong;
-        this.ten_phan_thuong = ten_phan_thuong;
+    public Integer getLoai_dip() {
+        return loai_dip;
     }
-    public Long getId() {
-        return id;
+
+    public void setLoai_dip(Integer loai_dip) {
+        this.loai_dip = loai_dip;
+        if(loai_dip == 0){
+            setTen_qua("Banh, keo");
+        }
+        else setTen_qua("Sach, vo");
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-
-    public EventGiftModel(Long id, String nameEvent, Date date, String ten_doi_tuong, String ten_phan_thuong) {
-        this.id = id;
-        this.nameEvent = nameEvent;
-        this.date = date;
-        this.ten_doi_tuong = ten_doi_tuong;
-        this.ten_phan_thuong = ten_phan_thuong;
+    public Long getId(){
+        return id;
     }
     public String getNameEvent() {
         return nameEvent;
@@ -58,12 +75,11 @@ public class EventGiftModel {
         this.ten_doi_tuong = ten_doi_tuong;
     }
 
-    public String getTen_phan_thuong() {
-        return ten_phan_thuong;
+    public Long getIdQua() {
+        return idQua;
     }
 
-    public void setTen_phan_thuong(String ten_phan_thuong) {
-        this.ten_phan_thuong = ten_phan_thuong;
+    public void setIdQua(Long idQua) {
+        this.idQua = idQua;
     }
-
 }

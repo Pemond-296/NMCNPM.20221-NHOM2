@@ -23,6 +23,15 @@ public class PersonModel {
     private IdentifierModel identifierModel;
     private LocationModel locationModel;
     private String identifyId;
+    private String proof;
+
+    public String getProof() {
+        return proof;
+    }
+
+    public void setProof(String proof) {
+        this.proof = proof;
+    }
 
     public PersonModel(){}
 

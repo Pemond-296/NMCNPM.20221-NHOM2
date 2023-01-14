@@ -76,6 +76,7 @@ public class MemberTableController implements Initializable {
         }
 
         else {
+            JOptionPane JOptionPane = null;
             String relationship = JOptionPane.showInputDialog("Quan hệ với chủ hộ");
             if(relationship == null || relationship.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

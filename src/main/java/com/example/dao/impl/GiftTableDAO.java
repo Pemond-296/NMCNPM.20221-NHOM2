@@ -2,10 +2,8 @@ package com.example.dao.impl;
 
 import com.example.dao.IGiftTableDAO;
 import com.example.mapper.GiftTableMapper;
-import com.example.mapper.PersonMapper;
 import com.example.model.EventGiftModel;
 import com.example.model.GiftTableModel;
-import com.example.model.PersonModel;
 
 import java.util.List;
 
@@ -42,4 +40,5 @@ public class GiftTableDAO extends AbstractDAO<GiftTableModel> implements IGiftTa
         sql.append("where idDip = ?");
         return query(sql.toString(), new GiftTableMapper(), eventGiftModel.getId());
     }
+
 }

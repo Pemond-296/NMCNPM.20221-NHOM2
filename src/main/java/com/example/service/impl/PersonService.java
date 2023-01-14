@@ -1,15 +1,12 @@
 package com.example.service.impl;
 
-import com.example.dao.IIdentifierDAO;
-import com.example.dao.ILocationDAO;
 import com.example.dao.IPersonDAO;
-import com.example.dao.impl.IdentifierDAO;
-import com.example.dao.impl.LocationDAO;
 import com.example.dao.impl.PersonDAO;
+import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 import com.example.model.PersonModel;
 import com.example.service.IPersonService;
 
-import java.sql.Date;
 import java.util.List;
 
 public class PersonService implements IPersonService {
@@ -41,5 +38,15 @@ public class PersonService implements IPersonService {
     }
     public List<PersonModel> findByAge(){
         return personDAO.findByAge();
+    }
+
+    @Override
+    public List<PersonModel> findByProof(MinhChungModel minhChungModel) {
+        return personDAO.findByProof(minhChungModel);
+    }
+
+    @Override
+    public List<PersonModel> findNotProof(EventGiftModel eventGiftModel) {
+        return personDAO.findNotProof(eventGiftModel);
     }
 }

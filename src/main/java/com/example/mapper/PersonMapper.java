@@ -1,7 +1,5 @@
 package com.example.mapper;
 
-import com.example.model.IdentifierModel;
-import com.example.model.LocationModel;
 import com.example.model.PersonModel;
 
 import java.sql.ResultSet;
@@ -26,14 +24,14 @@ public class PersonMapper implements RowMapper<PersonModel> {
             model.setRegisterDate(rs.getDate("ngay_dk_thuong_tru"));
             model.setRegisterPlace(rs.getString("dia_chi_thuong_tru"));
             model.setPrevPlace(rs.getString("dia_chi_truoc"));
-            model.setRelationship(rs.getString("quan_he"));
+            model.setRelationship(rs.getString("chu_ho"));
 
-            IdentifierModel identifierModel = new IndentifierMapper().mapRow(rs);
-            LocationModel locationModel = new LocationMapper().mapRow(rs);
-
-            model.setIdentifierModel(identifierModel);
-            model.setLocationModel(locationModel);
-            model.setIdentifyId(identifierModel.getIdentityNumber());
+//            IdentifierModel identifierModel = new IndentifierMapper().mapRow(rs);
+//            LocationModel locationModel = new LocationMapper().mapRow(rs);
+//
+//            model.setIdentifierModel(identifierModel);
+//            model.setLocationModel(locationModel);
+//            model.setIdentifyId(identifierModel.getIdentityNumber());
 
             return model;
 

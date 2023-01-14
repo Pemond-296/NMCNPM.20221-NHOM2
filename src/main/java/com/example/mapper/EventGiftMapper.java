@@ -11,10 +11,11 @@ public class EventGiftMapper implements RowMapper<EventGiftModel>{
         EventGiftModel eventGiftModel = new EventGiftModel();
         try{
             eventGiftModel.setId(rs.getLong("idDip"));
-            eventGiftModel.setDate(rs.getDate("dateDip"));
+            eventGiftModel.setDate(rs.getDate("date"));
             eventGiftModel.setNameEvent(rs.getString("TenDip"));
             eventGiftModel.setTen_doi_tuong(rs.getString("TenDoiTuong"));
-            eventGiftModel.setTen_phan_thuong(rs.getString("TenPhanThuong"));
+            eventGiftModel.setIdQua(rs.getLong("idQua"));
+            eventGiftModel.setLoai_dip(rs.getInt("LoaiDip"));
 
             return eventGiftModel;
 
@@ -23,4 +24,5 @@ public class EventGiftMapper implements RowMapper<EventGiftModel>{
         }
         return null;
     }
+
 }

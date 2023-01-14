@@ -21,7 +21,6 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                     sqlDatabase + ";encrypt=true;trustServerCertificate=true;";
             String user = myBundle.getString("user");
             String pass = myBundle.getString("pass");
-
             return DriverManager.getConnection(dbURL, user, pass);
 
 

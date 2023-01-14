@@ -10,11 +10,10 @@ public class MinhChungMapper implements RowMapper<MinhChungModel>{
         MinhChungModel model = new MinhChungModel();
 
         try {
-            model.setId(rs.getLong("id"));
+            model.setId(rs.getLong("idMinhChung"));
             model.setId_nhan_khau(rs.getLong("idNhanKhau"));
-            model.setNam(rs.getInt("Nam"));
             model.setId_thanhtich(rs.getLong("idThanhTich"));
-
+            model.setId_dip(rs.getLong("idDip"));
             return model;
         } catch (SQLException e) {
             e.printStackTrace();

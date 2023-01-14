@@ -1,8 +1,9 @@
 package com.example.dao;
 
+import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 import com.example.model.PersonModel;
 
-import java.sql.Date;
 import java.util.List;
 
 public interface IPersonDAO {
@@ -12,4 +13,6 @@ public interface IPersonDAO {
     List<PersonModel> findMonitor();
     void update(PersonModel personModel);
     public List<PersonModel> findByAge();
+    List<PersonModel> findByProof(MinhChungModel minhChungModel);
+    List<PersonModel> findNotProof(EventGiftModel eventGiftModel);
 }

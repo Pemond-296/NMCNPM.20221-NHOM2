@@ -13,6 +13,7 @@ public class PersonUtil {
     private List<PersonModel> models = personService.findAll();
     private PersonModel monitor = null;
     private PersonModel member = null;
+    private PersonModel minhchung = null;
     private List<PersonModel> tempModel = new ArrayList<>();
 
     public static PersonUtil getInstance() {
@@ -53,5 +54,14 @@ public class PersonUtil {
 
     public void setTempModel(List<PersonModel> tempModel) {
         this.tempModel = tempModel;
+    }
+
+    public PersonModel getMinhchung() {
+        return minhchung;
+    }
+
+    public void setMinhChung(PersonModel personModel){
+        minhchung = personModel;
+
     }
 }

@@ -1,8 +1,9 @@
 package com.example.service;
 
+import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 import com.example.model.PersonModel;
 
-import java.sql.Date;
 import java.util.List;
 
 public interface IPersonService {
@@ -12,5 +13,7 @@ public interface IPersonService {
     List<PersonModel> findMonitor();
     void update(PersonModel personModel);
     public List<PersonModel> findByAge();
+    List<PersonModel> findByProof(MinhChungModel minhChungModel);
+    List<PersonModel> findNotProof(EventGiftModel eventGiftModel);
 
 }

@@ -4,7 +4,6 @@ import com.example.model.ApartmentModel;
 import com.example.service.IApartmentService;
 import com.example.service.impl.ApartmentService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ApartmentUtil {

@@ -2,6 +2,8 @@ package com.example.dao.impl;
 
 import com.example.dao.IPersonDAO;
 import com.example.mapper.PersonMapper;
+import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 import com.example.model.PersonModel;
 
 import java.util.List;
@@ -49,5 +51,32 @@ public class PersonDAO extends AbstractDAO<PersonModel> implements IPersonDAO {
         StringBuilder sql = new StringBuilder("UPDATE nhankhau SET id_hokhau = ?");
 
         update(sql.toString(), personModel.getApartmentId());
+    }
+
+    @Override
+    public List<PersonModel> findByAge() {
+//        Year y = Year.now();
+//        int year = y.getValue();
+        String sql = "SELECT * FROM nhankhau";
+//        sql.append("WHERE YEAR()")
+        return query(sql.toString(), new PersonMapper());
+    }
+
+    @Override
+    public List<PersonModel> findByProof(MinhChungModel  minhChungModel) {
+
+        String sql = "SELECT * FROM nhankhau nk WHERE nk.id = ?";
+
+        return query(sql, new PersonMapper(), minhChungModel.getId_nhan_khau());
+    }
+
+    @Override
+    public List<PersonModel> findNotProof(EventGiftModel eventGiftModel) {
+
+        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau WHERE id NOT IN ");
+        sql.append("(SELECT idNhanKhau FROM MinhChung WHERE idDip = ? )");
+
+        return query(sql.toString(), new PersonMapper(), eventGiftModel.getId());
+
     }
 }

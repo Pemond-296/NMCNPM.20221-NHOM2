@@ -6,9 +6,9 @@ import com.example.model.TraoThuongModel;
 public class TraoThuongDAO extends AbstractDAO<TraoThuongModel> implements ITraoThuongDAO {
     @Override
     public Long save(TraoThuongModel traoThuongModel) {
-        StringBuilder sql = new StringBuilder("INSERT INTO phanthuong");
-        sql.append("VALUES (?, ?, ?, ?)");
-        return insert(sql.toString(), traoThuongModel.getId_dip(), traoThuongModel.getId_minhChung(), traoThuongModel.getId_phanQua(),
-                traoThuongModel.getSo_luong());
+        StringBuilder sql = new StringBuilder("INSERT INTO TraoThuong ");
+        sql.append("VALUES (?, ?, ?)");
+        return insert(sql.toString(), traoThuongModel.getId_minhChung(),
+                traoThuongModel.getSo_luong(), traoThuongModel.getTrang_thai());
     }
 }

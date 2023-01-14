@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:controller="com.example.controller.QuanLiDipController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.QuanLiDipController">
    <children>
       <Button fx:id="TaoMoiDipB" layoutX="578.0" layoutY="102.0" mnemonicParsing="false" onAction="#TaoMoiE" prefHeight="55.0" prefWidth="142.0" text="Tạo mới dịp" />
       <Button fx:id="XemB" layoutX="578.0" layoutY="300.0" mnemonicParsing="false" onAction="#XemE" prefHeight="55.0" prefWidth="142.0" text="Xem thông tin" />
@@ -19,5 +19,6 @@
             <TableColumn fx:id="PhanQuaC" prefWidth="125.20001220703125" text="Phần thưởng" />
         </columns>
       </TableView>
+      <Button layoutX="590.0" layoutY="398.0" mnemonicParsing="false" onAction="#MinhChungE" prefHeight="41.0" prefWidth="122.0" text="Quản lí minh chứng" />
    </children>
 </AnchorPane>
