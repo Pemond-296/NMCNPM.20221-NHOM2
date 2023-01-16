@@ -22,7 +22,7 @@ public class UserMapper implements RowMapper<UserModel> {
 //                RoleModel role = new RoleModel();
 //                role.setId(rs.getLong("roleid"));
 //                role.setCode(rs.getString("code"));
-//                role.setName(rs.getString("name"));
+//                role.setTenChuHo(rs.getString("name"));
 //                model.setRoleModel(role);
 //            } catch (Exception e) {
 //                e.printStackTrace();

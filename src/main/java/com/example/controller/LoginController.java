@@ -15,7 +15,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class LoginController {
@@ -43,10 +42,10 @@ public class LoginController {
             if (model.getRoleModel().getCode().equals("ADMIN")) {
                 SessionUtil.getInstance().setData(model);
 
-                Parent root = FXMLLoader.load(HomeController.class.getResource("Home.fxml"));
+                Parent root = FXMLLoader.load(TrangChuController.class.getResource("TrangChuView.fxml"));
                 Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add(String.valueOf(HomeController.class.getResource("home.css")));
+                scene.getStylesheets().add(String.valueOf(TrangChuController.class.getResource("TrangChu.css")));
                 stage.setScene(scene);
                 stage.centerOnScreen();
                 stage.show();

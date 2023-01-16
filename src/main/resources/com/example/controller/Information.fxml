@@ -53,10 +53,10 @@
                           <columns>
                             <TableColumn fx:id="apartmentId" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="monitorName" prefWidth="150.00000762939453" text="Chủ hộ" />
-                              <TableColumn fx:id="apartmentNumber" prefWidth="115.5999755859375" text="Số nhà" />
-                              <TableColumn fx:id="roadName" prefWidth="156.79998779296875" text="Đường phố" />
-                              <TableColumn fx:id="wardsName" prefWidth="142.79995727539062" text="Phường/Xã" />
-                              <TableColumn fx:id="districtName" prefWidth="167.199951171875" text="Quận/Huyện" />
+                              <TableColumn fx:id="soNha" prefWidth="115.5999755859375" text="Số nhà" />
+                              <TableColumn fx:id="tenDuong" prefWidth="156.79998779296875" text="Đường phố" />
+                              <TableColumn fx:id="phuongXa" prefWidth="142.79995727539062" text="Phường/Xã" />
+                              <TableColumn fx:id="quanHuyen" prefWidth="167.199951171875" text="Quận/Huyện" />
                           </columns>
                         </TableView>
                         <Label layoutX="4.0" layoutY="14.0" text="Họ và tên chủ hộ:" />
@@ -65,7 +65,7 @@
                         <Label layoutX="408.0" layoutY="14.0" text="Phường/xã/thị trấn:" />
                         <Label layoutX="408.0" layoutY="58.0" text="Quận/ huyện:" />
                         <Label layoutX="408.0" layoutY="100.0" text="ID:" />
-                        <TextField fx:id="name" layoutX="106.0" layoutY="10.0" />
+                        <TextField fx:id="tenChuHo" layoutX="106.0" layoutY="10.0" />
                         <TextField fx:id="numberHouse" layoutX="68.0" layoutY="54.0" />
                         <TextField fx:id="street" layoutX="68.0" layoutY="96.0" />
                         <TextField fx:id="ward" layoutX="537.0" layoutY="10.0" />

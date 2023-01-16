@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("Login.fxml")));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(String.valueOf(LoginController.class.getResource("login.css")));
+        scene.getStylesheets().add(String.valueOf(LoginController.class.getResource("Login.css")));
         stage.setScene(scene);
         stage.show();
     }

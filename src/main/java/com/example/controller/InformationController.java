@@ -1,8 +1,8 @@
 package com.example.controller;
-import com.example.model.ApartmentModel;
-import com.example.model.PersonModel;
-import com.example.service.impl.ApartmentService;
-import com.example.service.impl.PersonService;
+import com.example.model.HoKhauModel;
+import com.example.model.NhanKhauModel;
+import com.example.service.impl.HoKhauService;
+import com.example.service.impl.NhanKhauService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,8 +24,8 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class InformationController implements Initializable {
-    private ApartmentService apartmentService = new ApartmentService();
-    private PersonService personService = new PersonService();
+    private HoKhauService hoKhauService = new HoKhauService();
+    private NhanKhauService nhanKhauService = new NhanKhauService();
     @FXML
     private TextField IDApartment;
 
@@ -39,31 +39,31 @@ public class InformationController implements Initializable {
     private TableColumn<?, ?> apartmentNumber;
 
     @FXML
-    private TableView<ApartmentModel> apartmentTable;
+    private TableView<HoKhauModel> apartmentTable;
 
     @FXML
-    private TableColumn<PersonModel, Date> birthDate;
+    private TableColumn<NhanKhauModel, Date> birthDate;
 
     @FXML
     private TextField district;
 
     @FXML
-    private TableColumn<ApartmentModel, String> districtName;
+    private TableColumn<HoKhauModel, String> districtName;
 
     @FXML
-    private TableColumn<PersonModel, String> ethnic;
+    private TableColumn<NhanKhauModel, String> ethnic;
 
     @FXML
-    private TableColumn<PersonModel, String> homeTown;
+    private TableColumn<NhanKhauModel, String> homeTown;
 
     @FXML
-    private TableColumn<PersonModel, String> identifyNumber;
+    private TableColumn<NhanKhauModel, String> identifyNumber;
 
     @FXML
-    private TableColumn<PersonModel, String> job;
+    private TableColumn<NhanKhauModel, String> job;
 
     @FXML
-    private TableColumn<ApartmentModel, String> monitorName;
+    private TableColumn<HoKhauModel, String> monitorName;
 
     @FXML
     private TextField name;
@@ -78,16 +78,16 @@ public class InformationController implements Initializable {
     private TextField numberHouse;
 
     @FXML
-    private TableColumn<PersonModel, Long> personId;
+    private TableColumn<NhanKhauModel, Long> personId;
 
     @FXML
-    private TableColumn<PersonModel, String> personName;
+    private TableColumn<NhanKhauModel, String> personName;
 
     @FXML
-    private TableView<PersonModel> personTable;
+    private TableView<NhanKhauModel> personTable;
 
     @FXML
-    private TableColumn<ApartmentModel, String> roadName;
+    private TableColumn<HoKhauModel, String> roadName;
 
     @FXML
     private Button searchApartment;
@@ -102,10 +102,10 @@ public class InformationController implements Initializable {
     private TextField ward;
 
     @FXML
-    private TableColumn<ApartmentModel, String> wardsName;
+    private TableColumn<HoKhauModel, String> wardsName;
 
-    ObservableList<ApartmentModel> observableApartmentList = FXCollections.observableArrayList(apartmentService.findAll());
-    ObservableList<PersonModel> observablePersonList = FXCollections.observableArrayList(personService.findAll());
+    ObservableList<HoKhauModel> observableApartmentList = FXCollections.observableArrayList(hoKhauService.findAll());
+    ObservableList<NhanKhauModel> observablePersonList = FXCollections.observableArrayList(nhanKhauService.findAll());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -140,7 +140,7 @@ public class InformationController implements Initializable {
 
     }
     public void showdetails(ActionEvent event) throws IOException {
-        ApartmentModel model = apartmentTable.getSelectionModel().getSelectedItem();
+        HoKhauModel model = apartmentTable.getSelectionModel().getSelectedItem();
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(DetailsController.class.getResource("Details.fxml"));
         Scene scene = new Scene(root);

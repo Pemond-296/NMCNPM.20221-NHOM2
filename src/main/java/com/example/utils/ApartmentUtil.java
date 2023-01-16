@@ -1,16 +1,17 @@
 package com.example.utils;
 
-import com.example.model.ApartmentModel;
-import com.example.service.IApartmentService;
-import com.example.service.impl.ApartmentService;
+import com.example.model.HoKhauModel;
+import com.example.service.IHoKhauService;
+import com.example.service.impl.HoKhauService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ApartmentUtil {
     private static ApartmentUtil apartmentUtil = null;
-    private IApartmentService apartmentService = new ApartmentService();
-    private List<ApartmentModel> models = apartmentService.findAll();
+    private IHoKhauService apartmentService = new HoKhauService();
+    private HoKhauModel hoKhauModel = null;
+    private HoKhauModel newHoKhauModel = null;
+    private List<HoKhauModel> models = apartmentService.findAll();
 
     public static ApartmentUtil getInstance() {
         if (apartmentUtil == null) apartmentUtil = new ApartmentUtil();
@@ -18,27 +19,35 @@ public class ApartmentUtil {
         return apartmentUtil;
     }
 
-    public ApartmentUtil getApartmentUtil() {
-        return apartmentUtil;
+    public HoKhauModel getApartmentModel() {
+        return hoKhauModel;
     }
 
-    public void setApartmentUtil(ApartmentUtil apartmentUtil) {
-        ApartmentUtil.apartmentUtil = apartmentUtil;
+    public void setApartmentModel(HoKhauModel hoKhauModel) {
+        this.hoKhauModel = hoKhauModel;
     }
 
-    public List<ApartmentModel> getModels() {
+    public List<HoKhauModel> getModels() {
         return models;
     }
 
-    public void setModels(List<ApartmentModel> models) {
+    public void setModels(List<HoKhauModel> models) {
         this.models = models;
     }
 
-    public void add(ApartmentModel model) {
+    public void add(HoKhauModel model) {
         models.add(model);
     }
 
     public void addAll() {
         models.addAll(apartmentService.findAll());
+    }
+
+    public HoKhauModel getNewApartmentModel() {
+        return newHoKhauModel;
+    }
+
+    public void setNewApartmentModel(HoKhauModel newHoKhauModel) {
+        this.newHoKhauModel = newHoKhauModel;
     }
 }
