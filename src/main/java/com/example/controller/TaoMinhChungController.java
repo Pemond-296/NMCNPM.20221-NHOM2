@@ -64,7 +64,7 @@ public class TaoMinhChungController implements Initializable {
         minhChungModel.setId_nhan_khau(PersonUtil.getInstance().getMinhchung().getId());
         minhChungModel.setNam(DipUtil.getInstance().getData().getDate().getYear());
 
-        if(PersonUtil.getInstance().getMinhchung().getProof() == "Đã có"){
+        if(PersonUtil.getInstance().getMinhchung().getMinhChung() == "Đã có"){
             iMinhChungService.update(minhChungModel);
         }
         else{
@@ -83,6 +83,6 @@ public class TaoMinhChungController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ho_tenText.setText(PersonUtil.getInstance().getMinhchung().getName());
+        ho_tenText.setText(PersonUtil.getInstance().getMinhchung().getHoTen());
     }
 }

@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
 
 public class ThemHoKhauController implements Initializable {
     private IHoKhauService apartmentService = new HoKhauService();
-    private INhanKhauService personService = new NhanKhauService();
+    private INhanKhauService nhanKhauService = new NhanKhauService();
     @FXML
     private TextField id;
     @FXML
@@ -137,7 +137,7 @@ public class ThemHoKhauController implements Initializable {
         List<NhanKhauModel> list = new ArrayList<>(thanhVienTable.getItems());
         for(NhanKhauModel nhanKhauModel : list) {
             nhanKhauModel.setIdHoKhau(model.getId());
-            personService.update(nhanKhauModel);
+            nhanKhauService.update(nhanKhauModel);
         }
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

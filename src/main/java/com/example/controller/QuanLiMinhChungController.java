@@ -1,11 +1,11 @@
 package com.example.controller;
 
-import com.example.model.ApartmentModel;
-import com.example.model.PersonModel;
+import com.example.model.HoKhauModel;
+import com.example.model.NhanKhauModel;
 import com.example.service.IMinhChungService;
-import com.example.service.IPersonService;
+import com.example.service.INhanKhauService;
 import com.example.service.impl.MinhChungService;
-import com.example.service.impl.PersonService;
+import com.example.service.impl.NhanKhauService;
 import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,10 +28,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class QuanLiMinhChungController implements Initializable {
-    IPersonService iPersonService = new PersonService();
-    IMinhChungService iMinhChungService = new MinhChungService();
+    INhanKhauService nhanKhauService = new NhanKhauService();
+    IMinhChungService minhChungService = new MinhChungService();
     @FXML
-    private TableColumn<ApartmentModel, ?> ho_gia_dinh;
+    private TableColumn<HoKhauModel, ?> ho_gia_dinh;
 
     @FXML
     private TableColumn<?, ?> ho_ten;
@@ -43,7 +43,7 @@ public class QuanLiMinhChungController implements Initializable {
     private TableColumn<?, ?> ngay_sinh;
 
     @FXML
-    private TableView<PersonModel> nhan_khauTable;
+    private TableView<NhanKhauModel> nhan_khauTable;
 
     @FXML
     private TableColumn<?, ?> stt;
@@ -57,30 +57,30 @@ public class QuanLiMinhChungController implements Initializable {
 
     }
 
-    List<PersonModel> personModelList = iPersonService.findByAge();
-    ObservableList<PersonModel> observableList = FXCollections.observableArrayList(getMinhChung());
+    List<NhanKhauModel> nhanKhauModelList = nhanKhauService.findByAge();
+    ObservableList<NhanKhauModel> observableList = FXCollections.observableArrayList(getMinhChung());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         stt.setCellValueFactory(new PropertyValueFactory<>("id"));
-        ho_ten.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ngay_sinh.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
-        ho_gia_dinh.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        minh_chung.setCellValueFactory(new PropertyValueFactory<>("proof"));
+        ho_ten.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
+        ngay_sinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+        ho_gia_dinh.setCellValueFactory(new PropertyValueFactory<>("gioiTinh"));
+        minh_chung.setCellValueFactory(new PropertyValueFactory<>("minhChung"));
         nhan_khauTable.setItems(observableList);
     }
 
-    List<PersonModel> getMinhChung(){
+    List<NhanKhauModel> getMinhChung(){
 
-        for (PersonModel personModel : personModelList){
+        for (NhanKhauModel model : nhanKhauModelList){
 
-            if(iMinhChungService.isMinhChung(personModel) == 1){
-                personModel.setProof("Đã có");
+            if(minhChungService.isMinhChung(model) == 1){
+                model.setMinhChung("Đã có");
             }
-            else personModel.setProof("Chưa có");
+            else model.setMinhChung("Chưa có");
 
         }
-        return personModelList;
+        return nhanKhauModelList;
 
     }
     @FXML

@@ -23,6 +23,7 @@ public class NhanKhauModel {
     private DinhDanhModel dinhDanhModel;
     private DiaDiemModel diaDiemModel;
     private String soCMT;
+    private String minhChung;
 
     public NhanKhauModel(){}
 
@@ -184,5 +185,13 @@ public class NhanKhauModel {
 
     public void setSoCMT(String soCMT) {
         this.soCMT = soCMT;
+    }
+
+    public String getMinhChung() {
+        return minhChung;
+    }
+
+    public void setMinhChung(String minhChung) {
+        this.minhChung = minhChung;
     }
 }

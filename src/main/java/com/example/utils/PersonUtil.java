@@ -1,20 +1,20 @@
 package com.example.utils;
 
-import com.example.model.PersonModel;
-import com.example.service.IPersonService;
-import com.example.service.impl.PersonService;
+import com.example.model.NhanKhauModel;
+import com.example.service.INhanKhauService;
+import com.example.service.impl.NhanKhauService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonUtil {
     private static PersonUtil personUtil = null;
-    private IPersonService personService = new PersonService();
-    private List<PersonModel> models = personService.findAll();
-    private PersonModel monitor = null;
-    private PersonModel member = null;
-    private PersonModel minhchung = null;
-    private List<PersonModel> tempModel = new ArrayList<>();
+    private INhanKhauService nhanKhauService = new NhanKhauService();
+    private List<NhanKhauModel> models = nhanKhauService.findAll();
+    private NhanKhauModel monitor = null;
+    private NhanKhauModel member = null;
+    private NhanKhauModel minhchung = null;
+    private List<NhanKhauModel> tempModel = new ArrayList<>();
 
     public static PersonUtil getInstance() {
         if (personUtil == null) personUtil = new PersonUtil();
@@ -25,42 +25,42 @@ public class PersonUtil {
     public void removeData() {
         personUtil = null;
     }
-    public List<PersonModel> getModels() {
+    public List<NhanKhauModel> getModels() {
         return models;
     }
 
-    public void add(PersonModel model) {
+    public void add(NhanKhauModel model) {
         models.add(model);
     }
 
-    public PersonModel getMonitor() {
+    public NhanKhauModel getMonitor() {
         return monitor;
     }
 
-    public void setMonitor(PersonModel monitor) {
+    public void setMonitor(NhanKhauModel monitor) {
         this.monitor = monitor;
     }
 
-    public PersonModel getMember() {
+    public NhanKhauModel getMember() {
         return member;
     }
-    public void setMember(PersonModel member) {
+    public void setMember(NhanKhauModel member) {
         this.member = member;
     }
 
-    public List<PersonModel> getTempModel() {
+    public List<NhanKhauModel> getTempModel() {
         return tempModel;
     }
 
-    public void setTempModel(List<PersonModel> tempModel) {
+    public void setTempModel(List<NhanKhauModel> tempModel) {
         this.tempModel = tempModel;
     }
 
-    public PersonModel getMinhchung() {
+    public NhanKhauModel getMinhchung() {
         return minhchung;
     }
 
-    public void setMinhChung(PersonModel personModel){
+    public void setMinhChung(NhanKhauModel personModel){
         minhchung = personModel;
 
     }

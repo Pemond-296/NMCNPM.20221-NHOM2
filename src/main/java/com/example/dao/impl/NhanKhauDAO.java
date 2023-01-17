@@ -2,6 +2,8 @@ package com.example.dao.impl;
 
 import com.example.dao.INhanKhauDAO;
 import com.example.mapper.NhanKhauMapper;
+import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 import com.example.model.NhanKhauModel;
 
 import java.util.List;
@@ -62,5 +64,32 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
         sql.append("WHERE id = ?");
 
         update(sql.toString(), nhanKhauModel.getIdHoKhau(), nhanKhauModel.getQuanHe(), nhanKhauModel.getId());
+    }
+
+    @Override
+    public List<NhanKhauModel> findByAge() {
+//        Year y = Year.now();
+//        int year = y.getValue();
+        String sql = "SELECT * FROM nhankhau";
+//        sql.append("WHERE YEAR()")
+        return query(sql.toString(), new NhanKhauMapper());
+    }
+
+    @Override
+    public List<NhanKhauModel> findByProof(MinhChungModel minhChungModel) {
+
+        String sql = "SELECT * FROM nhankhau nk WHERE nk.id = ?";
+
+        return query(sql, new NhanKhauMapper(), minhChungModel.getId_nhan_khau());
+    }
+
+    @Override
+    public List<NhanKhauModel> findNotProof(EventGiftModel eventGiftModel) {
+
+        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau WHERE id NOT IN ");
+        sql.append("(SELECT idNhanKhau FROM MinhChung WHERE idDip = ? )");
+
+        return query(sql.toString(), new NhanKhauMapper(), eventGiftModel.getId());
+
     }
 }

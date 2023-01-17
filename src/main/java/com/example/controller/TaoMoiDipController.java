@@ -4,10 +4,10 @@ package com.example.controller;
 import com.example.model.EventGiftModel;
 import com.example.service.IEventGiftService;
 import com.example.service.IMinhChungService;
-import com.example.service.IPersonService;
+import com.example.service.INhanKhauService;
 import com.example.service.impl.EventGiftService;
 import com.example.service.impl.MinhChungService;
-import com.example.service.impl.PersonService;
+import com.example.service.impl.NhanKhauService;
 import com.example.utils.DateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import java.util.Calendar;
 
 public class TaoMoiDipController {
     private IEventGiftService eventGiftService = new EventGiftService();
-    private IPersonService personService = new PersonService();
+    private INhanKhauService personService = new NhanKhauService();
     private IMinhChungService minhChungService = new MinhChungService();
     private Integer loai_dipx;
     @FXML

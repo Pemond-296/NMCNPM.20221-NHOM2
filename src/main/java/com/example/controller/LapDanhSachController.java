@@ -2,10 +2,10 @@ package com.example.controller;
 
 import com.example.model.*;
 import com.example.service.IMinhChungService;
-import com.example.service.IPersonService;
+import com.example.service.INhanKhauService;
 import com.example.service.ITraoThuongService;
 import com.example.service.impl.MinhChungService;
-import com.example.service.impl.PersonService;
+import com.example.service.impl.NhanKhauService;
 import com.example.service.impl.TraoThuongService;
 import com.example.utils.DipUtil;
 import javafx.collections.FXCollections;
@@ -32,8 +32,8 @@ import java.util.ResourceBundle;
 
 public class LapDanhSachController implements Initializable {
 
-    IMinhChungService iMinhChungService = new MinhChungService();
-    IPersonService iPersonService = new PersonService();
+    IMinhChungService minhChungService = new MinhChungService();
+    INhanKhauService nhanKhauService = new NhanKhauService();
     @FXML
     private TableView<GiftTableModel> danh_sachTable;
 
@@ -94,15 +94,15 @@ public class LapDanhSachController implements Initializable {
     }
     List<GiftTableModel> getMember(){
         giftTableModelList.clear();
-        List<MinhChungModel> minhChungModels = iMinhChungService.findByDip(eventGiftModel);
+        List<MinhChungModel> minhChungModels = minhChungService.findByDip(eventGiftModel);
         if(eventGiftModel.getLoai_dip() == 0) {
             if (minhChungModels != null) {
                 for (MinhChungModel minhChungModel : minhChungModels) {
                     System.out.println("1");
-                    PersonModel personModel = iPersonService.findById(minhChungModel.getId_nhan_khau());
+                    NhanKhauModel nhanKhauModel = nhanKhauService.findById(minhChungModel.getId_nhan_khau());
 
                     GiftTableModel giftTableModel = new GiftTableModel();
-                    giftTableModel.setTen_nhan_khau(personModel.getName());
+                    giftTableModel.setTen_nhan_khau(nhanKhauModel.getHoTen());
                     giftTableModel.setNgay_thang(eventGiftModel.getDate());
                     giftTableModel.setTen_dip(eventGiftModel.getNameEvent());
                     giftTableModel.setId_minhchung(minhChungModel.getId());
@@ -125,9 +125,9 @@ public class LapDanhSachController implements Initializable {
         else{
             if(minhChungModels != null){
                 for(MinhChungModel minhChungModel : minhChungModels){
-                    List<PersonModel> personModels = iPersonService.findByProof(minhChungModel);
+                    List<NhanKhauModel> nhanKhauModels = nhanKhauService.findByProof(minhChungModel);
                     GiftTableModel giftTableModel = new GiftTableModel();
-                    giftTableModel.setTen_nhan_khau(personModels.get(0).getName());
+                    giftTableModel.setTen_nhan_khau(nhanKhauModels.get(0).getHoTen());
                     giftTableModel.setTen_dip(eventGiftModel.getNameEvent());
                     giftTableModel.setNgay_thang(eventGiftModel.getDate());
                     giftTableModel.setId_minhchung(minhChungModel.getId());

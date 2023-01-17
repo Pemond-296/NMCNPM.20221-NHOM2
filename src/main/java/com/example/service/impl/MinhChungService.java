@@ -4,7 +4,7 @@ import com.example.dao.IMinhChungDAO;
 import com.example.dao.impl.MinhChungDAO;
 import com.example.model.EventGiftModel;
 import com.example.model.MinhChungModel;
-import com.example.model.PersonModel;
+import com.example.model.NhanKhauModel;
 import com.example.service.IMinhChungService;
 
 import java.util.List;
@@ -22,8 +22,8 @@ public class MinhChungService implements IMinhChungService {
     }
 
     @Override
-    public Integer isMinhChung(PersonModel personModel) {
-        return iMinhChungDAO.isMinhChung(personModel);
+    public Integer isMinhChung(NhanKhauModel nhanKhauModel) {
+        return iMinhChungDAO.isMinhChung(nhanKhauModel);
     }
 
     @Override

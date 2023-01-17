@@ -4,7 +4,7 @@ import com.example.dao.IMinhChungDAO;
 import com.example.mapper.MinhChungMapper;
 import com.example.model.EventGiftModel;
 import com.example.model.MinhChungModel;
-import com.example.model.PersonModel;
+import com.example.model.NhanKhauModel;
 import com.example.utils.DipUtil;
 
 import java.util.List;
@@ -31,9 +31,9 @@ public class MinhChungDAO extends AbstractDAO<MinhChungModel> implements IMinhCh
     }
 
     @Override
-    public Integer isMinhChung(PersonModel personModel) {
+    public Integer isMinhChung(NhanKhauModel nhanKhauModel) {
         String sql = "SELECT * FROM MinhChung mc, nhankhau nk WHERE mc.idNhanKhau = ? AND mc.idDip = ?";
-        List<MinhChungModel> minhChungModels = query(sql, new MinhChungMapper(), personModel.getId(), DipUtil.getInstance().getData().getId());
+        List<MinhChungModel> minhChungModels = query(sql, new MinhChungMapper(), nhanKhauModel.getId(), DipUtil.getInstance().getData().getId());
         if (minhChungModels == null || minhChungModels.isEmpty()){
             return 0;
         }

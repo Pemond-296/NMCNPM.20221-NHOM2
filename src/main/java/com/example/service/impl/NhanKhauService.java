@@ -2,6 +2,9 @@ package com.example.service.impl;
 
 import com.example.dao.INhanKhauDAO;
 import com.example.dao.impl.NhanKhauDAO;
+import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
+import com.example.model.NhanKhauModel;
 import com.example.model.NhanKhauModel;
 import com.example.service.INhanKhauService;
 
@@ -38,5 +41,19 @@ public class NhanKhauService implements INhanKhauService {
     @Override
     public void update(NhanKhauModel nhanKhauModel) {
         personDAO.update(nhanKhauModel);
+    }
+
+    public List<NhanKhauModel> findByAge(){
+        return personDAO.findByAge();
+    }
+
+    @Override
+    public List<NhanKhauModel> findByProof(MinhChungModel minhChungModel) {
+        return personDAO.findByProof(minhChungModel);
+    }
+
+    @Override
+    public List<NhanKhauModel> findNotProof(EventGiftModel eventGiftModel) {
+        return personDAO.findNotProof(eventGiftModel);
     }
 }
