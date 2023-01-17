@@ -5,7 +5,6 @@ import com.example.dao.impl.NhanKhauDAO;
 import com.example.model.EventGiftModel;
 import com.example.model.MinhChungModel;
 import com.example.model.NhanKhauModel;
-import com.example.model.NhanKhauModel;
 import com.example.service.INhanKhauService;
 
 import java.util.List;
