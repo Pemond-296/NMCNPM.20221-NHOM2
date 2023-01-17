@@ -42,6 +42,7 @@ public class NhanKhauService implements INhanKhauService {
         personDAO.update(nhanKhauModel);
     }
 
+    @Override
     public List<NhanKhauModel> findByAge(){
         return personDAO.findByAge();
     }
