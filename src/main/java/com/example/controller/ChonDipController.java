@@ -54,10 +54,12 @@ public class ChonDipController implements Initializable {
             List<NhanKhauModel> nhanKhauModels = nhanKhauService.findByAge();
             if(!nhanKhauModels.isEmpty()){
                 for(NhanKhauModel personModel : nhanKhauModels){
+                    if (minhChungService.isMinhChung(personModel) == 1){
+                        continue;
+                    }
                     MinhChungModel minhChungModel = new MinhChungModel();
                     minhChungModel.setId_nhan_khau(personModel.getId());
                     minhChungModel.setId_thanhtich(1L); // tre em
-                    minhChungModel.setNam(eventGiftModel.getDate().getYear());
                     minhChungModel.setId_dip(eventGiftModel.getId());
                     Long save = minhChungService.save(minhChungModel);
                 }

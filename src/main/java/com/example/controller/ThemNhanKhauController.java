@@ -1,13 +1,13 @@
 package com.example.controller;
 
-import com.example.model.DinhDanhModel;
 import com.example.model.DiaDiemModel;
+import com.example.model.DinhDanhModel;
 import com.example.model.NhanKhauModel;
-import com.example.service.IDinhDanhService;
 import com.example.service.IDiaDiemService;
+import com.example.service.IDinhDanhService;
 import com.example.service.INhanKhauService;
-import com.example.service.impl.DinhDanhService;
 import com.example.service.impl.DiaDiemService;
+import com.example.service.impl.DinhDanhService;
 import com.example.service.impl.NhanKhauService;
 import com.example.utils.DateUtil;
 import javafx.event.ActionEvent;

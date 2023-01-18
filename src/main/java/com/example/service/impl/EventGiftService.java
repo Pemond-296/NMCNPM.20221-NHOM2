@@ -23,4 +23,9 @@ public class EventGiftService implements IEventGiftService {
     public void update(EventGiftModel eventGiftModel){
         iGiftEventDAO.update(eventGiftModel);
     }
+
+    @Override
+    public void delete(EventGiftModel eventGiftModel) {
+        iGiftEventDAO.deleta(eventGiftModel);
+    }
 }

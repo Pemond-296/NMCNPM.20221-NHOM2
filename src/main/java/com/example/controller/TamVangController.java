@@ -1,11 +1,11 @@
 package com.example.controller;
 
-import com.example.model.TamVangModel;
 import com.example.model.NhanKhauModel;
-import com.example.service.ITamVangService;
+import com.example.model.TamVangModel;
 import com.example.service.INhanKhauService;
-import com.example.service.impl.TamVangService;
+import com.example.service.ITamVangService;
 import com.example.service.impl.NhanKhauService;
+import com.example.service.impl.TamVangService;
 import com.example.utils.DateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

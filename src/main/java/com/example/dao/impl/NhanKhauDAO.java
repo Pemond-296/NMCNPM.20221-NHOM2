@@ -6,6 +6,7 @@ import com.example.model.EventGiftModel;
 import com.example.model.MinhChungModel;
 import com.example.model.NhanKhauModel;
 
+import java.time.Year;
 import java.util.List;
 
 public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhauDAO {
@@ -68,11 +69,11 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
 
     @Override
     public List<NhanKhauModel> findByAge() {
-//        Year y = Year.now();
-//        int year = y.getValue();
-        String sql = "SELECT * FROM nhankhau";
-//        sql.append("WHERE YEAR()")
-        return query(sql.toString(), new NhanKhauMapper());
+        Year y = Year.now();
+        Integer year = y.getValue();
+        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
+        sql.append("WHERE (? - YEAR(ngay_sinh)) between 0 and 18");
+        return query(sql.toString(), new NhanKhauMapper(), year);
     }
 
     @Override

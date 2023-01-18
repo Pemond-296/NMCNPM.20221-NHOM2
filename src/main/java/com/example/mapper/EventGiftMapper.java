@@ -16,6 +16,7 @@ public class EventGiftMapper implements RowMapper<EventGiftModel>{
             eventGiftModel.setTen_doi_tuong(rs.getString("TenDoiTuong"));
             eventGiftModel.setIdQua(rs.getLong("idQua"));
             eventGiftModel.setLoai_dip(rs.getInt("LoaiDip"));
+            eventGiftModel.setTrang_thai(rs.getString("trangThai"));
 
             return eventGiftModel;
 

@@ -34,4 +34,11 @@ public class EventGiftDAO extends AbstractDAO<EventGiftModel> implements IGiftEv
                 eventGiftModel.getId());
     }
 
+    @Override
+    public void deleta(EventGiftModel eventGiftModel) {
+        StringBuilder sql = new StringBuilder("DELETE MinhChung WHERE idDip = ?");
+        sql.append(" DELETE Dip WHERE idDip = ?");
+        update(sql.toString(), eventGiftModel.getId());
+    }
+
 }

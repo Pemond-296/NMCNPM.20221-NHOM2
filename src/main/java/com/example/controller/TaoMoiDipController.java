@@ -9,6 +9,7 @@ import com.example.service.impl.EventGiftService;
 import com.example.service.impl.MinhChungService;
 import com.example.service.impl.NhanKhauService;
 import com.example.utils.DateUtil;
+import com.example.utils.DipUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -72,6 +73,7 @@ public class TaoMoiDipController {
         }
 
         Long id = eventGiftService.save(eventGiftModel);
+        DipUtil.getInstance().addDip(eventGiftModel);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();

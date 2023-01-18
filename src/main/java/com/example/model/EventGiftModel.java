@@ -11,7 +11,16 @@ public class EventGiftModel {
     private String ten_doi_tuong;
     private Long idQua;
     private String ten_qua;
+    private String trang_thai;
     private Integer loai_dip; // 0 - giua nam, 1 - cuoi nam
+
+    public String getTrang_thai() {
+        return trang_thai;
+    }
+
+    public void setTrang_thai(String trang_thai) {
+        this.trang_thai = trang_thai;
+    }
 
     public Integer getTong_tien() {
         return tong_tien;

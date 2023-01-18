@@ -1,8 +1,11 @@
 package com.example.controller;
 
 import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 import com.example.service.IEventGiftService;
+import com.example.service.IMinhChungService;
 import com.example.service.impl.EventGiftService;
+import com.example.service.impl.MinhChungService;
 import com.example.utils.DateUtil;
 import com.example.utils.DipUtil;
 import javafx.event.ActionEvent;
@@ -13,8 +16,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateStringConverter;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CapNhatDipController implements Initializable {
@@ -54,11 +59,14 @@ public class CapNhatDipController implements Initializable {
 
     @FXML
     void EXoaDip(ActionEvent event) {
+        eventGiftService.delete(DipUtil.getInstance().getData());
 
     }
-
+    EventGiftModel model = DipUtil.getInstance().getData();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FDoiTuongNhan.setText("Hello thay");
+        FDoiTuongNhan.setText(model.getTen_doi_tuong());
+        FTenDip.setText(model.getNameEvent());
+        FPhanQua.setText(model.getTen_qua());
     }
 }

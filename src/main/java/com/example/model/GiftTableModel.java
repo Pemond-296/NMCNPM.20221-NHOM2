@@ -13,8 +13,17 @@ public class GiftTableModel {
     private String ten_dip;
     private String ten_doi_tuong;
     private Integer so_luong;
+    private Long id_dip;
     private Long id_minhchung;
-    private boolean trang_thai;
+    private String trang_thai;
+
+    public Long getId_dip() {
+        return id_dip;
+    }
+
+    public void setId_dip(Long id_dip) {
+        this.id_dip = id_dip;
+    }
 
     public Long getId_minhchung() {
         return id_minhchung;
@@ -24,11 +33,11 @@ public class GiftTableModel {
         this.id_minhchung = id_minhchung;
     }
 
-    public boolean isTrang_thai() {
+    public String getTrang_thai() {
         return trang_thai;
     }
 
-    public void setTrang_thai(boolean trang_thai) {
+    public void setTrang_thai(String trang_thai) {
         this.trang_thai = trang_thai;
     }
 

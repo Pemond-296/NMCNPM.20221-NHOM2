@@ -9,4 +9,5 @@ public interface IGiftEventDAO extends GenericDAO<EventGiftModel> {
 
     public List<EventGiftModel> findAll();
     public void update(EventGiftModel eventGiftModel);
+    public void deleta(EventGiftModel eventGiftModel);
 }

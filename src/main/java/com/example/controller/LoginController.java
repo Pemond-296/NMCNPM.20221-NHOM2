@@ -53,6 +53,15 @@ public class LoginController {
 
             else {
                 System.out.println("Ban la user");
+                SessionUtil.getInstance().setData(model);
+
+                Parent root = FXMLLoader.load(TrangChuController.class.getResource("TrangChuView.fxml"));
+                Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(String.valueOf(TrangChuController.class.getResource("TrangChu.css")));
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
             }
         }
 

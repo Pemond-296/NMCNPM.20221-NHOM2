@@ -8,4 +8,5 @@ public interface IEventGiftService {
     public Long save(EventGiftModel eventGiftModel);
     public List<EventGiftModel> findAll();
     public void update(EventGiftModel eventGiftModel);
+    public void delete(EventGiftModel eventGiftModel);
 }

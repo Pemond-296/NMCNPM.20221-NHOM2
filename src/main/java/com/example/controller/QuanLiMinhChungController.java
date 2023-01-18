@@ -86,14 +86,21 @@ public class QuanLiMinhChungController implements Initializable {
     @FXML
     void tao_minh_chung(ActionEvent event) throws IOException {
         PersonUtil.getInstance().setMinhChung(nhan_khauTable.getSelectionModel().getSelectedItem());
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("TaoMinhChung.fxml")));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.showAndWait();
-        observableList.clear();
-        observableList.addAll(getMinhChung());
-        nhan_khauTable.setItems(observableList);
+
+        if (PersonUtil.getInstance().getMinhchung() != null) {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("TaoMinhChung.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+            observableList.clear();
+            observableList.addAll(getMinhChung());
+            nhan_khauTable.setItems(observableList);
+        }
+        else{
+            System.out.println("Vui long click vao nguoi muon tao minh chung");
+        }
     }
 
 }

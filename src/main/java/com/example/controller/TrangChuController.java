@@ -31,7 +31,17 @@ public class TrangChuController implements Initializable {
         loginLabel.setText("Logged in as:\n" + model.getFullName());
     }
 
-
+    @FXML
+    void quanLiDip(ActionEvent event) {
+        application.getChildren().clear();
+        Parent rootChild = null;
+        try {
+            rootChild = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("QuanLiDip.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        application.getChildren().add(rootChild);
+    }
     public void showInfo(ActionEvent event) {
         application.getChildren().clear();
         Parent rootChild = null;
