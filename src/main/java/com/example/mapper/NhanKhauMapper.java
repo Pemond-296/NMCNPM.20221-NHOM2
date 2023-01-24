@@ -26,15 +26,15 @@ public class NhanKhauMapper implements RowMapper<NhanKhauModel> {
             model.setNgayDkiThuongTru(rs.getDate("ngay_dk_thuong_tru"));
             model.setNoiDkiThuongTru(rs.getString("dia_chi_thuong_tru"));
             model.setNoiOTruoc(rs.getString("dia_chi_truoc"));
-//            model.setQuanHe(rs.getString("quan_he"));
+            model.setQuanHe(rs.getString("quan_he"));
             model.setIdHoKhau(rs.getString("id_hokhau"));
 
-//            DinhDanhModel dinhDanhModel = new DinhDanhMapper().mapRow(rs);
-//            DiaDiemModel diaDiemModel = new DiaDiemMapper().mapRow(rs);
-//
-//            model.setIdentifierModel(dinhDanhModel);
-//            model.setLocationModel(diaDiemModel);
-//            model.setSoCMT(dinhDanhModel.getSoCMT());
+            DinhDanhModel dinhDanhModel = new DinhDanhMapper().mapRow(rs);
+            DiaDiemModel diaDiemModel = new DiaDiemMapper().mapRow(rs);
+
+            model.setIdentifierModel(dinhDanhModel);
+            model.setLocationModel(diaDiemModel);
+            model.setSoCMT(dinhDanhModel.getSoCMT());
 
             return model;
 

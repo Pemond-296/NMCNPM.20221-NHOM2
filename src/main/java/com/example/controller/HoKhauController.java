@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.HoKhauModel;
+import com.example.model.NhanKhauModel;
 import com.example.service.impl.HoKhauService;
 import com.example.utils.ApartmentUtil;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -39,6 +41,8 @@ public class HoKhauController implements Initializable {
     private TableColumn<?, ?> tenDuong;
     @FXML
     private TableColumn<?, ?> phuongXa;
+    @FXML
+    private TextField searchBar;
 
     List<HoKhauModel> models = hoKhauService.findAll();
 
@@ -97,5 +101,26 @@ public class HoKhauController implements Initializable {
             alert.showAndWait();
         }
 
+    }
+
+    public void timKiem(ActionEvent event) {
+        String keyword = searchBar.getText();
+        List<HoKhauModel> models = hoKhauService.findAll();
+        if(keyword.isEmpty()) {
+            observableApartmentList.clear();
+            observableApartmentList.addAll(models);
+            hoKhauTable.refresh();
+            return;
+        }
+
+        observableApartmentList.clear();
+
+        for(HoKhauModel model : models) {
+            if(model.getId().contains(keyword)) {
+                observableApartmentList.add(model);
+            }
+        }
+
+        hoKhauTable.refresh();
     }
 }

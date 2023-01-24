@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="555.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.NhanKhauController">
    <children>
-      <TextField layoutX="62.0" layoutY="26.0" prefHeight="26.0" prefWidth="244.0" />
+      <TextField fx:id="searchBar" layoutX="62.0" layoutY="26.0" prefHeight="26.0" prefWidth="244.0" />
       <TableView fx:id="nhanKhauTable" layoutX="62.0" layoutY="80.0" prefHeight="394.0" prefWidth="753.0">
          <columns>
             <TableColumn fx:id="nhanKhauId" prefWidth="64.3999924659729" text="ID" />
@@ -41,5 +41,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <Button layoutX="345.0" layoutY="27.0" mnemonicParsing="false" onAction="#timKiem" text="Button" />
    </children>
 </AnchorPane>

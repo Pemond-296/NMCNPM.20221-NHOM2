@@ -42,16 +42,6 @@ public class TrangChuController implements Initializable {
         }
         application.getChildren().add(rootChild);
     }
-    public void showInfo(ActionEvent event) {
-        application.getChildren().clear();
-        Parent rootChild = null;
-        try {
-            rootChild = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("Information.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        application.getChildren().add(rootChild);
-    }
 
     public void xemThongTinNhanKhau(ActionEvent event) {
         application.getChildren().clear();

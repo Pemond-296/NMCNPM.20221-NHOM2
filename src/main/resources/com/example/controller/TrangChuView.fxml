@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" prefHeight="720.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.TrangChuController">
+<AnchorPane id="root" prefHeight="720.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.TrangChuController">
    <children>
       <AnchorPane fx:id="application" layoutX="258.0" layoutY="117.0" prefHeight="555.0" prefWidth="990.0" />
       <AnchorPane layoutX="90.0" layoutY="14.0" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -37,21 +37,6 @@
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
                            <image>
                               <Image url="@images/dash.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showInfo" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Tra cứu" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
-                           <image>
-                              <Image url="@images/add.png" />
                            </image>
                         </ImageView>
                      </graphic>

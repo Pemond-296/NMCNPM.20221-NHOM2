@@ -12,11 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -38,6 +40,8 @@ public class NhanKhauController implements Initializable {
     private TableColumn<?, ?> hoTen;
     @FXML
     private TableView<NhanKhauModel> nhanKhauTable;
+    @FXML
+    private TextField searchBar;
     ObservableList<NhanKhauModel> observablePersonList = FXCollections.observableArrayList(nhanKhauService.findAll());
 
 
@@ -51,6 +55,7 @@ public class NhanKhauController implements Initializable {
         nguyenQuan.setCellValueFactory(new PropertyValueFactory<>("nguyenQuan"));
         soCMT.setCellValueFactory(new PropertyValueFactory<>("soCMT"));
         nhanKhauTable.setItems(observablePersonList);
+//        startLoop();
     }
 
     public void addPerson(ActionEvent event) throws IOException {
@@ -72,4 +77,70 @@ public class NhanKhauController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
     }
+
+    public void timKiem(ActionEvent event) {
+        String keyword = searchBar.getText();
+        List<NhanKhauModel> models = nhanKhauService.findAll();
+        if(keyword.isEmpty()) {
+            observablePersonList.clear();
+            observablePersonList.addAll(models);
+            nhanKhauTable.refresh();
+            return;
+        }
+
+        observablePersonList.clear();
+
+        for(NhanKhauModel model : models) {
+            if(model.getHoTen().contains(keyword)) {
+                observablePersonList.add(model);
+            }
+        }
+
+        nhanKhauTable.refresh();
+    }
+
+//    public void startLoop() {
+//        Thread myThread = new Thread(this);
+//        myThread.start();
+//    }
+//
+//    @Override
+//    public void run() {
+//        String oldText = "";
+//        List<NhanKhauModel> models = nhanKhauService.findAll();
+//        System.out.println("Run");
+//
+//        while(true) {
+//            String newText = searchBar.getText();
+//            System.out.println(newText);
+//            System.out.println(oldText);
+//            if(!Objects.equals(newText, oldText)) {
+//                oldText = newText;
+//
+//                if(newText.isEmpty()) {
+//                    observablePersonList.clear();
+//                    observablePersonList.addAll(models);
+//                    nhanKhauTable.refresh();
+//                }
+//
+//                else {
+//                    String[] substring = newText.split(" ");
+//                    observablePersonList.clear();
+//
+//                    for(NhanKhauModel model : models) {
+//                        for(String s : substring) {
+//                            String name = model.getHoTen().toLowerCase();
+//                            if(name.contains(s.toLowerCase())) {
+//                                observablePersonList.add(model);
+//                                break;
+//                            }
+//                        }
+//                    }
+//
+//                    nhanKhauTable.refresh();
+//                }
+//            }
+//        }
+//
+//    }
 }
