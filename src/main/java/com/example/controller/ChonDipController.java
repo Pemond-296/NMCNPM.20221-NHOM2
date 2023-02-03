@@ -75,7 +75,7 @@ public class ChonDipController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
-    List<EventGiftModel> models = eventGiftService.findAll();
+    List<EventGiftModel> models = DipUtil.getInstance().getEventGiftModelList();
     ObservableList<EventGiftModel> observableList = FXCollections.observableArrayList(models);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

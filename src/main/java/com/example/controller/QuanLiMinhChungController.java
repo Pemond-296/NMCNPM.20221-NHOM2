@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.GiftTableModel;
 import com.example.model.HoKhauModel;
 import com.example.model.NhanKhauModel;
 import com.example.service.IMinhChungService;
@@ -54,7 +55,22 @@ public class QuanLiMinhChungController implements Initializable {
 
     @FXML
     void tim_kiem(ActionEvent event) {
-
+        List<NhanKhauModel> models = nhanKhauService.findAll();
+        String keyword = tim_kiemText.getText();
+        if(keyword.isEmpty()) {
+            observableList.clear();
+            observableList.addAll(models);
+            nhan_khauTable.refresh();
+            return;
+        }
+        observableList.clear();
+        keyword = keyword.toLowerCase();
+        for(NhanKhauModel model : models){
+            if(model.getHoTen().toLowerCase().contains(keyword)){
+                observableList.add(model);
+            }
+        }
+        nhan_khauTable.refresh();
     }
 
     List<NhanKhauModel> nhanKhauModelList = nhanKhauService.findByAge();

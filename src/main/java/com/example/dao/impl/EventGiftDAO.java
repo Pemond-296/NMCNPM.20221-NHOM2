@@ -10,10 +10,10 @@ public class EventGiftDAO extends AbstractDAO<EventGiftModel> implements IGiftEv
     @Override
     public Long save(EventGiftModel eventGiftModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO Dip ");
-        sql.append("VALUES (?, ?, ?, ?, ? )");
+        sql.append("VALUES (?, ?, ?, ?, ?, ? )");
 
         return insert(sql.toString(), eventGiftModel.getNameEvent(), eventGiftModel.getDate(),
-                eventGiftModel.getTen_doi_tuong(), eventGiftModel.getIdQua(), eventGiftModel.getLoai_dip());
+                eventGiftModel.getTen_doi_tuong(), eventGiftModel.getIdQua(), eventGiftModel.getLoai_dip(), eventGiftModel.getTrang_thai());
     }
     @Override
     public List<EventGiftModel> findAll(){
@@ -28,9 +28,10 @@ public class EventGiftDAO extends AbstractDAO<EventGiftModel> implements IGiftEv
                 "TenDoiTuong = ? , " +
                 "idQua = ?" +
                 "LoaiDip = ?" +
+                "trangThai = ? " +
                 " WHERE idDip = ?";
         update(sql, eventGiftModel.getNameEvent(), eventGiftModel.getDate(), eventGiftModel.getTen_doi_tuong(), eventGiftModel.getIdQua(),
-                eventGiftModel.getLoai_dip(),
+                eventGiftModel.getLoai_dip(), eventGiftModel.getTrang_thai_bool(),
                 eventGiftModel.getId());
     }
 

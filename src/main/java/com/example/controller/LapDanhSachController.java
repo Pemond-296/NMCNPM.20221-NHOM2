@@ -89,12 +89,28 @@ public class LapDanhSachController implements Initializable {
     private Label ten_dip;
     @FXML
     void tim_kiem(ActionEvent event) {
+        List<GiftTableModel> models = getMember();
+        String keyword = tim_kiemText.getText();
+        if(keyword.isEmpty()) {
+            observableList.clear();
+            observableList.addAll(models);
+            danh_sachTable.refresh();
+            return;
+        }
+        observableList.clear();
+        keyword = keyword.toLowerCase();
+        for(GiftTableModel model : models){
+            if(model.getTen_nhan_khau().toLowerCase().contains(keyword)){
+                observableList.add(model);
+            }
+        }
+        danh_sachTable.refresh();
 
     }
     ObservableList<GiftTableModel> observableList = FXCollections.observableArrayList(getMember());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ten_dip.setText("DANH SÁCH TRAO THƯỞNG DỊP: " + DipUtil.getInstance().getData().getNameEvent());
+        ten_dip.setText("DANH SÁCH TRAO THƯỞNG DỊP: " + DipUtil.getInstance().getData().getNameEvent().toUpperCase());
         ho_ten.setCellValueFactory(new PropertyValueFactory<>("ten_nhan_khau"));
         ngay_thang.setCellValueFactory(new PropertyValueFactory<>("ngay_thang"));
         thanh_tich.setCellValueFactory(new PropertyValueFactory<>("ten_thanh_tich"));

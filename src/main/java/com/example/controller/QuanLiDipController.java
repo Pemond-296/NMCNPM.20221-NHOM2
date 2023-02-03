@@ -65,35 +65,22 @@ public class QuanLiDipController implements Initializable {
         EventGiftModel eventGiftModel = DipTable.getSelectionModel().getSelectedItem();
         DipUtil.getInstance().setData(eventGiftModel);
         if (DipUtil.getInstance().getData() != null) {
+
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(Objects.requireNonNull(CapNhatDipController.class.getResource("CapNhatDip.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.showAndWait();
             observableListEvenGift.clear();
-            observableListEvenGift.addAll(eventGiftService.findAll());
+            observableListEvenGift.addAll(DipUtil.getInstance().getEventGiftModelList());
             DipTable.setItems(observableListEvenGift);
+
         }
 
     }
 
     @FXML
     private MenuButton menuLoc;
-    @FXML
-    void ChuaHoanThanh(ActionEvent event) {
-        menuLoc.setText("Chưa hoàn thành");
-        observableListEvenGift.clear();
-        observableListEvenGift.addAll(DipUtil.getInstance().findByStatus(false));
-        DipTable.setItems(observableListEvenGift);
-    }
-
-    @FXML
-    void HoanThanh(ActionEvent event) {
-        menuLoc.setText("Hoàn thành");
-        observableListEvenGift.clear();
-        observableListEvenGift.addAll(DipUtil.getInstance().findByStatus(true));
-        DipTable.setItems(observableListEvenGift);
-    }
 
     @FXML
     void LapDanhSachE(ActionEvent event) throws IOException {
@@ -111,6 +98,21 @@ public class QuanLiDipController implements Initializable {
     }
     @FXML
     void TimKiemE(ActionEvent event) {
+        String keyword = TimKiemT.getText();
+        List<EventGiftModel> models = DipTable.getItems();
+        if(keyword.isEmpty() && models.isEmpty()) {
+            observableListEvenGift.clear();
+            observableListEvenGift.addAll(DipUtil.getInstance().getEventGiftModelList());
+            DipTable.refresh();
+            return;
+        }
+        else if (keyword.isEmpty()){
+            return;
+        }
+
+        observableListEvenGift.clear();
+        observableListEvenGift.addAll(DipUtil.getInstance().findByName(keyword.toLowerCase()));
+        DipTable.refresh();
 
     }
 
@@ -122,7 +124,7 @@ public class QuanLiDipController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
         observableListEvenGift.clear();
-        observableListEvenGift.addAll(eventGiftService.findAll());
+        observableListEvenGift.addAll(DipUtil.getInstance().getEventGiftModelList());
         DipTable.setItems(observableListEvenGift);
     }
 
@@ -144,15 +146,58 @@ public class QuanLiDipController implements Initializable {
     @FXML
     void MinhChungE(ActionEvent event) throws IOException {
         DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
-        if(DipUtil.getInstance().getData().getLoai_dip() == 0){
-            System.out.println("Dịp này là dịp giữa năm, không cần minh chứng");
+        if (DipUtil.getInstance().getData() == null) {
+            System.out.println("Chọn dịp");
         }
         else{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("QuanLiMinhChung.fxml")));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.showAndWait();
+            if(DipUtil.getInstance().getData().getLoai_dip() == 0){
+                System.out.println("Dịp này là dịp giữa năm, không cần tạo minh chứng");
+            }
+            else{
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("QuanLiMinhChung.fxml")));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.showAndWait();
+            }
         }
+    }
+    @FXML
+    void ChuaHoanThanh(ActionEvent event) {
+        menuLoc.setText("Chưa hoàn thành");
+        String key = TimKiemT.getText();
+        observableListEvenGift.clear();
+        observableListEvenGift.addAll(DipUtil.getInstance().findByStatus(true, key.toLowerCase()));
+
+//        List<EventGiftModel> models_curr = DipTable.getItems();
+//
+//        for (EventGiftModel model : models_curr){
+//
+//            if (model.getTrang_thai_bool() == 0){
+//                observableListEvenGift.add(model);
+//            }
+//
+//        }
+
+        DipTable.setItems(observableListEvenGift);
+    }
+
+    @FXML
+    void HoanThanh(ActionEvent event) {
+        menuLoc.setText("Hoàn thành");
+        String key = TimKiemT.getText();
+        observableListEvenGift.clear();
+        observableListEvenGift.addAll(DipUtil.getInstance().findByStatus(false, key.toLowerCase()));
+//        List<EventGiftModel> models_curr = DipTable.getItems();
+//
+//        for (EventGiftModel model : models_curr){
+//
+//            if (model.getTrang_thai_bool() == 1){
+//                observableListEvenGift.add(model);
+//            }
+//
+//        }
+        DipTable.setItems(observableListEvenGift);
+
     }
 }

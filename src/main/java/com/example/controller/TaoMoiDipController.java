@@ -62,6 +62,7 @@ public class TaoMoiDipController {
         eventGiftModel.setNameEvent(tenDipT.getText());
         eventGiftModel.setDate(DateUtil.asDate(Date.getValue()));
         eventGiftModel.setTen_doi_tuong(DoiTuongNhanF.getText());
+        eventGiftModel.setTrang_thai_bool(0);
 
         if(loai_dipx == 0 ){
             eventGiftModel.setLoai_dip(0);
@@ -70,6 +71,7 @@ public class TaoMoiDipController {
         else {
             eventGiftModel.setLoai_dip(1);
             eventGiftModel.setIdQua(2L);
+
         }
 
         Long id = eventGiftService.save(eventGiftModel);

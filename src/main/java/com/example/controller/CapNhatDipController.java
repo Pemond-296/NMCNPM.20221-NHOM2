@@ -51,7 +51,9 @@ public class CapNhatDipController implements Initializable {
         model.setIdQua(1L);
         eventGiftService.update(model);
 
+        DipUtil.getInstance().update(model);
         DipUtil.getInstance().removeData();
+
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
@@ -60,6 +62,9 @@ public class CapNhatDipController implements Initializable {
     @FXML
     void EXoaDip(ActionEvent event) {
         eventGiftService.delete(DipUtil.getInstance().getData());
+        // Thiếu remove trong DipUntil
+        DipUtil.getInstance().xoaDip(DipUtil.getInstance().getData());
+        DipUtil.getInstance().removeData();
 
     }
     EventGiftModel model = DipUtil.getInstance().getData();

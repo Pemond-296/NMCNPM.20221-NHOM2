@@ -14,6 +14,22 @@ public class EventGiftModel {
     private String trang_thai;
     private Integer loai_dip; // 0 - giua nam, 1 - cuoi nam
 
+    private Integer trang_thai_bool;
+
+    public Integer getTrang_thai_bool() {
+        return trang_thai_bool;
+    }
+
+    public void setTrang_thai_bool(Integer trang_thai_bool) {
+        this.trang_thai_bool = trang_thai_bool;
+        if (trang_thai_bool == 1){
+            this.trang_thai = "Đã trao thưởng";
+        }
+        else{
+            this.trang_thai = "Chưa trao thưởng";
+        }
+    }
+
     public String getTrang_thai() {
         return trang_thai;
     }
