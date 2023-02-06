@@ -26,17 +26,17 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="154.0" mnemonicParsing="false" onAction="#registerAbsent" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm vắng">
+      <Button layoutX="865.0" layoutY="154.0" mnemonicParsing="false" onAction="#tamTru" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm vắng">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="866.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm trú">
+      <Button layoutX="865.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm trú">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="323.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Khai tử">
+      <Button layoutX="865.0" layoutY="323.0" mnemonicParsing="false" onAction="#khaiTu" prefHeight="40.0" prefWidth="110.0" text="Khai tử">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

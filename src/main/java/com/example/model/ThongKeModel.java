@@ -1,61 +1,96 @@
 package com.example.model;
 
+import java.sql.Date;
+
 public class ThongKeModel {
-    private Integer stt;
-    private String ten_chu_ho;
-    private String phan_qua;
-    private Integer tien;
-    private Integer nam;
+    private Long id;
+    private String hoTen;
+    private String gioiTinh;
+    private Date ngaySinh;
+    private String idHoKhau;
+    private Integer soNha;
+    private String tenDuong;
+    private String phuongXa;
+    private String quanHuyen;
+    private String diaChi;
 
-    public ThongKeModel(Integer stt, String ten_chu_ho, String phan_qua, Integer tien, Integer nam) {
-        this.stt = stt;
-        this.ten_chu_ho = ten_chu_ho;
-        this.phan_qua = phan_qua;
-        this.tien = tien;
-        this.nam = nam;
+    public Long getId() {
+        return id;
     }
 
-    public ThongKeModel() {
-
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Integer getStt() {
-        return stt;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setStt(Integer stt) {
-        this.stt = stt;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public String getTen_chu_ho() {
-        return ten_chu_ho;
+    public String getGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setTen_chu_ho(String ten_chu_ho) {
-        this.ten_chu_ho = ten_chu_ho;
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
-    public String getPhan_qua() {
-        return phan_qua;
+    public Date getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setPhan_qua(String phan_qua) {
-        this.phan_qua = phan_qua;
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
-    public Integer getTien() {
-        return tien;
+    public String getIdHoKhau() {
+        return idHoKhau;
     }
 
-    public void setTien(Integer tien) {
-        this.tien = tien;
+    public void setIdHoKhau(String idHoKhau) {
+        this.idHoKhau = idHoKhau;
     }
 
-    public Integer getNam() {
-        return nam;
+    public Integer getSoNha() {
+        return soNha;
     }
 
-    public void setNam(Integer nam) {
-        this.nam = nam;
+    public void setSoNha(Integer soNha) {
+        this.soNha = soNha;
+    }
+
+    public String getTenDuong() {
+        return tenDuong;
+    }
+
+    public void setTenDuong(String tenDuong) {
+        this.tenDuong = tenDuong;
+    }
+
+    public String getPhuongXa() {
+        return phuongXa;
+    }
+
+    public void setPhuongXa(String phuongXa) {
+        this.phuongXa = phuongXa;
+    }
+
+    public String getQuanHuyen() {
+        return quanHuyen;
+    }
+
+    public void setQuanHuyen(String quanHuyen) {
+        this.quanHuyen = quanHuyen;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 }

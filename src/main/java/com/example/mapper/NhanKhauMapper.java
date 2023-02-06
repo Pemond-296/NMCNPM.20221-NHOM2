@@ -30,12 +30,11 @@ public class NhanKhauMapper implements RowMapper<NhanKhauModel> {
             model.setIdHoKhau(rs.getString("id_hokhau"));
 
             DinhDanhModel dinhDanhModel = new DinhDanhMapper().mapRow(rs);
-            DiaDiemModel diaDiemModel = new DiaDiemMapper().mapRow(rs);
+//            DiaDiemModel diaDiemModel = new DiaDiemMapper().mapRow(rs);
 
             model.setIdentifierModel(dinhDanhModel);
-            model.setLocationModel(diaDiemModel);
+//            model.setLocationModel(diaDiemModel);
             model.setSoCMT(dinhDanhModel.getSoCMT());
-
             return model;
 
         } catch (SQLException e) {

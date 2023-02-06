@@ -10,6 +10,7 @@ public interface INhanKhauService {
     List<NhanKhauModel> findAll();
     NhanKhauModel findById(Long id);
     Long save(NhanKhauModel nhanKhauModel);
+    Long count();
     List<NhanKhauModel> findMonitor();
     List<NhanKhauModel> findAllByApartmentId(String id);
     void update(NhanKhauModel nhanKhauModel);

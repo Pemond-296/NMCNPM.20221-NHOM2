@@ -5,23 +5,36 @@ import com.example.model.ThongKeModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ThongKeMapper implements RowMapper<ThongKeModel>{
+public class ThongKeMapper implements RowMapper<ThongKeModel> {
 
     @Override
     public ThongKeModel mapRow(ResultSet rs) {
-        ThongKeModel thongKeModel = new ThongKeModel();
+        ThongKeModel model = new ThongKeModel();
 
         try {
+            model.setId(rs.getLong("id"));
+            model.setHoTen(rs.getString("ho_ten"));
+            model.setGioiTinh(rs.getString("gioi_tinh"));
+            model.setNgaySinh(rs.getDate("ngay_sinh"));
+            model.setIdHoKhau(rs.getString("id_hokhau"));
+            model.setSoNha(rs.getInt("so_nha"));
+            model.setTenDuong(rs.getString("ten_duong"));
+            model.setPhuongXa(rs.getString("phuong_xa"));
+            model.setQuanHuyen(rs.getString("quan_huyen"));
 
-            thongKeModel.setTen_chu_ho(rs.getString("ten_chu-ho"));
-            thongKeModel.setPhan_qua(rs.getString("phan_qua"));
-            thongKeModel.setTien(rs.getInt("tien"));
-            thongKeModel.setNam(rs.getInt("nam"));
+            if(model.getSoNha() != 0) {
+                model.setDiaChi(model.getSoNha() + " " + model.getTenDuong() +
+                        ", phường " + model.getPhuongXa() + ", quận " + model.getQuanHuyen());
 
-            return thongKeModel;
+            }
+            else model.setDiaChi("");
+
+            return model;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }

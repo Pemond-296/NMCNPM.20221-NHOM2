@@ -15,7 +15,6 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
     public List<NhanKhauModel> findAll() {
         StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
         sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
-        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau");
         return query(sql.toString(), new NhanKhauMapper());
     }
 
@@ -65,6 +64,13 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
         sql.append("WHERE id = ?");
 
         update(sql.toString(), nhanKhauModel.getIdHoKhau(), nhanKhauModel.getQuanHe(), nhanKhauModel.getId());
+    }
+
+    @Override
+    public Long count() {
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM nhankhau");
+
+        return count(sql.toString());
     }
 
     @Override

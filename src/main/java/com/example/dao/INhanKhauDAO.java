@@ -13,6 +13,7 @@ public interface INhanKhauDAO {
     List<NhanKhauModel> findMonitor();
     List<NhanKhauModel> findAllByApartmentId(String id);
     void update(NhanKhauModel nhanKhauModel);
+    Long count();
     List<NhanKhauModel> findByAge();
     List<NhanKhauModel> findByProof(MinhChungModel minhChungModel);
     List<NhanKhauModel> findNotProof(EventGiftModel eventGiftModel);

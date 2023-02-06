@@ -9,9 +9,8 @@ import java.util.List;
 public class ThongKeDAO extends AbstractDAO<ThongKeModel> implements IThongKeDAO {
     @Override
     public List<ThongKeModel> findAll() {
-        String sql = "SELECT * FROM nhan_khau";
+        String sql = "SELECT * FROM nhankhau LEFT JOIN hokhau on id_hokhau = hokhau.id";
 
-        List<ThongKeModel> thongKeModels = query(sql, new ThongKeMapper());
-        return thongKeModels;
+        return query(sql, new ThongKeMapper());
     }
 }

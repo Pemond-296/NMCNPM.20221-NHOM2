@@ -21,4 +21,10 @@ public class HoKhauDAO extends AbstractDAO<HoKhauModel> implements IHoKhauDAO {
                                     hoKhauModel.getTenDuong(), hoKhauModel.getPhuongXa(), hoKhauModel.getQuanHuyen(),
                                     hoKhauModel.getNoiDungThayDoi(), hoKhauModel.getThoiGianThayDoi());
     }
+
+    @Override
+    public Long count() {
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM hokhau");
+        return count(sql.toString());
+    }
 }

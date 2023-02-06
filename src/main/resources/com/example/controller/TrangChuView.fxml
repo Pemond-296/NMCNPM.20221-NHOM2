@@ -11,7 +11,85 @@
 
 <AnchorPane id="root" prefHeight="720.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.TrangChuController">
    <children>
-      <AnchorPane fx:id="application" layoutX="258.0" layoutY="117.0" prefHeight="555.0" prefWidth="990.0" />
+      <AnchorPane fx:id="application" layoutX="258.0" layoutY="117.0" prefHeight="555.0" prefWidth="990.0">
+         <children>
+            <AnchorPane layoutX="49.0" layoutY="33.0" prefHeight="126.0" prefWidth="774.0" style="-fx-background-color: #4a515b;">
+               <children>
+                  <ImageView fitHeight="126.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="192.0" layoutY="18.0" prefHeight="54.0" prefWidth="242.0" text="Nhân khẩu có trên địa bàn" textFill="WHITE" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="soLuongNhanKhau" layoutX="192.0" layoutY="63.0" prefHeight="54.0" prefWidth="242.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="49.0" layoutY="173.0" prefHeight="126.0" prefWidth="774.0" style="-fx-background-color: #4a515b;">
+               <children>
+                  <ImageView fitHeight="126.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="176.0" layoutY="13.0" prefHeight="54.0" prefWidth="242.0" text="Hộ khẩu có trên địa bàn" textFill="WHITE" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="soLuongHoKhau" layoutX="176.0" layoutY="58.0" prefHeight="54.0" prefWidth="242.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="49.0" layoutY="322.0" prefHeight="126.0" prefWidth="361.0" style="-fx-background-color: #4a515b;">
+               <children>
+                  <ImageView fitHeight="126.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="109.0" layoutY="21.0" prefHeight="54.0" prefWidth="212.0" text="Hộ khẩu có trên địa bàn" textFill="WHITE" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="soLuongTamVang" layoutX="109.0" layoutY="66.0" prefHeight="54.0" prefWidth="212.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="452.0" layoutY="322.0" prefHeight="126.0" prefWidth="370.0" style="-fx-background-color: #4a515b;">
+               <children>
+                  <ImageView fitHeight="126.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="103.0" layoutY="32.0" prefHeight="54.0" prefWidth="212.0" text="Hộ khẩu có trên địa bàn" textFill="WHITE" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="soLuongTamTru" layoutX="103.0" layoutY="77.0" prefHeight="54.0" prefWidth="212.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
       <AnchorPane layoutX="90.0" layoutY="14.0" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="68.0" layoutY="27.0" prefWidth="230.0" text="App Management" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -29,7 +107,7 @@
          <children>
             <VBox layoutX="27.0" layoutY="51.0" prefHeight="0.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Trang chủ" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#trangChu" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Trang chủ" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -74,7 +152,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Thống kê" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#xemThongKe" prefHeight="80.0" prefWidth="230.0" styleClass="sidebarItem" text="Thống kê" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

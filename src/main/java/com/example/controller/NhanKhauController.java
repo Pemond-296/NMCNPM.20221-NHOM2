@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.NhanKhauModel;
 import com.example.service.impl.NhanKhauService;
+import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -70,7 +72,7 @@ public class NhanKhauController implements Initializable {
         nhanKhauTable.setItems(observablePersonList);
     }
 
-    public void registerAbsent(ActionEvent event) throws IOException {
+    public void tamTru(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("TamVangView.fxml")));
         Scene scene = new Scene(root);
@@ -97,6 +99,26 @@ public class NhanKhauController implements Initializable {
         }
 
         nhanKhauTable.refresh();
+    }
+
+    public void khaiTu(ActionEvent event) throws IOException {
+        NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
+
+        if(model != null) {
+            PersonUtil.getInstance().setKhaiTu(model);
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("KhaiTuView.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Chưa chọn nhân khẩu");
+            alert.setContentText("Vui lòng chọn lại");
+            alert.showAndWait();
+        }
     }
 
 //    public void startLoop() {

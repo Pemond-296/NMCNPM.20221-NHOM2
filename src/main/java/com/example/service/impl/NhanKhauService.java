@@ -28,6 +28,11 @@ public class NhanKhauService implements INhanKhauService {
     }
 
     @Override
+    public Long count() {
+        return personDAO.count();
+    }
+
+    @Override
     public List<NhanKhauModel> findMonitor() {
         return personDAO.findMonitor();
     }
