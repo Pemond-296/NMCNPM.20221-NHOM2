@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.model.GiftTableModel;
 import com.example.model.HoKhauModel;
 import com.example.model.NhanKhauModel;
 import com.example.service.IMinhChungService;

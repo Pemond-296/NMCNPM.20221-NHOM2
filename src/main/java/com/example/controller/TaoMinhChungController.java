@@ -62,7 +62,6 @@ public class TaoMinhChungController implements Initializable {
         }
         minhChungModel.setId_dip(DipUtil.getInstance().getData().getId());
         minhChungModel.setId_nhan_khau(PersonUtil.getInstance().getMinhchung().getId());
-        minhChungModel.setNam(DipUtil.getInstance().getData().getDate().getYear());
 
         if(PersonUtil.getInstance().getMinhchung().getMinhChung() == "Đã có"){
             iMinhChungService.update(minhChungModel);

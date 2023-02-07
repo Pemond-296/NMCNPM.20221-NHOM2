@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -97,16 +98,13 @@ public class QuanLiDipController implements Initializable {
         }
     }
     @FXML
-    void TimKiemE(ActionEvent event) {
+    void TimKiemE(KeyEvent event) {
         String keyword = TimKiemT.getText();
         List<EventGiftModel> models = DipTable.getItems();
-        if(keyword.isEmpty() && models.isEmpty()) {
+        if(keyword.isEmpty()) {
             observableListEvenGift.clear();
             observableListEvenGift.addAll(DipUtil.getInstance().getEventGiftModelList());
             DipTable.refresh();
-            return;
-        }
-        else if (keyword.isEmpty()){
             return;
         }
 
@@ -129,8 +127,21 @@ public class QuanLiDipController implements Initializable {
     }
 
     @FXML
-    void XemE(ActionEvent event) {
+    void XemE(ActionEvent event) throws IOException {
+        DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
+        if (DipUtil.getInstance().getData() == null) {
 
+        }
+        else{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("ThongKeTT.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+            observableListEvenGift.clear();
+            observableListEvenGift.addAll(eventGiftService.findAll());
+            DipTable.setItems(observableListEvenGift);
+        }
     }
 
     @Override

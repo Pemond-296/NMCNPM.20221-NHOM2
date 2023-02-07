@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="391.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ThongKeTTController">
+    <children>
+        <AnchorPane layoutY="-7.0" prefHeight="493.0" prefWidth="698.0">
+            <children>
+                <!--            <Button layoutX="428.0" layoutY="28.0" mnemonicParsing="false" onAction="#Chon" text="Chọn" />-->
+                <TableView fx:id="ThongKeTable" layoutX="78.0" layoutY="91.0" prefHeight="292.0" prefWidth="548.0">
+                    <columns>
+                        <TableColumn fx:id="STT" prefWidth="68.80005645751953" text="STT" />
+                        <TableColumn fx:id="Ten_Chu_Ho" prefWidth="129.59991455078125" text="Tên chủ hộ" />
+                        <TableColumn fx:id="Qua" prefWidth="110.39996337890625" text="Quà" />
+                        <TableColumn fx:id="So_Luong" prefWidth="92.00006103515625" text="Số lượng" />
+                        <TableColumn fx:id="Tien" prefWidth="147.19998168945312" text="Tiền" />
+                    </columns>
+                </TableView>
+                <Label fx:id="Tong_Tien" layoutX="173.0" layoutY="400.0" prefHeight="27.0" prefWidth="82.0" text="Tong_Tien" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label fx:id="content" layoutX="111.0" layoutY="44.0" prefHeight="26.0" prefWidth="368.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="78.0" layoutY="403.0" text="Tổng tiền:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

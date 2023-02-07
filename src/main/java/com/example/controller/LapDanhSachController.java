@@ -186,7 +186,7 @@ public class LapDanhSachController implements Initializable {
                 }
             }
         }
-    return giftTableModelList;
+        return giftTableModelList;
     }
 
     @FXML
