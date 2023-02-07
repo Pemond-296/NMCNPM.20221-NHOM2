@@ -1,9 +1,11 @@
+
 package com.example.service;
 
+import com.example.model.EventGiftModel;
 import com.example.model.ThongKeModel;
 
 import java.util.List;
 
 public interface IThongKeService {
-    List<ThongKeModel> findAll();
+    public List<ThongKeModel> findByDip(EventGiftModel e);
 }

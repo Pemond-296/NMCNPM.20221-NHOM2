@@ -1,3 +1,4 @@
+
 package com.example.model;
 
 public class ThongKeModel {
@@ -5,14 +6,14 @@ public class ThongKeModel {
     private String ten_chu_ho;
     private String phan_qua;
     private Integer tien;
-    private Integer nam;
+    private Integer so_luong;
 
-    public ThongKeModel(Integer stt, String ten_chu_ho, String phan_qua, Integer tien, Integer nam) {
+    public ThongKeModel(Integer stt, String ten_chu_ho,String phan_qua, Integer tien, Integer so_luong) {
         this.stt = stt;
         this.ten_chu_ho = ten_chu_ho;
         this.phan_qua = phan_qua;
         this.tien = tien;
-        this.nam = nam;
+        this.so_luong = so_luong;
     }
 
     public ThongKeModel() {
@@ -25,6 +26,14 @@ public class ThongKeModel {
 
     public void setStt(Integer stt) {
         this.stt = stt;
+    }
+
+    public Integer getSo_luong() {
+        return so_luong;
+    }
+
+    public void setSo_luong(Integer so_luong) {
+        this.so_luong = so_luong;
     }
 
     public String getTen_chu_ho() {
@@ -51,11 +60,11 @@ public class ThongKeModel {
         this.tien = tien;
     }
 
-    public Integer getNam() {
-        return nam;
+    public Integer getSo_Luong() {
+        return so_luong;
     }
 
-    public void setNam(Integer nam) {
-        this.nam = nam;
+    public void setSo_Luong(Integer so_luong) {
+        this.so_luong = so_luong;
     }
 }

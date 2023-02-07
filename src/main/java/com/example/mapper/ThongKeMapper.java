@@ -13,10 +13,10 @@ public class ThongKeMapper implements RowMapper<ThongKeModel>{
 
         try {
 
-            thongKeModel.setTen_chu_ho(rs.getString("ten_chu-ho"));
-            thongKeModel.setPhan_qua(rs.getString("phan_qua"));
+            thongKeModel.setTen_chu_ho(rs.getString("ten_chu_ho"));
+            thongKeModel.setPhan_qua(rs.getString("ten_phan_thuong"));
             thongKeModel.setTien(rs.getInt("tien"));
-            thongKeModel.setNam(rs.getInt("nam"));
+            thongKeModel.setSo_Luong(rs.getInt("so_luong"));
 
             return thongKeModel;
         } catch (SQLException e) {
@@ -25,3 +25,4 @@ public class ThongKeMapper implements RowMapper<ThongKeModel>{
         return null;
     }
 }
+
