@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.QuanLiDipController">
+   <children>
+      <Button fx:id="TaoMoiDipB" layoutX="578.0" layoutY="102.0" mnemonicParsing="false" onAction="#TaoMoiE" prefHeight="55.0" prefWidth="142.0" text="Tạo mới dịp" />
+      <Button fx:id="XemB" layoutX="578.0" layoutY="300.0" mnemonicParsing="false" onAction="#XemE" prefHeight="55.0" prefWidth="142.0" text="Xem thông tin" />
+      <Button fx:id="CapNhatB" layoutX="578.0" layoutY="202.0" mnemonicParsing="false" onAction="#CapNhatE" prefHeight="55.0" prefWidth="142.0" text="Cập nhật" />
+      <TableView fx:id="DipTable" layoutX="14.0" layoutY="76.0" prefHeight="448.0" prefWidth="529.0">
+        <columns>
+          <TableColumn fx:id="SttC" prefWidth="53.2000150680542" text="STT" />
+          <TableColumn fx:id="DoiTuongNhanC" prefWidth="127.19998168945312" text="Đối tượng nhận" />
+            <TableColumn fx:id="TenDipC" prefWidth="99.99998474121094" text="Tên dịp" />
+            <TableColumn fx:id="ThoiGianC" prefWidth="122.4000244140625" text="Thời gian" />
+            <TableColumn fx:id="PhanQuaC" prefWidth="125.20001220703125" text="Phần thưởng" />
+        </columns>
+      </TableView>
+      <Button layoutX="590.0" layoutY="398.0" mnemonicParsing="false" onAction="#MinhChungE" prefHeight="41.0" prefWidth="122.0" text="Quản lí minh chứng" />
+   </children>
+</AnchorPane>
