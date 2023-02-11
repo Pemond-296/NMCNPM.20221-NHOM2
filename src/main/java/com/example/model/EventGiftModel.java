@@ -5,6 +5,7 @@ import java.util.Date;
 public class EventGiftModel {
 
     private Long id;
+    private Integer stt;
     private String nameEvent;
     private Integer tong_tien;
     private Date date;
@@ -18,6 +19,14 @@ public class EventGiftModel {
 
     public Integer getTrang_thai_bool() {
         return trang_thai_bool;
+    }
+
+    public Integer getStt() {
+        return stt;
+    }
+
+    public void setStt(Integer stt) {
+        this.stt = stt;
     }
 
     public void setTrang_thai_bool(Integer trang_thai_bool) {

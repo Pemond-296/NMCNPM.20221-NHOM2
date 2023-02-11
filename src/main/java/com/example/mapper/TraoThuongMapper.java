@@ -13,6 +13,7 @@ public class TraoThuongMapper implements RowMapper<TraoThuongModel> {
         traoThuongModel.setId_minhChung(rs.getLong("idMinhChung"));
         traoThuongModel.setSo_luong(rs.getInt("so_luong"));
         traoThuongModel.setTrang_thai(rs.getInt("trang_thai"));
+        traoThuongModel.setId_dip(rs.getLong("idDip"));
         return traoThuongModel;
     }
 }

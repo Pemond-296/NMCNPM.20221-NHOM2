@@ -11,5 +11,6 @@ public interface IMinhChungDAO extends GenericDAO<MinhChungModel> {
     List<MinhChungModel> findByDip(EventGiftModel eventGiftModel);
     Integer isMinhChung(NhanKhauModel nhanKhauModel);
     void update(MinhChungModel minhChungModel);
+    public boolean check(EventGiftModel eventGiftModel);
 
 }

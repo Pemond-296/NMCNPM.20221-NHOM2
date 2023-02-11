@@ -2,7 +2,9 @@ package com.example.dao.impl;
 
 import com.example.dao.IGiftEventDAO;
 import com.example.mapper.EventGiftMapper;
+import com.example.mapper.MinhChungMapper;
 import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class EventGiftDAO extends AbstractDAO<EventGiftModel> implements IGiftEv
         sql.append("VALUES (?, ?, ?, ?, ?, ? )");
 
         return insert(sql.toString(), eventGiftModel.getNameEvent(), eventGiftModel.getDate(),
-                eventGiftModel.getTen_doi_tuong(), eventGiftModel.getIdQua(), eventGiftModel.getLoai_dip(), eventGiftModel.getTrang_thai());
+                eventGiftModel.getTen_doi_tuong(), eventGiftModel.getIdQua(), eventGiftModel.getLoai_dip(), eventGiftModel.getTrang_thai_bool());
     }
     @Override
     public List<EventGiftModel> findAll(){
@@ -37,9 +39,11 @@ public class EventGiftDAO extends AbstractDAO<EventGiftModel> implements IGiftEv
 
     @Override
     public void deleta(EventGiftModel eventGiftModel) {
-        StringBuilder sql = new StringBuilder("DELETE MinhChung WHERE idDip = ?");
+        StringBuilder sql = new StringBuilder("DELETE TraoThuong WHERE idDip = ? " +
+                " DELETE MinhChung WHERE idDip = ? ");
         sql.append(" DELETE Dip WHERE idDip = ?");
-        update(sql.toString(), eventGiftModel.getId());
+        update(sql.toString(), eventGiftModel.getId(), eventGiftModel.getId(), eventGiftModel.getId());
     }
+
 
 }

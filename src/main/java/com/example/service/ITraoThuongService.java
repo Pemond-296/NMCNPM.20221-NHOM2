@@ -7,4 +7,5 @@ import com.example.model.TraoThuongModel;
 public interface ITraoThuongService {
     Long save(TraoThuongModel traoThuongModel);
     boolean findByMinhChung(GiftTableModel minhChungModel);
+    void update(TraoThuongModel traoThuongModel);
 }

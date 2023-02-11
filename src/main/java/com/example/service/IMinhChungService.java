@@ -11,4 +11,5 @@ public interface IMinhChungService {
     List<MinhChungModel> findByDip(EventGiftModel eventGiftModel);
     Integer isMinhChung(NhanKhauModel nhanKhauModel);
     void update(MinhChungModel minhChungModel);
+    boolean check(EventGiftModel eventGiftModel);
 }

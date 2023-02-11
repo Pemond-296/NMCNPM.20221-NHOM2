@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.LapDanhSachController">
    <children>
-      <Button layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#chon_dip" prefHeight="26.0" prefWidth="91.0" text="Chọn dịp">
+      <Button layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#chon_dip" prefHeight="38.0" prefWidth="130.0" text="Lập danh sách">
          <font>
             <Font size="17.0" />
          </font>
@@ -32,7 +32,8 @@
          </font>
       </Label>
       <Button layoutX="672.0" layoutY="73.0" mnemonicParsing="false" onAction="#trao_thuong" text="Trao Thưởng" />
-      <TextField fx:id="tim_kiemText" layoutX="355.0" layoutY="72.0" prefHeight="26.0" prefWidth="172.0" />
+      <TextField fx:id="tim_kiemText" layoutX="355.0" layoutY="72.0" onKeyTyped="#tim_kiem" prefHeight="26.0" prefWidth="172.0" />
       <Button layoutX="563.0" layoutY="73.0" mnemonicParsing="false" onAction="#tim_kiem" prefHeight="26.0" prefWidth="73.0" text="Tìm kiếm" />
+      <Label layoutX="296.0" layoutY="72.0" prefHeight="26.0" prefWidth="51.0" text="Họ tên:" />
    </children>
 </AnchorPane>

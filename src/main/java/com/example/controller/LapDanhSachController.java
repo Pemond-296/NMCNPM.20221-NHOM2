@@ -22,10 +22,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -88,7 +90,7 @@ public class LapDanhSachController implements Initializable {
     @FXML
     private Label ten_dip;
     @FXML
-    void tim_kiem(ActionEvent event) {
+    void tim_kiem(KeyEvent event) {
         List<GiftTableModel> models = getMember();
         String keyword = tim_kiemText.getText();
         if(keyword.isEmpty()) {
@@ -193,20 +195,32 @@ public class LapDanhSachController implements Initializable {
     void trao_thuong(ActionEvent event){
         GiftTableModel giftTableModel = danh_sachTable.getSelectionModel().getSelectedItem();
         if (giftTableModel.getTrang_thai() == "Đã trao"){
-            System.out.println("Trao rồi mà a zai, tham lam!");
-        }
-        else{
-
-            giftTableModel.setTrang_thai("Đã trao");
+            giftTableModel.setTrang_thai("Chưa trao");
             TraoThuongModel traoThuongModel = new TraoThuongModel();
             traoThuongModel.setId_minhChung(giftTableModel.getId_minhchung());
-            traoThuongModel.setTrang_thai(1);
+            traoThuongModel.setId_dip(giftTableModel.getId_dip());
+            traoThuongModel.setTrang_thai(0);
             traoThuongModel.setSo_luong(giftTableModel.getSo_luong());
-            Long e = iTraoThuongService.save(traoThuongModel);
+            iTraoThuongService.update(traoThuongModel);
 
-            observableList.clear();
-            observableList.addAll(getMember());
-            danh_sachTable.setItems(observableList);
+            danh_sachTable.refresh();
+//            observableList.clear();
+//            observableList.addAll(getMember());
+//            danh_sachTable.setItems(observableList);
+        }
+        else{
+                giftTableModel.setTrang_thai("Đã trao");
+                TraoThuongModel traoThuongModel = new TraoThuongModel();
+                traoThuongModel.setId_minhChung(giftTableModel.getId_minhchung());
+                traoThuongModel.setTrang_thai(1);
+                traoThuongModel.setSo_luong(giftTableModel.getSo_luong());
+                traoThuongModel.setId_dip(giftTableModel.getId_dip());
+
+                Long e = iTraoThuongService.save(traoThuongModel);
+
+                observableList.clear();
+                observableList.addAll(getMember());
+                danh_sachTable.setItems(observableList);
         }
     }
 
