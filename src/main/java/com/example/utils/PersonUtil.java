@@ -15,6 +15,8 @@ public class PersonUtil {
     private NhanKhauModel member = null;
     private NhanKhauModel minhchung = null;
     private NhanKhauModel khaiTu = null;
+    private NhanKhauModel tamTru = null;
+    private NhanKhauModel chuyenDi = null;
     private List<NhanKhauModel> tempModel = new ArrayList<>();
 
     public static PersonUtil getInstance() {
@@ -71,5 +73,21 @@ public class PersonUtil {
 
     public void setKhaiTu(NhanKhauModel khaiTu) {
         this.khaiTu = khaiTu;
+    }
+
+    public NhanKhauModel getTamTru() {
+        return tamTru;
+    }
+
+    public void setTamTru(NhanKhauModel tamTru) {
+        this.tamTru = tamTru;
+    }
+
+    public NhanKhauModel getChuyenDi() {
+        return chuyenDi;
+    }
+
+    public void setChuyenDi(NhanKhauModel chuyenDi) {
+        this.chuyenDi = chuyenDi;
     }
 }

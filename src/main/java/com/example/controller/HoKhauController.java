@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -103,7 +104,7 @@ public class HoKhauController implements Initializable {
 
     }
 
-    public void timKiem(ActionEvent event) {
+    public void timKiem(KeyEvent keyEvent) {
         String keyword = searchBar.getText();
         List<HoKhauModel> models = hoKhauService.findAll();
         if(keyword.isEmpty()) {
@@ -116,11 +117,36 @@ public class HoKhauController implements Initializable {
         observableApartmentList.clear();
 
         for(HoKhauModel model : models) {
-            if(model.getId().contains(keyword)) {
+            if(model.getId().toLowerCase().contains(keyword.toLowerCase())) {
                 observableApartmentList.add(model);
             }
         }
 
         hoKhauTable.refresh();
+    }
+
+    public void chiTiet(ActionEvent event) throws IOException {
+        HoKhauModel model = hoKhauTable.getSelectionModel().getSelectedItem();
+
+        if(model == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn hộ khẩu");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
+        }
+
+        else {
+            ApartmentUtil.getInstance().setApartmentModel(model);
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(TachKhauController.class.getResource("ChiTietHK.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.showAndWait();
+
+            ApartmentUtil.getInstance().setApartmentModel(null);
+            hoKhauTable.refresh();
+        }
     }
 }

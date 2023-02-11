@@ -3,10 +3,8 @@ package com.example.controller;
 import com.example.model.DiaDiemModel;
 import com.example.model.DinhDanhModel;
 import com.example.model.NhanKhauModel;
-import com.example.service.IDiaDiemService;
 import com.example.service.IDinhDanhService;
 import com.example.service.INhanKhauService;
-import com.example.service.impl.DiaDiemService;
 import com.example.service.impl.DinhDanhService;
 import com.example.service.impl.NhanKhauService;
 import com.example.utils.DateUtil;
@@ -22,7 +20,6 @@ import java.text.ParseException;
 public class ThemNhanKhauController {
     private INhanKhauService nhanKhauService = new NhanKhauService();
     private IDinhDanhService dinhDanhService = new DinhDanhService();
-    private IDiaDiemService diaDiemService = new DiaDiemService();
     @FXML
     private AnchorPane AddPerson;
 
@@ -108,9 +105,7 @@ public class ThemNhanKhauController {
         model.setNoiLamViec(noiLamViec.getText());
 
         Long id = nhanKhauService.save(model);
-        diaDiemModel.setIdNhanKhau(id);
         dinhDanhModel.setIdNhanKhau(id);
-        diaDiemService.save(diaDiemModel);
         dinhDanhService.save(dinhDanhModel);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

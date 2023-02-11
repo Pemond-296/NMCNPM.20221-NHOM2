@@ -19,7 +19,7 @@
             <TableColumn fx:id="quanHuyen" prefWidth="140.79998779296875" text="Quận/Huyện" />
          </columns>
       </TableView>
-      <TextField fx:id="searchBar" layoutX="47.0" layoutY="39.0" prefHeight="26.0" prefWidth="197.0" />
+      <TextField fx:id="searchBar" layoutX="47.0" layoutY="39.0" onKeyTyped="#timKiem" prefHeight="26.0" prefWidth="197.0" />
       <Button layoutX="839.0" layoutY="101.0" mnemonicParsing="false" onAction="#newApartment" prefHeight="40.0" prefWidth="110.0" text="Thêm mới">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -28,10 +28,9 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="839.0" layoutY="278.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Chuyển đi">
+      <Button layoutX="839.0" layoutY="278.0" mnemonicParsing="false" onAction="#chiTiet" prefHeight="40.0" prefWidth="110.0" text="Chi tiết">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="284.0" layoutY="40.0" mnemonicParsing="false" onAction="#timKiem" text="Button" />
    </children>
 </AnchorPane>

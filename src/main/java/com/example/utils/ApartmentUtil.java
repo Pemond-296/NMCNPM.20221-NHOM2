@@ -12,7 +12,6 @@ public class ApartmentUtil {
     private HoKhauModel hoKhauModel = null;
     private HoKhauModel newHoKhauModel = null;
     private List<HoKhauModel> models = apartmentService.findAll();
-
     public static ApartmentUtil getInstance() {
         if (apartmentUtil == null) apartmentUtil = new ApartmentUtil();
 

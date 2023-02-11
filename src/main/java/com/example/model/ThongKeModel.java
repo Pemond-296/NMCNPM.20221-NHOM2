@@ -13,6 +13,9 @@ public class ThongKeModel {
     private String phuongXa;
     private String quanHuyen;
     private String diaChi;
+    private KhaiTuModel khaiTuModel;
+    private TamTruModel tamTruModel;
+    private TamVangModel tamVangModel;
 
     public Long getId() {
         return id;
@@ -92,5 +95,29 @@ public class ThongKeModel {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
+    }
+
+    public KhaiTuModel getKhaiTuModel() {
+        return khaiTuModel;
+    }
+
+    public void setKhaiTuModel(KhaiTuModel khaiTuModel) {
+        this.khaiTuModel = khaiTuModel;
+    }
+
+    public TamTruModel getTamTruModel() {
+        return tamTruModel;
+    }
+
+    public void setTamTruModel(TamTruModel tamTruModel) {
+        this.tamTruModel = tamTruModel;
+    }
+
+    public TamVangModel getTamVangModel() {
+        return tamVangModel;
+    }
+
+    public void setTamVangModel(TamVangModel tamVangModel) {
+        this.tamVangModel = tamVangModel;
     }
 }

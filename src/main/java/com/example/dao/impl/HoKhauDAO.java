@@ -27,4 +27,14 @@ public class HoKhauDAO extends AbstractDAO<HoKhauModel> implements IHoKhauDAO {
         StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM hokhau");
         return count(sql.toString());
     }
+
+    @Override
+    public void update(HoKhauModel hoKhauModel) {
+        StringBuilder sql = new StringBuilder("UPDATE hokhau SET ten_chu_ho = ?, ");
+        sql.append("so_nha = ?, ten_duong = ?, phuong_xa = ?, quan_huyen = ? ");
+        sql.append("WHERE id = ?");
+
+        update(sql.toString(), hoKhauModel.getTenChuHo(), hoKhauModel.getSoNha(), hoKhauModel.getTenDuong(),
+                    hoKhauModel.getPhuongXa(), hoKhauModel.getQuanHuyen(), hoKhauModel.getId());
+    }
 }

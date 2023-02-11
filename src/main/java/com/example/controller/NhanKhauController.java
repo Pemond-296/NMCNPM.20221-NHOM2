@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -74,32 +75,25 @@ public class NhanKhauController implements Initializable {
 
     public void tamTru(ActionEvent event) throws IOException {
         Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("TamTruView.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
+
+        if(PersonUtil.getInstance().getTamTru() != null) {
+            nhanKhauTable.getItems().add(PersonUtil.getInstance().getTamTru());
+            nhanKhauTable.refresh();
+        }
+    }
+
+    public void tamVang(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("TamVangView.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
     }
 
-    public void timKiem(ActionEvent event) {
-        String keyword = searchBar.getText();
-        List<NhanKhauModel> models = nhanKhauService.findAll();
-        if(keyword.isEmpty()) {
-            observablePersonList.clear();
-            observablePersonList.addAll(models);
-            nhanKhauTable.refresh();
-            return;
-        }
-
-        observablePersonList.clear();
-
-        for(NhanKhauModel model : models) {
-            if(model.getHoTen().contains(keyword)) {
-                observablePersonList.add(model);
-            }
-        }
-
-        nhanKhauTable.refresh();
-    }
 
     public void khaiTu(ActionEvent event) throws IOException {
         NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
@@ -120,6 +114,48 @@ public class NhanKhauController implements Initializable {
             alert.showAndWait();
         }
     }
+
+    public void timKiem(KeyEvent keyEvent) {
+        String keyword = searchBar.getText();
+        List<NhanKhauModel> models = nhanKhauService.findAll();
+        if(keyword.isEmpty()) {
+            observablePersonList.clear();
+            observablePersonList.addAll(models);
+            nhanKhauTable.refresh();
+            return;
+        }
+
+        observablePersonList.clear();
+
+        for(NhanKhauModel model : models) {
+            if(model.getHoTen().toLowerCase().contains(keyword.toLowerCase())) {
+                observablePersonList.add(model);
+            }
+        }
+
+        nhanKhauTable.refresh();
+    }
+
+    public void chuyenDi(ActionEvent event) throws IOException {
+        NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
+
+        if(model != null) {
+            PersonUtil.getInstance().setChuyenDi(model);
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("ChuyenDi.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Chưa chọn nhân khẩu");
+            alert.setContentText("Vui lòng chọn lại");
+            alert.showAndWait();
+        }
+    }
+
 
 //    public void startLoop() {
 //        Thread myThread = new Thread(this);

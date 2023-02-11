@@ -28,4 +28,9 @@ public class HoKhauService implements IHoKhauService {
     public Long count() {
         return apartmentDAO.count();
     }
+
+    @Override
+    public void update(HoKhauModel hoKhauModel) {
+        apartmentDAO.update(hoKhauModel);
+    }
 }

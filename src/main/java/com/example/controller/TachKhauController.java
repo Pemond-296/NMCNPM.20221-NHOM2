@@ -159,16 +159,20 @@ public class TachKhauController implements Initializable {
         }
 
         else {
-            String relationship = JOptionPane.showInputDialog("Quan hệ với chủ hộ");
-            if(relationship == null || relationship.isEmpty()) {
+            String[] option = {"Chủ hộ", "Thành viên"};
+            Object searchType = JOptionPane.showInputDialog(null, null, "Chọn quan hệ",
+                    JOptionPane.QUESTION_MESSAGE, null, option, option[0]);
+
+            if(searchType == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Thêm mới thất bại");
+                alert.setHeaderText("Lỗi");
                 alert.showAndWait();
             }
 
             else {
-                model.setQuanHe(relationship);
-                if(relationship.equals("Chủ hộ")) {
+                if(searchType.equals(option[0])) {
+                    model.setQuanHe("Chủ hộ");
                     chuHoCu.setText(model.getHoTen());
 
                     for(NhanKhauModel ThanhVien : oldMemberTable.getItems()) {
@@ -181,13 +185,26 @@ public class TachKhauController implements Initializable {
                     }
                 }
 
-                boolean check = false;
+                else {
+                    String relationship = JOptionPane.showInputDialog("Quan hệ với chủ hộ");
+                    if(relationship == null || relationship.isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Thêm mới thất bại");
+                        alert.showAndWait();
+                    }
 
-                for(NhanKhauModel ThanhVien : oldMemberTable.getItems()) {
-                    if(ThanhVien.getQuanHe() != null && ThanhVien.getQuanHe().equals("Chủ hộ")) check = true;
+                    else {
+                        model.setQuanHe(relationship);
+                        boolean check = false;
+
+                        for(NhanKhauModel ThanhVien : oldMemberTable.getItems()) {
+                            if(ThanhVien.getQuanHe() != null && ThanhVien.getQuanHe().equals("Chủ hộ")) check = true;
+                        }
+
+                        if(!check) chuHoCu.setText(null);
+                    }
+
                 }
-
-                if(!check) chuHoCu.setText(null);
 
                 oldMemberTable.refresh();
 
@@ -195,6 +212,24 @@ public class TachKhauController implements Initializable {
                 alert.setContentText("Thêm mới thành công");
                 alert.showAndWait();
             }
+
+//            else {
+////                model.setQuanHe(relationship);
+////                if(relationship.equals("Chủ hộ")) {
+////                    chuHoCu.setText(model.getHoTen());
+////
+////                    for(NhanKhauModel ThanhVien : oldMemberTable.getItems()) {
+////                        if(ThanhVien.getQuanHe() != null) {
+////                            if(ThanhVien.getQuanHe().equals("Chủ hộ") && ThanhVien.getId() != model.getId()) {
+////                                ThanhVien.setQuanHe(null);
+////                                break;
+////                            }
+////                        }
+////                    }
+////                }
+//
+//
+//            }
         }
     }
 
@@ -210,16 +245,20 @@ public class TachKhauController implements Initializable {
         }
 
         else {
-            String relationship = JOptionPane.showInputDialog("Quan hệ với chủ hộ");
-            if(relationship == null || relationship.isEmpty()) {
+            String[] option = {"Chủ hộ", "Thành viên"};
+            Object searchType = JOptionPane.showInputDialog(null, null, "Chọn quan hệ",
+                    JOptionPane.QUESTION_MESSAGE, null, option, option[0]);
+
+            if(searchType == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Thêm mới thất bại");
+                alert.setHeaderText("Lỗi");
                 alert.showAndWait();
             }
 
             else {
-                model.setQuanHe(relationship);
-                if(relationship.equals("Chủ hộ")) {
+                if(searchType.equals(option[0])) {
+                    model.setQuanHe("Chủ hộ");
                     chuHoMoi.setText(model.getHoTen());
 
                     for(NhanKhauModel ThanhVien : newMemberTable.getItems()) {
@@ -232,16 +271,28 @@ public class TachKhauController implements Initializable {
                     }
                 }
 
-                boolean check = false;
+                else {
+                    String relationship = JOptionPane.showInputDialog("Quan hệ với chủ hộ");
+                    if(relationship == null || relationship.isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Thêm mới thất bại");
+                        alert.showAndWait();
+                    }
 
-                for(NhanKhauModel ThanhVien : newMemberTable.getItems()) {
-                    if (ThanhVien.getQuanHe() != null && ThanhVien.getQuanHe().equals("Chủ hộ")) {
-                        check = true;
-                        break;
+                    else {
+                        model.setQuanHe(relationship);
+                        boolean check = false;
+
+                        for(NhanKhauModel ThanhVien : newMemberTable.getItems()) {
+                            if (ThanhVien.getQuanHe() != null && ThanhVien.getQuanHe().equals("Chủ hộ")) {
+                                check = true;
+                                break;
+                            }
+                        }
+
+                        if(!check) chuHoMoi.setText(null);
                     }
                 }
-
-                if(!check) chuHoMoi.setText(null);
 
                 newMemberTable.refresh();
 
