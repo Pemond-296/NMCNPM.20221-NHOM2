@@ -41,9 +41,8 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
     public List<NhanKhauModel> findMonitor() {
         StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
         sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
-        sql.append("LEFT JOIN tamtru ON nhankhau.id = tamtru.id_nhankhau ");
-        sql.append("LEFT JOIN khaitu ON nhankhau.id = khaitu.id_nhankhau ");
-        sql.append("WHERE id_hokhau IS NULL AND tamtru.id IS NULL AND khaitu.id IS NULL");
+        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
+        sql.append("WHERE id_hokhau IS NULL");
         return query(sql.toString(), new NhanKhauMapper());
     }
 
@@ -51,11 +50,10 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
     public List<NhanKhauModel> findAllByApartmentId(String id) {
         StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
         sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
-//        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
+        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
         sql.append("WHERE id_hokhau = '");
         sql.append(id);
         sql.append("'");
-        sql.append("ORDER BY CASE WHEN quan_he = N'Chủ hộ' THEN 0 ELSE 1 END");
 
         return query(sql.toString(), new NhanKhauMapper());
     }
@@ -80,14 +78,19 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
         Year y = Year.now();
         Integer year = y.getValue();
         StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
-        sql.append("WHERE (? - YEAR(ngay_sinh)) between 0 and 18");
+        sql.append(" INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
+        sql.append(" INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau");
+        sql.append(" WHERE (? - YEAR(ngay_sinh)) between 0 and 18");
         return query(sql.toString(), new NhanKhauMapper(), year);
     }
 
     @Override
     public List<NhanKhauModel> findByProof(MinhChungModel minhChungModel) {
 
-        String sql = "SELECT * FROM nhankhau nk WHERE nk.id = ?";
+        String sql = "SELECT * FROM nhankhau" +
+                " INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau " +
+                " INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau" +
+                "  WHERE nhankhau.id = ?";
 
         return query(sql, new NhanKhauMapper(), minhChungModel.getId_nhan_khau());
     }
@@ -95,7 +98,10 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
     @Override
     public List<NhanKhauModel> findNotProof(EventGiftModel eventGiftModel) {
 
-        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau WHERE id NOT IN ");
+        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau" +
+                " INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau" +
+                "  INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau" +
+                " WHERE nhankhau.id NOT IN ");
         sql.append("(SELECT idNhanKhau FROM MinhChung WHERE idDip = ? )");
 
         return query(sql.toString(), new NhanKhauMapper(), eventGiftModel.getId());

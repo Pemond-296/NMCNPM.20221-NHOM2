@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -32,7 +33,10 @@ public class LoginController {
         String pass = password.getText();
 
         if(user.equals("") || pass.equals("")) {
-            System.out.println("Ban chua dang nhap");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng đăng nhập");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
             return;
         }
 
@@ -66,18 +70,26 @@ public class LoginController {
         }
 
         else {
-            System.out.println("Tai khoan khong ton tai");
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Tài khoản hoặc mật khẩu không chính xác");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
         }
 
     }
     public void register(ActionEvent actionEvent){
-        System.out.println(username.getText());
-        System.out.println(password.getText());
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText("Chức năng đang được bảo trì");
+        alert.setHeaderText("Lỗi");
+        alert.showAndWait();
     }
 
     public void changPassword(ActionEvent actionEvent){
-        System.out.println(username.getText());
-        System.out.println(password.getText());
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText("Chức năng đang được bảo trì");
+        alert.setHeaderText("Lỗi");
+        alert.showAndWait();
     }
 
 }

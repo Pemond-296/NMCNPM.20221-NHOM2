@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -49,31 +50,40 @@ public class ChonDipController implements Initializable {
     @FXML
     void chon(ActionEvent event) throws IOException {
         EventGiftModel eventGiftModel = dipTable.getSelectionModel().getSelectedItem();
-        DipUtil.getInstance().setData(eventGiftModel);
-        if(eventGiftModel.getLoai_dip() == 0){ //giua nam
-            List<NhanKhauModel> nhanKhauModels = nhanKhauService.findByAge();
-            if(!nhanKhauModels.isEmpty()){
-                for(NhanKhauModel personModel : nhanKhauModels){
-                    if (minhChungService.isMinhChung(personModel) == 1){
-                        continue;
+        if (eventGiftModel == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn chọn dịp");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
+        }
+        else {
+
+            DipUtil.getInstance().setData(eventGiftModel);
+            if (eventGiftModel.getLoai_dip() == 0) { //giua nam
+                List<NhanKhauModel> nhanKhauModels = nhanKhauService.findByAge();
+                if (!nhanKhauModels.isEmpty()) {
+                    for (NhanKhauModel personModel : nhanKhauModels) {
+                        if (minhChungService.isMinhChung(personModel) == 1) {
+                            continue;
+                        }
+                        MinhChungModel minhChungModel = new MinhChungModel();
+                        minhChungModel.setId_nhan_khau(personModel.getId());
+                        minhChungModel.setId_thanhtich(1L); // tre em
+                        minhChungModel.setId_dip(eventGiftModel.getId());
+                        Long save = minhChungService.save(minhChungModel);
                     }
-                    MinhChungModel minhChungModel = new MinhChungModel();
-                    minhChungModel.setId_nhan_khau(personModel.getId());
-                    minhChungModel.setId_thanhtich(1L); // tre em
-                    minhChungModel.setId_dip(eventGiftModel.getId());
-                    Long save = minhChungService.save(minhChungModel);
                 }
             }
+
+            Stage stagex = new Stage();
+            Parent rootx = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("LapDanhSach.fxml")));
+            Scene scenex = new Scene(rootx);
+            stagex.setScene(scenex);
+            stagex.showAndWait();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
         }
-
-        Stage stagex = new Stage();
-        Parent rootx = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("LapDanhSach.fxml")));
-        Scene scenex = new Scene(rootx);
-        stagex.setScene(scenex);
-        stagex.showAndWait();
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.close();
     }
     List<EventGiftModel> models = DipUtil.getInstance().getEventGiftModelList();
     ObservableList<EventGiftModel> observableList = FXCollections.observableArrayList(models);

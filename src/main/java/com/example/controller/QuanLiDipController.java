@@ -16,10 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -84,6 +82,12 @@ public class QuanLiDipController implements Initializable {
             DipTable.setItems(observableListEvenGift);
 
         }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn chọn dịp");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
+        }
 
     }
     List<EventGiftModel> getmember(){
@@ -107,22 +111,13 @@ public class QuanLiDipController implements Initializable {
 
     @FXML
     void LapDanhSachE(ActionEvent event) throws IOException {
-//        DipUtil.getInstance().cap_nhat_trang_thai();
-//        DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
-//        if (DipUtil.getInstance().getData() == null){
-//            System.out.println("Chọn dịp muốn xem đi chứ");
-//        }
-//        else{
-////            Stage stage = new Stage();
-////            Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("LapDanhSach.fxml")));
-////            Scene scene = new Scene(root);
-////            stage.setScene(scene);
-////            stage.showAndWait();
-//
-//        }
+
         DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
         if (DipUtil.getInstance().getData() == null) {
-            System.out.println("Chọn Dịp");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn chọn dịp");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
         }
         else{
             Stage stage = new Stage();
@@ -167,11 +162,17 @@ public class QuanLiDipController implements Initializable {
     void MinhChungE(ActionEvent event) throws IOException {
         DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
         if (DipUtil.getInstance().getData() == null) {
-            System.out.println("Chọn dịp");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn dịp");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
         }
         else{
             if(DipUtil.getInstance().getData().getLoai_dip() == 0){
-                System.out.println("Dịp này là dịp giữa năm, không cần tạo minh chứng");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Dịp giữa năm, không cần tạo minh chứng");
+                alert.setHeaderText("Lỗi");
+                alert.showAndWait();
             }
             else{
                 Stage stage = new Stage();
@@ -186,7 +187,10 @@ public class QuanLiDipController implements Initializable {
     void XemE(ActionEvent event) throws IOException {
         DipUtil.getInstance().setData(DipTable.getSelectionModel().getSelectedItem());
         if (DipUtil.getInstance().getData() == null) {
-            System.out.println("Chọn Dịp");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn dịp");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
         }
         else{
             Stage stage = new Stage();
@@ -217,15 +221,6 @@ public class QuanLiDipController implements Initializable {
         observableListEvenGift.clear();
         observableListEvenGift.addAll(DipUtil.getInstance().findByStatus(true, key.toLowerCase()));
 
-//        List<EventGiftModel> models_curr = DipTable.getItems();
-//
-//        for (EventGiftModel model : models_curr){
-//
-//            if (model.getTrang_thai_bool() == 0){
-//                observableListEvenGift.add(model);
-//            }
-//
-//        }
 
         DipTable.setItems(observableListEvenGift);
     }
