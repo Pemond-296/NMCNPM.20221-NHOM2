@@ -18,4 +18,9 @@ public class TraoThuongService implements ITraoThuongService {
     public boolean findByMinhChung(GiftTableModel minhChungModel) {
         return iTraoThuongDAO.findByMinhChung(minhChungModel);
     }
+
+    @Override
+    public void update(TraoThuongModel traoThuongModel) {
+        iTraoThuongDAO.update(traoThuongModel);
+    }
 }

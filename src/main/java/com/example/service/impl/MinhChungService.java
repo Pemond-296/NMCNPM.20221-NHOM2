@@ -30,4 +30,8 @@ public class MinhChungService implements IMinhChungService {
     public void update(MinhChungModel minhChungModel) {
         iMinhChungDAO.update(minhChungModel);
     }
+    @Override
+    public boolean check(EventGiftModel eventGiftModel){
+        return iMinhChungDAO.check(eventGiftModel);
+    }
 }

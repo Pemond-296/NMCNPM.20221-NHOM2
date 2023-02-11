@@ -2,7 +2,9 @@ package com.example.utils;
 
 import com.example.model.EventGiftModel;
 import com.example.service.IEventGiftService;
+import com.example.service.IMinhChungService;
 import com.example.service.impl.EventGiftService;
+import com.example.service.impl.MinhChungService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,17 @@ public class DipUtil {
     private IEventGiftService iEventGiftService = new EventGiftService();
     private List<EventGiftModel> eventGiftModelList = iEventGiftService.findAll();
     private EventGiftModel data = null;
+
+//    public void cap_nhat_trang_thai(){
+//        IMinhChungService minhChungService = new MinhChungService();
+//        for(EventGiftModel eventGiftModel : eventGiftModelList){
+//            if(minhChungService.check(eventGiftModel) == true){
+//                eventGiftModel.setTrang_thai_bool(1);
+//
+//                iEventGiftService.update(eventGiftModel);
+//            }
+//        }
+//    }
 
     public static DipUtil getInstance() {
         if (dipUtil == null) dipUtil = new DipUtil();
@@ -52,9 +65,11 @@ public class DipUtil {
     public List<EventGiftModel> findByName(String name){
 
         List<EventGiftModel> models = new ArrayList<>();
-
+        Integer i = 0;
         for(EventGiftModel eventGiftModel : eventGiftModelList){
                 if(eventGiftModel.getNameEvent().toLowerCase().contains(name)) {
+                    i++;
+                    eventGiftModel.setStt(i);
                     models.add(eventGiftModel);
             }
 
@@ -63,18 +78,23 @@ public class DipUtil {
 
     }
     public List<EventGiftModel> getEventGiftModelList(){
+//        DipUtil.getInstance().cap_nhat_trang_thai();
         return eventGiftModelList;
     }
     public List<EventGiftModel> findByStatus(boolean t, String tendip){
         List<EventGiftModel> models1 = new ArrayList<>();
         List<EventGiftModel> models2 = new ArrayList<>();
-
+        Integer i = 0, j = 0;
         for(EventGiftModel model : eventGiftModelList){
             if(model.getNameEvent().toLowerCase().contains(tendip)){
                 if (model.getTrang_thai_bool() == 0){
+                    i++;
+                    model.setStt(i);
                     models1.add(model);
                 }
                 else{
+                    j++;
+                    model.setStt(j);
                     models2.add(model);
 
                 }
@@ -85,6 +105,7 @@ public class DipUtil {
         }
         else return models2;
     }
+
     public void removeData() {
         setData(null);
     }

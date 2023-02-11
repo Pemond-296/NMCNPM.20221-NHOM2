@@ -5,6 +5,15 @@ public class TraoThuongModel {
     private Long id_minhChung;
     private Long id_phanQua;
     private Integer trang_thai;
+    private Long id_dip;
+
+    public Long getId_dip() {
+        return id_dip;
+    }
+
+    public void setId_dip(Long id_dip) {
+        this.id_dip = id_dip;
+    }
 
     public Integer getTrang_thai() {
         return trang_thai;

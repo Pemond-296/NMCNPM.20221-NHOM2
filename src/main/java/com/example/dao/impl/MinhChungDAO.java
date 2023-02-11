@@ -45,4 +45,16 @@ public class MinhChungDAO extends AbstractDAO<MinhChungModel> implements IMinhCh
         String sql = "UPDATE MinhChung SET idThanhTich = ? WHERE idDip = ? AND idNhanKhau = ?";
         update(sql, minhChungModel.getId_thanhtich(), minhChungModel.getId_dip(), minhChungModel.getId_nhan_khau());
     }
+    @Override
+    public boolean check(EventGiftModel eventGiftModel) {
+        String sql = "SELECT * FROM MinhChung WHERE idDip = ? " +
+                "AND idMinhChung NOT IN ( SELECT idMinhChung FROM TraoThuong WHERE idDip = ? AND trang_thai = 1 )";
+        String sql2 = "SELECT * FROM MinhChung WHERE idDip = ?";
+        List<MinhChungModel> models = query(sql2, new MinhChungMapper(), eventGiftModel.getId());
+        if(models.isEmpty()) return false;
+        List<MinhChungModel> minhChungModels = query(sql, new MinhChungMapper(), eventGiftModel.getId(), eventGiftModel.getId());
+        if (minhChungModels.isEmpty()) return true;
+        return false;
+
+    }
 }
