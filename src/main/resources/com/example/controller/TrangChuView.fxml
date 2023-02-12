@@ -97,11 +97,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="474.0" layoutY="27.0" prefWidth="150.0" text="Exit" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
          </children></AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="176.0" prefHeight="200.0" prefWidth="230.0" style="-fx-background-color: #0a4969;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
@@ -174,7 +169,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
                            <image>
-                              <Image url="@images/report.png" />
+                              <Image url="@images/gift.png" />
                            </image>
                         </ImageView>
                      </graphic>

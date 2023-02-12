@@ -183,6 +183,10 @@ public class TachKhauController implements Initializable {
                             }
                         }
                     }
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setContentText("Thêm mới thành công");
+                    alert.showAndWait();
                 }
 
                 else {
@@ -202,15 +206,15 @@ public class TachKhauController implements Initializable {
                         }
 
                         if(!check) chuHoCu.setText(null);
+
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setContentText("Thêm mới thành công");
+                        alert.showAndWait();
                     }
 
                 }
 
                 oldMemberTable.refresh();
-
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Thêm mới thành công");
-                alert.showAndWait();
             }
 
 //            else {
@@ -269,6 +273,10 @@ public class TachKhauController implements Initializable {
                             }
                         }
                     }
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setContentText("Thêm mới thành công");
+                    alert.showAndWait();
                 }
 
                 else {
@@ -291,14 +299,14 @@ public class TachKhauController implements Initializable {
                         }
 
                         if(!check) chuHoMoi.setText(null);
+
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setContentText("Thêm mới thành công");
+                        alert.showAndWait();
                     }
                 }
 
                 newMemberTable.refresh();
-
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Thêm mới thành công");
-                alert.showAndWait();
             }
         }
     }

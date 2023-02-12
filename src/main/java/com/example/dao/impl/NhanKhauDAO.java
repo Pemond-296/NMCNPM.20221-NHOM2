@@ -13,8 +13,13 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
 
     @Override
     public List<NhanKhauModel> findAll() {
-        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
+        StringBuilder sql = new StringBuilder("SELECT nhankhau.*, CMND.*, tamtru.tu_ngay, tamvang.ngay_ve, ");
+        sql.append("khaitu.nguoi_khai_tu, diadiem.noi_chuyen FROM nhankhau ");
         sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
+        sql.append("LEFT JOIN tamtru ON nhankhau.id = tamtru.id_nhankhau ");
+        sql.append("LEFT JOIN tamvang ON nhankhau.id = tamvang.id_nhankhau ");
+        sql.append("LEFT JOIN khaitu ON nhankhau.id = khaitu.id_nhankhau ");
+        sql.append("LEFT JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
         return query(sql.toString(), new NhanKhauMapper());
     }
 
@@ -41,8 +46,9 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
     public List<NhanKhauModel> findMonitor() {
         StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
         sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
-        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
-        sql.append("WHERE id_hokhau IS NULL");
+        sql.append("LEFT JOIN tamtru ON nhankhau.id = tamtru.id_nhankhau ");
+        sql.append("LEFT JOIN khaitu ON nhankhau.id = khaitu.id_nhankhau ");
+        sql.append("WHERE id_hokhau IS NULL AND tamtru.id IS NULL AND khaitu.id IS NULL");
         return query(sql.toString(), new NhanKhauMapper());
     }
 
@@ -50,10 +56,11 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
     public List<NhanKhauModel> findAllByApartmentId(String id) {
         StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
         sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
-        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
+//        sql.append("INNER JOIN diadiem ON nhankhau.id = diadiem.id_nhankhau ");
         sql.append("WHERE id_hokhau = '");
         sql.append(id);
-        sql.append("'");
+        sql.append("' ");
+        sql.append("ORDER BY CASE WHEN quan_he = N'Chủ hộ' THEN 0 ELSE 1 END");
 
         return query(sql.toString(), new NhanKhauMapper());
     }

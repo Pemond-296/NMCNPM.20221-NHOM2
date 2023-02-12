@@ -7,12 +7,16 @@ import com.example.service.INhanKhauService;
 import com.example.service.impl.HoKhauService;
 import com.example.service.impl.NhanKhauService;
 import com.example.utils.ApartmentUtil;
+import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,8 +25,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChiTietHKController implements Initializable {
@@ -66,6 +73,13 @@ public class ChiTietHKController implements Initializable {
         ngaySinhThanhVien.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
         quanHe.setCellValueFactory(new PropertyValueFactory<>("quanHe"));
         thanhVienTable.setItems(observableList);
+
+        for(NhanKhauModel model : observableList) {
+            PersonUtil.getInstance().getTempModel().add(model);
+            if(model.getQuanHe() != null) {
+                if(model.getQuanHe().equals("Chủ hộ")) PersonUtil.getInstance().setMonitor(model);
+            }
+        }
     }
 
     @FXML
@@ -94,6 +108,7 @@ public class ChiTietHKController implements Initializable {
             hoKhauService.update(hoKhauModel);
 
             for(NhanKhauModel model : thanhVienTable.getItems()) {
+                model.setIdHoKhau(id.getText());
                 nhanKhauService.update(model);
             }
 
@@ -182,4 +197,44 @@ public class ChiTietHKController implements Initializable {
         }
     }
 
+    public void themThanhVien(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(ThemHoKhauController.class.getResource("ThanhVienTable.fxml")));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
+
+        NhanKhauModel member = PersonUtil.getInstance().getMember();
+        if(member != null) {
+            PersonUtil.getInstance().getTempModel().add(member);
+            observableList.add(member);
+            thanhVienTable.setItems(observableList);
+            PersonUtil.getInstance().setMember(null);
+        }
+    }
+
+    public void xoaThanhVien(ActionEvent event) {
+        NhanKhauModel model = thanhVienTable.getSelectionModel().getSelectedItem();
+
+        if(model == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Lỗi");
+            alert.setContentText("Vui lòng chọn nhân khẩu");
+            alert.showAndWait();
+        }
+
+        else {
+            model.setQuanHe(null);
+            model.setIdHoKhau(null);
+            nhanKhauService.update(model);
+            observableList.remove(model);
+            PersonUtil.getInstance().getTempModel().remove(model);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Cập nhật thành công");
+            alert.showAndWait();
+
+            thanhVienTable.refresh();
+        }
+    }
 }
