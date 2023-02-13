@@ -37,4 +37,12 @@ public class HoKhauDAO extends AbstractDAO<HoKhauModel> implements IHoKhauDAO {
         update(sql.toString(), hoKhauModel.getTenChuHo(), hoKhauModel.getSoNha(), hoKhauModel.getTenDuong(),
                     hoKhauModel.getPhuongXa(), hoKhauModel.getQuanHuyen(), hoKhauModel.getId());
     }
+
+    @Override
+    public void delete(String hoKhauId) {
+        String sql = "DELETE FROM hokhau WHERE id = ?";
+
+        update(sql, hoKhauId);
+
+    }
 }

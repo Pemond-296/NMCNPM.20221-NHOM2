@@ -11,4 +11,14 @@ public class DiaDiemService implements IDiaDiemService {
     public Long save(DiaDiemModel diaDiemModel) {
         return locationDAO.save(diaDiemModel);
     }
+
+    @Override
+    public DiaDiemModel findFirstByIdNhanKhau(Long id) {
+        return locationDAO.findFirstByIdNhanKhau(id);
+    }
+
+    @Override
+    public void delete(Long idNhanKhau) {
+        locationDAO.delete(idNhanKhau);
+    }
 }

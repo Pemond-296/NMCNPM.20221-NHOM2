@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="391.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ThongKeTTController">
+<AnchorPane prefHeight="391.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ThongKeTTController">
     <children>
         <AnchorPane layoutY="-7.0" prefHeight="493.0" prefWidth="698.0">
             <children>
@@ -20,7 +20,7 @@
                         <TableColumn fx:id="Tien" prefWidth="147.19998168945312" text="Tiền" />
                     </columns>
                 </TableView>
-                <Label fx:id="Tong_Tien" layoutX="173.0" layoutY="400.0" prefHeight="27.0" prefWidth="82.0" text="Tong_Tien" textAlignment="CENTER">
+                <Label fx:id="Tong_Tien" layoutX="179.0" layoutY="403.0" prefHeight="27.0" prefWidth="82.0" text="Tong_Tien" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font></Label>
@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="78.0" layoutY="403.0" text="Tổng tiền:">
+            <Label layoutX="78.0" layoutY="403.0" prefHeight="27.0" prefWidth="82.0" text="Tổng tiền:">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

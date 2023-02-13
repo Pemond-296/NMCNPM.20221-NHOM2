@@ -9,10 +9,6 @@ public class NhanKhauMapper implements RowMapper<NhanKhauModel> {
     @Override
     public NhanKhauModel mapRow(ResultSet rs){
         NhanKhauModel model = new NhanKhauModel();
-        TamTruModel tamTruModel = new TamTruModel();
-        TamVangModel tamVangModel = new TamVangModel();
-        KhaiTuModel khaiTuModel = new KhaiTuModel();
-        DiaDiemModel diaDiemModel = new DiaDiemModel();
 
         try {
             model.setId(rs.getLong("id"));
@@ -38,15 +34,15 @@ public class NhanKhauMapper implements RowMapper<NhanKhauModel> {
 //            model.setLocationModel(diaDiemModel);
             model.setSoCMT(dinhDanhModel.getSoCMT());
 
-            tamTruModel.setTuNgay(rs.getDate("tu_ngay"));
-            tamVangModel.setNgayDi(rs.getDate("ngay_ve"));
-            khaiTuModel.setNguoiKhaiTu(rs.getString("nguoi_khai_tu"));
-            diaDiemModel.setNoiChuyen(rs.getString("noi_chuyen"));
-
-            model.setTamTruModel(tamTruModel);
-            model.setTamVangModel(tamVangModel);
-            model.setKhaiTuModel(khaiTuModel);
-            model.setDiaDiemModel(diaDiemModel);
+//            tamTruModel.setTuNgay(rs.getDate("tu_ngay"));
+//            tamVangModel.setNgayDi(rs.getDate("ngay_ve"));
+//            khaiTuModel.setNguoiKhaiTu(rs.getString("nguoi_khai_tu"));
+//            diaDiemModel.setNoiChuyen(rs.getString("noi_chuyen"));
+//
+//            model.setTamTruModel(tamTruModel);
+//            model.setTamVangModel(tamVangModel);
+//            model.setKhaiTuModel(khaiTuModel);
+//            model.setDiaDiemModel(diaDiemModel);
 
             return model;
 

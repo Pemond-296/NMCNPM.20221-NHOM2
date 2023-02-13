@@ -11,4 +11,20 @@ public class TamTruService implements ITamTruService {
     public Long save(TamTruModel model) {
         return tamTruDAO.save(model);
     }
+
+    @Override
+    public TamTruModel findFirstByNhanKhauId(Long id) {
+        return tamTruDAO.findFirstByNhanKhauId(id);
+    }
+
+    @Override
+    public void delete(Long idNhanKhau) {
+        tamTruDAO.delete(idNhanKhau);
+    }
+
+    @Override
+    public Long count() {
+        return tamTruDAO.count();
+    }
+
 }

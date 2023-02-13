@@ -48,6 +48,11 @@ public class NhanKhauService implements INhanKhauService {
     }
 
     @Override
+    public void updateInfo(NhanKhauModel nhanKhauModel) {
+        personDAO.updateInfo(nhanKhauModel);
+    }
+
+    @Override
     public List<NhanKhauModel> findByAge(){
         return personDAO.findByAge();
     }
@@ -60,5 +65,10 @@ public class NhanKhauService implements INhanKhauService {
     @Override
     public List<NhanKhauModel> findNotProof(EventGiftModel eventGiftModel) {
         return personDAO.findNotProof(eventGiftModel);
+    }
+
+    @Override
+    public void delete(Long id) {
+        personDAO.delete(id);
     }
 }

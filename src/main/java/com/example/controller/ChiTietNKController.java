@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.model.DiaDiemModel;
 import com.example.model.DinhDanhModel;
 import com.example.model.NhanKhauModel;
 import com.example.service.IDinhDanhService;
@@ -8,66 +7,83 @@ import com.example.service.INhanKhauService;
 import com.example.service.impl.DinhDanhService;
 import com.example.service.impl.NhanKhauService;
 import com.example.utils.DateUtil;
+import com.example.utils.PersonUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.text.ParseException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class ThemNhanKhauController {
+public class ChiTietNKController implements Initializable {
     private INhanKhauService nhanKhauService = new NhanKhauService();
     private IDinhDanhService dinhDanhService = new DinhDanhService();
     @FXML
     private AnchorPane AddPerson;
-
-    @FXML
-    private Button btnClear;
-
-    @FXML
-    private Button btnRegister;
-
-    @FXML
-    private DatePicker ngaySinh;
-
-    @FXML
-    private TextField DanToc;
-
-    @FXML
-    private RadioButton female;
-
-    @FXML
-    private TextField hoTen;
-
-    @FXML
-    private TextField NguyenQuan;
-
-    @FXML
-    private TextField soCMT;
-
-    @FXML
-    private TextField congViec;
-
-    @FXML
-    private RadioButton male;
-
-    @FXML
-    private RadioButton other;
-    @FXML
-    private TextField noiLamViec;
-    @FXML
-    private TextField noiDkiThuongTru;
-    @FXML
-    public DatePicker ngayDkiThuongTru;
-
     @FXML
     private TextField BiDanh;
     @FXML
+    private TextField DanToc;
+    @FXML
+    private TextField NguyenQuan;
+    @FXML
+    private Button btnClear;
+    @FXML
+    private Button btnRegister;
+    @FXML
+    private TextField congViec;
+    @FXML
+    private RadioButton female;
+    @FXML
     private ToggleGroup genderGroup;
+    @FXML
+    private TextField hoTen;
+    @FXML
+    private RadioButton male;
+    @FXML
+    private DatePicker ngayDkiThuongTru;
+    @FXML
+    private DatePicker ngaySinh;
+    @FXML
+    private TextField noiDkiThuongTru;
+    @FXML
+    private TextField noiLamViec;
+    @FXML
+    private RadioButton other;
+    @FXML
+    private TextField soCMT;
+    private final NhanKhauModel model = PersonUtil.getInstance().getNhanKhauModel();
 
-    public void setBtnClear(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        hoTen.setText(model.getHoTen());
+        if(model.getNgaySinh() != null) ngaySinh.setValue(DateUtil.asLocalDate(model.getNgaySinh()));
+        congViec.setText(model.getCongViec());
+        DanToc.setText(model.getDanToc());
+        NguyenQuan.setText(model.getNguyenQuan());
+        soCMT.setText(model.getSoCMT());
+        noiLamViec.setText(model.getNoiLamViec());
+        if(model.getNgayDkiThuongTru() != null ) ngayDkiThuongTru.setValue(DateUtil.asLocalDate(model.getNgayDkiThuongTru()));
+        noiDkiThuongTru.setText(model.getNoiDkiThuongTru());
+        BiDanh.setText(model.getBiDanh());
+
+        if(Objects.equals(model.getGioiTinh(), "Nam")) {
+            male.setSelected(true);
+        }
+        else if(Objects.equals(model.getGioiTinh(), "Nữ")) {
+            female.setSelected(true);
+        }
+        else {
+            other.setSelected(true);
+        }
+    }
+    @FXML
+    void setBtnClear(ActionEvent event) {
         hoTen.clear();
         ngaySinh.getEditor().clear();
         congViec.clear();
@@ -79,7 +95,9 @@ public class ThemNhanKhauController {
         ngayDkiThuongTru.getEditor().clear();
         BiDanh.clear();
     }
-    public void setBtnRegister(ActionEvent event) throws ParseException {
+
+    @FXML
+    void setBtnRegister(ActionEvent event) {
         if(hoTen.getText().isBlank() || ngaySinh.getValue() == null || DanToc.getText().isBlank() ||
                 NguyenQuan.getText().isBlank() || soCMT.getText().isBlank() || noiDkiThuongTru.getText().isBlank() ||
                 ngayDkiThuongTru.getValue() == null || genderGroup.getToggles() == null || BiDanh.getText().isBlank() ||
@@ -91,7 +109,6 @@ public class ThemNhanKhauController {
         }
 
         else {
-            NhanKhauModel model = new NhanKhauModel();
             DinhDanhModel dinhDanhModel = new DinhDanhModel();
 
             dinhDanhModel.setSoCMT(soCMT.getText());
@@ -113,18 +130,19 @@ public class ThemNhanKhauController {
             model.setCongViec(congViec.getText());
             model.setNoiLamViec(noiLamViec.getText());
 
-            Long id = nhanKhauService.save(model);
+            Long id = this.model.getId();
+            model.setId(this.model.getId());
+            nhanKhauService.updateInfo(model);
             dinhDanhModel.setIdNhanKhau(id);
-            dinhDanhService.save(dinhDanhModel);
+            dinhDanhService.update(dinhDanhModel);
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Thêm mới thành công");
+            alert.setContentText("Cập nhật thành công");
             alert.showAndWait();
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.close();
         }
-
     }
-
 }
+

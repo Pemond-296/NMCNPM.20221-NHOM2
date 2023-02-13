@@ -4,4 +4,6 @@ import com.example.model.DinhDanhModel;
 
 public interface IDinhDanhService {
     Long save(DinhDanhModel dinhDanhModel);
+    void update(DinhDanhModel dinhDanhModel);
+    void delete(Long idNhanKhau);
 }

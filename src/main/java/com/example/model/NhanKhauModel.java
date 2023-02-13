@@ -21,12 +21,8 @@ public class NhanKhauModel {
     private Long idCMND;
     private Long idDiaDiem;
     private DinhDanhModel dinhDanhModel;
-    private DiaDiemModel diaDiemModel;
     private String soCMT;
     private String minhChung;
-    private TamTruModel tamTruModel;
-    private TamVangModel tamVangModel;
-    private KhaiTuModel khaiTuModel;
 
     public NhanKhauModel(){}
 
@@ -166,14 +162,6 @@ public class NhanKhauModel {
         this.dinhDanhModel = dinhDanhModel;
     }
 
-    public DiaDiemModel getLocationModel() {
-        return diaDiemModel;
-    }
-
-    public void setLocationModel(DiaDiemModel diaDiemModel) {
-        this.diaDiemModel = diaDiemModel;
-    }
-
     public String getIdHoKhau() {
         return idHoKhau;
     }
@@ -196,36 +184,5 @@ public class NhanKhauModel {
 
     public void setMinhChung(String minhChung) {
         this.minhChung = minhChung;
-    }
-
-    public TamTruModel getTamTruModel() {
-        return tamTruModel;
-    }
-
-    public void setTamTruModel(TamTruModel tamTruModel) {
-        this.tamTruModel = tamTruModel;
-    }
-
-    public TamVangModel getTamVangModel() {
-        return tamVangModel;
-    }
-
-    public void setTamVangModel(TamVangModel tamVangModel) {
-        this.tamVangModel = tamVangModel;
-    }
-
-    public KhaiTuModel getKhaiTuModel() {
-        return khaiTuModel;
-    }
-
-    public void setKhaiTuModel(KhaiTuModel khaiTuModel) {
-        this.khaiTuModel = khaiTuModel;
-    }
-    public DiaDiemModel getDiaDiemModel() {
-        return diaDiemModel;
-    }
-
-    public void setDiaDiemModel(DiaDiemModel diaDiemModel) {
-        this.diaDiemModel = diaDiemModel;
     }
 }

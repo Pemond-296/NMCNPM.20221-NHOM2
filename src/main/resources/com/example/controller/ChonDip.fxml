@@ -7,21 +7,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="com.example.controller.ChonDipController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="346.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ChonDipController">
    <children>
-      <Label layoutX="33.0" layoutY="26.0" text="Chọn dịp muốn lập danh sách">
+      <Label layoutX="185.0" layoutY="30.0" text="Chọn dịp muốn lập danh sách">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="dipTable" layoutX="2.0" layoutY="57.0" prefHeight="286.0" prefWidth="302.0">
+      <TableView fx:id="dipTable" layoutX="84.0" layoutY="97.0" prefHeight="286.0" prefWidth="469.0">
         <columns>
-          <TableColumn fx:id="ten_dip" prefWidth="87.99999856948853" text="Tên Dịp" />
-          <TableColumn fx:id="thoi_gian" prefWidth="116.00000762939453" text="Thời gian" />
-            <TableColumn fx:id="doi_tuong_nhan" prefWidth="96.79998779296875" text="Đối tượng nhận" />
+          <TableColumn fx:id="ten_dip" prefWidth="152.0" text="Tên Dịp" />
+          <TableColumn fx:id="thoi_gian" prefWidth="142.3999481201172" text="Thời gian" />
+            <TableColumn fx:id="doi_tuong_nhan" prefWidth="176.800048828125" text="Đối tượng nhận" />
         </columns>
       </TableView>
-      <Button layoutX="304.0" layoutY="319.0" mnemonicParsing="false" onAction="#chon" text="Chọn" />
+      <Button layoutX="494.0" layoutY="422.0" mnemonicParsing="false" onAction="#chon" prefHeight="30.0" prefWidth="59.0" text="Chọn">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

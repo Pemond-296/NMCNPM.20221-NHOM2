@@ -2,8 +2,12 @@ package com.example.controller;
 
 import com.example.model.HoKhauModel;
 import com.example.model.NhanKhauModel;
+import com.example.service.IHoKhauService;
+import com.example.service.INhanKhauService;
 import com.example.service.impl.HoKhauService;
+import com.example.service.impl.NhanKhauService;
 import com.example.utils.ApartmentUtil;
+import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +31,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HoKhauController implements Initializable {
-    private HoKhauService hoKhauService = new HoKhauService();
+    private IHoKhauService hoKhauService = new HoKhauService();
+    private INhanKhauService nhanKhauService = new NhanKhauService();
     @FXML
     private TableColumn<?, ?> idHoKhau;
     @FXML
@@ -146,6 +151,38 @@ public class HoKhauController implements Initializable {
             stage.showAndWait();
 
             ApartmentUtil.getInstance().setApartmentModel(null);
+            hoKhauTable.refresh();
+        }
+    }
+
+    public void xoaHoKhau(ActionEvent event) {
+        HoKhauModel model = hoKhauTable.getSelectionModel().getSelectedItem();
+
+        if(model == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn hộ khẩu");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
+        }
+
+        else {
+            List<NhanKhauModel> thanhVien = nhanKhauService.findAllByApartmentId(model.getId());
+
+            for(NhanKhauModel nhanKhauModel : thanhVien) {
+                nhanKhauModel.setIdHoKhau(null);
+                nhanKhauModel.setQuanHe(null);
+
+                nhanKhauService.update(nhanKhauModel);
+            }
+
+            hoKhauService.delete(model.getId());
+            observableApartmentList.remove(model);
+            ApartmentUtil.getInstance().setModels(hoKhauService.findAll());
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Xóa hoàn tất");
+            alert.showAndWait();
+
             hoKhauTable.refresh();
         }
     }

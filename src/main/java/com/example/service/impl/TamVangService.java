@@ -11,4 +11,19 @@ public class TamVangService implements ITamVangService {
     public Long save(TamVangModel model) {
         return absentDAO.save(model);
     }
+
+    @Override
+    public TamVangModel findFirstByNhanKhauId(Long id) {
+        return absentDAO.findFirstByNhanKhauId(id);
+    }
+
+    @Override
+    public void delete(Long idNhanKhau) {
+        absentDAO.delete(idNhanKhau);
+    }
+
+    @Override
+    public Long count() {
+        return absentDAO.count();
+    }
 }

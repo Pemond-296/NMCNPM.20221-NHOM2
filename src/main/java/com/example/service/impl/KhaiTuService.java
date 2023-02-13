@@ -11,4 +11,14 @@ public class KhaiTuService implements IKhaiTuService {
     public Long save(KhaiTuModel model) {
         return khaiTuDAO.save(model);
     }
+
+    @Override
+    public KhaiTuModel findFirstByIdNhanKhau(Long id) {
+        return khaiTuDAO.findFirstByIdNhanKhau(id);
+    }
+
+    @Override
+    public void delete(Long idNhanKhau) {
+        khaiTuDAO.delete(idNhanKhau);
+    }
 }
