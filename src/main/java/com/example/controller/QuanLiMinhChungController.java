@@ -20,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -54,12 +55,12 @@ public class QuanLiMinhChungController implements Initializable {
 
 
     @FXML
-    void tim_kiem(ActionEvent event) {
+    void tim_kiem(KeyEvent event) {
         List<NhanKhauModel> models = nhanKhauService.findAll();
         String keyword = tim_kiemText.getText();
         if(keyword.isEmpty()) {
             observableList.clear();
-            observableList.addAll(models);
+            observableList.addAll(getMinhChung());
             nhan_khauTable.refresh();
             return;
         }
@@ -67,6 +68,10 @@ public class QuanLiMinhChungController implements Initializable {
         keyword = keyword.toLowerCase();
         for(NhanKhauModel model : models){
             if(model.getHoTen().toLowerCase().contains(keyword)){
+                if(minhChungService.isMinhChung(model) == 1){
+                    model.setMinhChung("Đã có");
+                }
+                else model.setMinhChung("Chưa có");
                 observableList.add(model);
             }
         }
