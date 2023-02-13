@@ -73,7 +73,7 @@ public class QuanLiMinhChungController implements Initializable {
         nhan_khauTable.refresh();
     }
 
-    List<NhanKhauModel> nhanKhauModelList = nhanKhauService.findByAge();
+    List<NhanKhauModel> nhanKhauModelList = nhanKhauService.findAll();
     ObservableList<NhanKhauModel> observableList = FXCollections.observableArrayList(getMinhChung());
 
     @Override
