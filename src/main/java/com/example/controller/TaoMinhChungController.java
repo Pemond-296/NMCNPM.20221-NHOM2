@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -22,7 +23,10 @@ public class TaoMinhChungController implements Initializable {
     private IMinhChungService iMinhChungService = new MinhChungService();
     @FXML
     private MenuItem gioi;
-
+    @FXML
+    private Label thanh_tich_gk;
+    @FXML
+    private Label ten_tren_gk;
     @FXML
     private TextField ho_tenText;
 
@@ -39,12 +43,14 @@ public class TaoMinhChungController implements Initializable {
     @FXML
     void gioi(ActionEvent event) {
         thanh_tich.setText("Giỏi");
+        thanh_tich_gk.setText("Học Sinh Giỏi");
         thanh_tichx = 2;
     }
 
     @FXML
     void kha(ActionEvent event) {
         thanh_tich.setText("Khá");
+        thanh_tich_gk.setText("Học Sinh Khá");
         thanh_tichx = 3;
     }
 
@@ -77,11 +83,13 @@ public class TaoMinhChungController implements Initializable {
     @FXML
     void yeu(ActionEvent event) {
         thanh_tich.setText("Yếu");
+        thanh_tich_gk.setText("Học Sinh Trung Bình");
         thanh_tichx = 4;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ho_tenText.setText(PersonUtil.getInstance().getMinhchung().getHoTen());
+        ten_tren_gk.setText(PersonUtil.getInstance().getMinhchung().getHoTen());
     }
 }

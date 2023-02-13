@@ -27,17 +27,20 @@
       </MenuButton>
       <ImageView fitHeight="301.0" fitWidth="480.0" layoutX="119.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/giay_khen.png" />
+            <Image url="@images/certificate.png" />
          </image>
       </ImageView>
       <Label layoutX="57.0" layoutY="119.0" prefHeight="18.0" prefWidth="104.0" text="Ảnh minh chứng:" />
       <Button layoutX="637.0" layoutY="440.0" mnemonicParsing="false" onAction="#luu" prefHeight="30.0" prefWidth="66.0" text="Xác nhận" />
       <TextField fx:id="ho_tenText" layoutX="143.0" layoutY="81.0" />
-      <Label fx:id="ten_tren_gk" layoutX="231.0" layoutY="279.0" prefHeight="18.0" prefWidth="127.0" textFill="#16a5d9" textOverrun="CLIP">
+      <Label fx:id="ten_tren_gk" layoutX="249.0" layoutY="276.0" prefHeight="22.0" prefWidth="157.0" textFill="#050505" textOverrun="CLIP">
          <font>
-            <Font name="Calibri" size="12.0" />
+            <Font name="Calibri" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="thanh_tich_gk" layoutX="267.0" layoutY="312.0" prefHeight="18.0" prefWidth="66.0" textFill="#0590f4" />
+      <Label fx:id="thanh_tich_gk" layoutX="266.0" layoutY="238.0" prefHeight="18.0" prefWidth="127.0" textFill="#151515">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>
