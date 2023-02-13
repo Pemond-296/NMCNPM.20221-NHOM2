@@ -1,9 +1,13 @@
 package com.example.controller;
 
 import com.example.model.EventGiftModel;
+import com.example.model.MinhChungModel;
+import com.example.model.NhanKhauModel;
 import com.example.service.IMinhChungService;
+import com.example.service.INhanKhauService;
 import com.example.service.impl.EventGiftService;
 import com.example.service.impl.MinhChungService;
+import com.example.service.impl.NhanKhauService;
 import com.example.utils.DipUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +30,8 @@ import java.util.ResourceBundle;
 
 public class QuanLiDipController implements Initializable {
     private EventGiftService eventGiftService = new EventGiftService();
+    private INhanKhauService nhanKhauService = new NhanKhauService();
+    private IMinhChungService minhChungService = new MinhChungService();
 
     @FXML
     private TableView<EventGiftModel> DipTable;
@@ -120,6 +126,22 @@ public class QuanLiDipController implements Initializable {
             alert.showAndWait();
         }
         else{
+            EventGiftModel eventGiftModel = DipUtil.getInstance().getData();
+            if (eventGiftModel.getLoai_dip() == 0) { //giua nam
+                List<NhanKhauModel> nhanKhauModels = nhanKhauService.findByAge();
+                if (!nhanKhauModels.isEmpty()) {
+                    for (NhanKhauModel personModel : nhanKhauModels) {
+                        if (minhChungService.isMinhChung(personModel) == 1) {
+                            continue;
+                        }
+                        MinhChungModel minhChungModel = new MinhChungModel();
+                        minhChungModel.setId_nhan_khau(personModel.getId());
+                        minhChungModel.setId_thanhtich(1L); // tre em
+                        minhChungModel.setId_dip(eventGiftModel.getId());
+                        Long save = minhChungService.save(minhChungModel);
+                    }
+                }
+            }
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(Objects.requireNonNull(TaoMoiDipController.class.getResource("LapDanhSach.fxml")));
             Scene scene = new Scene(root);

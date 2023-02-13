@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.TaoMinhChungController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.TaoMinhChungController">
    <children>
       <Label layoutX="259.0" layoutY="28.0" text="TẠO MINH CHỨNG">
          <font>
@@ -33,12 +33,12 @@
       <Label layoutX="57.0" layoutY="119.0" prefHeight="18.0" prefWidth="104.0" text="Ảnh minh chứng:" />
       <Button layoutX="637.0" layoutY="440.0" mnemonicParsing="false" onAction="#luu" prefHeight="30.0" prefWidth="66.0" text="Xác nhận" />
       <TextField fx:id="ho_tenText" layoutX="143.0" layoutY="81.0" />
-      <Label fx:id="ten_tren_gk" layoutX="249.0" layoutY="276.0" prefHeight="22.0" prefWidth="157.0" textFill="#050505" textOverrun="CLIP">
+      <Label fx:id="ten_tren_gk" alignment="CENTER" layoutX="249.0" layoutY="276.0" prefHeight="22.0" prefWidth="157.0" textAlignment="CENTER" textFill="#050505" textOverrun="CLIP">
          <font>
             <Font name="Calibri" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="thanh_tich_gk" layoutX="266.0" layoutY="238.0" prefHeight="18.0" prefWidth="127.0" textFill="#151515">
+      <Label fx:id="thanh_tich_gk" alignment="CENTER" layoutX="238.0" layoutY="238.0" prefHeight="27.0" prefWidth="182.0" textAlignment="CENTER" textFill="#151515">
          <font>
             <Font size="18.0" />
          </font></Label>

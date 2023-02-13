@@ -17,10 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -193,21 +190,28 @@ public class LapDanhSachController implements Initializable {
     @FXML
     void trao_thuong(ActionEvent event){
         GiftTableModel giftTableModel = danh_sachTable.getSelectionModel().getSelectedItem();
-        if (giftTableModel.getTrang_thai() == "Đã trao"){
-            giftTableModel.setTrang_thai("Chưa trao");
-            TraoThuongModel traoThuongModel = new TraoThuongModel();
-            traoThuongModel.setId_minhChung(giftTableModel.getId_minhchung());
-            traoThuongModel.setId_dip(giftTableModel.getId_dip());
-            traoThuongModel.setTrang_thai(0);
-            traoThuongModel.setSo_luong(giftTableModel.getSo_luong());
-            iTraoThuongService.update(traoThuongModel);
+        if(giftTableModel == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Vui lòng chọn nhân khẩu");
+            alert.setHeaderText("Lỗi");
+            alert.showAndWait();
+        }
+        else {
+            if (giftTableModel.getTrang_thai() == "Đã trao"){
+                giftTableModel.setTrang_thai("Chưa trao");
+                TraoThuongModel traoThuongModel = new TraoThuongModel();
+                traoThuongModel.setId_minhChung(giftTableModel.getId_minhchung());
+                traoThuongModel.setId_dip(giftTableModel.getId_dip());
+                traoThuongModel.setTrang_thai(0);
+                traoThuongModel.setSo_luong(giftTableModel.getSo_luong());
+                iTraoThuongService.update(traoThuongModel);
 
-            danh_sachTable.refresh();
+                danh_sachTable.refresh();
 //            observableList.clear();
 //            observableList.addAll(getMember());
 //            danh_sachTable.setItems(observableList);
-        }
-        else{
+            }
+            else{
                 giftTableModel.setTrang_thai("Đã trao");
                 TraoThuongModel traoThuongModel = new TraoThuongModel();
                 traoThuongModel.setId_minhChung(giftTableModel.getId_minhchung());
@@ -220,7 +224,9 @@ public class LapDanhSachController implements Initializable {
                 observableList.clear();
                 observableList.addAll(getMember());
                 danh_sachTable.setItems(observableList);
+            }
         }
+
     }
 
     @FXML

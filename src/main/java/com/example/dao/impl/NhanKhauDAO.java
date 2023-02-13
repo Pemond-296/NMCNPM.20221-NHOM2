@@ -24,8 +24,10 @@ public class NhanKhauDAO extends AbstractDAO<NhanKhauModel> implements INhanKhau
 
     @Override
     public NhanKhauModel findById(Long id) {
-        String sql = "SELECT * FROM nhankhau WHERE id = ?";
-        List<NhanKhauModel> models = query(sql, new NhanKhauMapper(), id);
+        StringBuilder sql = new StringBuilder("SELECT * FROM nhankhau ");
+        sql.append("INNER JOIN CMND ON nhankhau.id = CMND.id_nhankhau ");
+        sql.append("WHERE nhankhau.id = ?");
+        List<NhanKhauModel> models = query(sql.toString(), new NhanKhauMapper(), id);
 
         return models.isEmpty() ? null : models.get(0);
     }
