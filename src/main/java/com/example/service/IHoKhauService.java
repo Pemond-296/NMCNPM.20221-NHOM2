@@ -9,5 +9,6 @@ public interface IHoKhauService {
     Long save(HoKhauModel hoKhauModel);
     Long count();
     void update(HoKhauModel hoKhauModel);
+    void delete(String hoKhauId);
 
 }

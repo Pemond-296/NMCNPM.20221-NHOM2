@@ -1,7 +1,11 @@
 package com.example.controller;
 
+import com.example.model.DiaDiemModel;
+import com.example.model.KhaiTuModel;
 import com.example.model.NhanKhauModel;
-import com.example.service.impl.NhanKhauService;
+import com.example.model.TamTruModel;
+import com.example.service.*;
+import com.example.service.impl.*;
 import com.example.utils.PersonUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +30,12 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class NhanKhauController implements Initializable {
-    private NhanKhauService nhanKhauService = new NhanKhauService();
+    private INhanKhauService nhanKhauService = new NhanKhauService();
+    private ITamTruService tamTruService = new TamTruService();
+    private ITamVangService tamVangService = new TamVangService();
+    private IDiaDiemService diaDiemService = new DiaDiemService();
+    private IKhaiTuService khaiTuService = new KhaiTuService();
+    private IDinhDanhService dinhDanhService = new DinhDanhService();
     @FXML
     private TableColumn<?, ?> ngaySinh;
     @FXML
@@ -107,21 +116,24 @@ public class NhanKhauController implements Initializable {
 
 
         else {
-            if(model.getTamTruModel().getTuNgay() != null) {
+            TamTruModel tamTruModel = tamTruService.findFirstByNhanKhauId(model.getId());
+            DiaDiemModel diaDiemModel = diaDiemService.findFirstByIdNhanKhau(model.getId());
+            KhaiTuModel khaiTuModel = khaiTuService.findFirstByIdNhanKhau(model.getId());
+            if(tamTruModel != null && tamTruModel.getTuNgay() != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Lỗi");
                 alert.setContentText("Nhân khẩu tạm trú không thể khai tử");
                 alert.showAndWait();
             }
 
-            else if (model.getDiaDiemModel().getNoiChuyen() != null) {
+            else if (diaDiemModel != null && diaDiemModel.getNoiChuyen() != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Lỗi");
                 alert.setContentText("Nhân khẩu đã chuyển đi nơi khác");
                 alert.showAndWait();
             }
 
-            else if(model.getKhaiTuModel().getNguoiKhaiTu() != null) {
+            else if(khaiTuModel != null && khaiTuModel.getNguoiKhaiTu() != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Lỗi");
                 alert.setContentText("Đã khai tử");
@@ -170,21 +182,25 @@ public class NhanKhauController implements Initializable {
         }
 
         else {
-            if(model.getDiaDiemModel().getNoiChuyen() != null) {
+            TamTruModel tamTruModel = tamTruService.findFirstByNhanKhauId(model.getId());
+            DiaDiemModel diaDiemModel = diaDiemService.findFirstByIdNhanKhau(model.getId());
+            KhaiTuModel khaiTuModel = khaiTuService.findFirstByIdNhanKhau(model.getId());
+
+            if(diaDiemModel != null && diaDiemModel.getNoiChuyen() != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Lỗi");
                 alert.setContentText("Nhân khẩu đã chuyển đi");
                 alert.showAndWait();
             }
 
-            else if(model.getTamTruModel().getTuNgay() != null) {
+            else if(tamTruModel != null && tamTruModel.getTuNgay() != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Lỗi");
                 alert.setContentText("Nhân khẩu tạm trú không thể chuyển đi");
                 alert.showAndWait();
             }
 
-            else if(model.getKhaiTuModel().getNguoiKhaiTu() != null) {
+            else if(khaiTuModel != null && khaiTuModel.getNguoiKhaiTu() != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Lỗi");
                 alert.setContentText("Đã qua đời");
@@ -203,49 +219,50 @@ public class NhanKhauController implements Initializable {
 
     }
 
+    public void chiTietNhanKhau(ActionEvent event) throws IOException {
+        NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
+        if(model == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Chưa chọn nhân khẩu");
+            alert.setContentText("Vui lòng chọn lại");
+            alert.showAndWait();
+        }
+        else {
+            PersonUtil.getInstance().setNhanKhauModel(model);
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("ChiTietNK.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
 
-//    public void startLoop() {
-//        Thread myThread = new Thread(this);
-//        myThread.start();
-//    }
-//
-//    @Override
-//    public void run() {
-//        String oldText = "";
-//        List<NhanKhauModel> models = nhanKhauService.findAll();
-//        System.out.println("Run");
-//
-//        while(true) {
-//            String newText = searchBar.getText();
-//            System.out.println(newText);
-//            System.out.println(oldText);
-//            if(!Objects.equals(newText, oldText)) {
-//                oldText = newText;
-//
-//                if(newText.isEmpty()) {
-//                    observablePersonList.clear();
-//                    observablePersonList.addAll(models);
-//                    nhanKhauTable.refresh();
-//                }
-//
-//                else {
-//                    String[] substring = newText.split(" ");
-//                    observablePersonList.clear();
-//
-//                    for(NhanKhauModel model : models) {
-//                        for(String s : substring) {
-//                            String name = model.getHoTen().toLowerCase();
-//                            if(name.contains(s.toLowerCase())) {
-//                                observablePersonList.add(model);
-//                                break;
-//                            }
-//                        }
-//                    }
-//
-//                    nhanKhauTable.refresh();
-//                }
-//            }
-//        }
-//
-//    }
+            nhanKhauTable.getItems().clear();
+            nhanKhauTable.getItems().addAll(nhanKhauService.findAll());
+        }
+    }
+
+    public void xoaNhanKhau(ActionEvent event) {
+        NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
+        if(model == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Chưa chọn nhân khẩu");
+            alert.setContentText("Vui lòng chọn lại");
+            alert.showAndWait();
+        }
+        else {
+            Long id = model.getId();
+            tamTruService.delete(id);
+            tamVangService.delete(id);
+            khaiTuService.delete(id);
+            diaDiemService.delete(id);
+            dinhDanhService.delete(id);
+            nhanKhauService.delete(id);
+
+            observablePersonList.remove(model);
+            nhanKhauTable.refresh();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Xóa thành công");
+            alert.showAndWait();
+        }
+    }
 }

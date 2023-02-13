@@ -18,6 +18,7 @@ public class PersonUtil {
     private NhanKhauModel tamTru = null;
     private NhanKhauModel chuyenDi = null;
     private List<NhanKhauModel> tempModel = new ArrayList<>();
+    private NhanKhauModel nhanKhauModel = null;
 
     public static PersonUtil getInstance() {
         if (personUtil == null) personUtil = new PersonUtil();
@@ -30,6 +31,10 @@ public class PersonUtil {
     }
     public List<NhanKhauModel> getModels() {
         return models;
+    }
+
+    public void setModels(List<NhanKhauModel> models) {
+        this.models = models;
     }
 
     public void add(NhanKhauModel model) {
@@ -89,5 +94,13 @@ public class PersonUtil {
 
     public void setChuyenDi(NhanKhauModel chuyenDi) {
         this.chuyenDi = chuyenDi;
+    }
+
+    public NhanKhauModel getNhanKhauModel() {
+        return nhanKhauModel;
+    }
+
+    public void setNhanKhauModel(NhanKhauModel nhanKhauModel) {
+        this.nhanKhauModel = nhanKhauModel;
     }
 }

@@ -10,39 +10,53 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.QuanLiDipController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.QuanLiDipController">
    <children>
-      <Button fx:id="TaoMoiDipB" layoutX="754.0" layoutY="126.0" mnemonicParsing="false" onAction="#TaoMoiE" prefHeight="55.0" prefWidth="142.0" text="Tạo mới dịp" />
-      <Button fx:id="XemB" layoutX="754.0" layoutY="304.0" mnemonicParsing="false" onAction="#XemE" prefHeight="55.0" prefWidth="142.0" text="Thống kê" />
-      <Button fx:id="CapNhatB" layoutX="754.0" layoutY="212.0" mnemonicParsing="false" onAction="#CapNhatE" prefHeight="55.0" prefWidth="142.0" text="Cập nhật" />
-      <TableView fx:id="DipTable" layoutX="14.0" layoutY="154.0" prefHeight="488.0" prefWidth="693.0">
+      <Button fx:id="TaoMoiDipB" layoutX="763.0" layoutY="125.0" mnemonicParsing="false" onAction="#TaoMoiE" prefHeight="55.0" prefWidth="168.0" text="Tạo mới dịp">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="XemB" layoutX="763.0" layoutY="295.0" mnemonicParsing="false" onAction="#XemE" prefHeight="55.0" prefWidth="168.0" text="Thống kê">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="CapNhatB" layoutX="763.0" layoutY="210.0" mnemonicParsing="false" onAction="#CapNhatE" prefHeight="55.0" prefWidth="168.0" text="Cập nhật">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <TableView fx:id="DipTable" layoutX="20.0" layoutY="127.0" prefHeight="425.0" prefWidth="694.0">
         <columns>
-          <TableColumn fx:id="SttC" prefWidth="30.399993896484375" text="STT" />
-          <TableColumn fx:id="DoiTuongNhanC" prefWidth="141.60000610351562" text="Đối tượng nhận" />
-            <TableColumn fx:id="TenDipC" prefWidth="136.0" text="Tên dịp" />
+          <TableColumn fx:id="SttC" prefWidth="48.800048828125" text="STT" />
+          <TableColumn fx:id="DoiTuongNhanC" prefWidth="128.79998779296875" text="Đối tượng nhận" />
+            <TableColumn fx:id="TenDipC" prefWidth="131.20004272460938" text="Tên dịp" />
             <TableColumn fx:id="ThoiGianC" prefWidth="93.5999755859375" text="Thời gian" />
             <TableColumn fx:id="PhanQuaC" prefWidth="144.00006103515625" text="Phần thưởng" />
             <TableColumn fx:id="TrangThaiC" prefWidth="147.99993896484375" text="Trạng thái" />
         </columns>
       </TableView>
-      <Button fx:id="MinhChungB" layoutX="754.0" layoutY="507.0" mnemonicParsing="false" onAction="#MinhChungE" prefHeight="42.0" prefWidth="142.0" text="Quản lí minh chứng" />
-      <Label layoutX="63.0" layoutY="51.0" text="DANH SÁCH CÁC DỊP TRAO THƯỞNG">
+      <Button fx:id="MinhChungB" layoutX="763.0" layoutY="465.0" mnemonicParsing="false" onAction="#MinhChungE" prefHeight="55.0" prefWidth="168.0" text="Quản lí minh chứng">
          <font>
-            <Font name="System Bold" size="29.0" />
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="232.0" layoutY="14.0" text="DANH SÁCH CÁC DỊP TRAO THƯỞNG">
+         <font>
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="253.0" layoutY="112.0" mnemonicParsing="false" onAction="#TimKiemE" text="TÌM KIẾM" />
-      <MenuButton fx:id="menuLoc" layoutX="427.0" layoutY="114.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="LỌC">
+      <MenuButton fx:id="menuLoc" layoutX="418.0" layoutY="80.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="LỌC">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#HoanThanh" text="Đã hoàn thành" />
           <MenuItem mnemonicParsing="false" onAction="#ChuaHoanThanh" text="Chưa hoàn thành" />
         </items>
       </MenuButton>
-      <Button fx:id="DanhSachB" layoutX="753.0" layoutY="415.0" mnemonicParsing="false" onAction="#LapDanhSachE" prefHeight="43.0" prefWidth="144.0" text="Danh Sách Trao Thưởng" />
-      <TextField fx:id="TimKiemT" layoutX="75.0" layoutY="111.0" onKeyTyped="#TimKiemE" prefHeight="26.0" prefWidth="168.0" />
-      <Label layoutX="14.0" layoutY="115.0" text="Tên dịp:">
+      <Button fx:id="DanhSachB" layoutX="763.0" layoutY="380.0" mnemonicParsing="false" onAction="#LapDanhSachE" prefHeight="55.0" prefWidth="168.0" text="Danh Sách Trao Thưởng">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <TextField fx:id="TimKiemT" layoutX="102.0" layoutY="80.0" onKeyTyped="#TimKiemE" prefHeight="26.0" prefWidth="168.0" />
+      <Label layoutX="20.0" layoutY="76.0" prefHeight="34.0" prefWidth="63.0" text="Tên dịp:">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
    </children>

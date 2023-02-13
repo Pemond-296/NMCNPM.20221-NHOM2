@@ -8,48 +8,50 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.QuanLiTraoThuongController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.QuanLiTraoThuongController">
    <children>
       <TableView fx:id="table" layoutY="81.0" prefHeight="515.0" prefWidth="681.0">
         <columns>
-          <TableColumn fx:id="Cstt" prefWidth="30.800017952919006" text="STT" />
-          <TableColumn fx:id="ChoTen" prefWidth="152.80001258850098" text="Họ Tên" />
+          <TableColumn fx:id="Cstt" prefWidth="63.20001143217087" text="STT" />
+          <TableColumn fx:id="ChoTen" prefWidth="121.59997940063477" text="Họ Tên" />
             <TableColumn fx:id="Cqua" prefWidth="84.7999267578125" text="Quà" />
-            <TableColumn fx:id="CsoLuong" prefWidth="64.00006103515625" text="Số lượng" />
-            <TableColumn fx:id="Ctien" prefWidth="78.0" text="Tiền" />
+            <TableColumn fx:id="CsoLuong" prefWidth="76.79998779296875" text="Số lượng" />
+            <TableColumn fx:id="Ctien" prefWidth="66.39996337890625" text="Tiền" />
             <TableColumn fx:id="Cthanhtich" prefWidth="85.20001220703125" text="Thành tích" />
             <TableColumn fx:id="Cthoigian" prefWidth="93.60000610351562" text="Thời gian" />
-            <TableColumn fx:id="CtrangThai" prefWidth="88.800048828125" text="Trạng thái" />
+            <TableColumn fx:id="CtrangThai" prefWidth="87.20003662109377" text="Trạng thái" />
         </columns>
       </TableView>
-      <Button layoutX="685.0" layoutY="480.0" mnemonicParsing="false" onAction="#EthongKe" prefHeight="26.0" prefWidth="120.0" text="Thống kê hộ khẩu">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="695.0" layoutY="256.0" mnemonicParsing="false" onAction="#EthayDoi" prefHeight="30.0" prefWidth="92.0" text="Thay đổi">
+      <Button layoutX="535.0" layoutY="25.0" maxHeight="48.0" maxWidth="146.0" mnemonicParsing="false" onAction="#EthongKe" prefHeight="40.0" prefWidth="146.0" text="Thống kê hộ khẩu">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="695.0" layoutY="324.0" mnemonicParsing="false" onAction="#Ethem" prefHeight="25.0" prefWidth="92.0" text="Thêm">
+      <Button layoutX="703.0" layoutY="124.0" mnemonicParsing="false" onAction="#EthayDoi" prefHeight="40.0" prefWidth="92.0" text="Thay đổi">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="695.0" layoutY="383.0" mnemonicParsing="false" onAction="#Exoa" prefHeight="30.0" prefWidth="92.0" text="Xóa">
+      <Button layoutX="703.0" layoutY="200.0" mnemonicParsing="false" onAction="#Ethem" prefHeight="40.0" prefWidth="92.0" text="Thêm">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="BtimKiem" layoutX="337.0" layoutY="33.0" mnemonicParsing="false" onAction="#EtimKiem" text="Tìm kiếm" />
-      <Label layoutX="22.0" layoutY="21.0" prefHeight="26.0" prefWidth="80.0" text="Họ và Tên:">
+      <Button layoutX="703.0" layoutY="279.0" mnemonicParsing="false" onAction="#Exoa" prefHeight="40.0" prefWidth="92.0" text="Xóa">
          <font>
-            <Font size="17.0" />
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtimKiem" layoutX="341.0" layoutY="33.0" mnemonicParsing="false" onAction="#EtimKiem" prefHeight="25.0" prefWidth="70.0" text="Tìm kiếm" />
+      <Label layoutX="21.0" layoutY="32.0" prefHeight="26.0" prefWidth="80.0" text="Họ và Tên:">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Ften" layoutX="117.0" layoutY="21.0" prefHeight="25.0" prefWidth="192.0" />
-      <Button layoutX="713.0" layoutY="538.0" mnemonicParsing="false" onAction="#Ethoat" prefHeight="30.0" prefWidth="55.0" text="Thoát" />
+      <TextField fx:id="Ften" layoutX="117.0" layoutY="33.0" prefHeight="25.0" prefWidth="192.0" />
+      <Button layoutX="703.0" layoutY="359.0" mnemonicParsing="false" onAction="#Ethoat" prefHeight="40.0" prefWidth="92.0" text="Thoát">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

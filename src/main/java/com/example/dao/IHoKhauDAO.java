@@ -9,4 +9,5 @@ public interface IHoKhauDAO extends GenericDAO<HoKhauModel> {
     Long save(HoKhauModel hoKhauModel);
     Long count();
     void update(HoKhauModel hoKhauModel);
+    void delete(String hoKhauId);
 }

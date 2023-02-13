@@ -3,8 +3,12 @@ package com.example.controller;
 import com.example.model.UserModel;
 import com.example.service.IHoKhauService;
 import com.example.service.INhanKhauService;
+import com.example.service.ITamTruService;
+import com.example.service.ITamVangService;
 import com.example.service.impl.HoKhauService;
 import com.example.service.impl.NhanKhauService;
+import com.example.service.impl.TamTruService;
+import com.example.service.impl.TamVangService;
 import com.example.utils.SessionUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,14 +42,18 @@ public class TrangChuController implements Initializable {
     private Label soLuongTamVang;
     private IHoKhauService hoKhauService = new HoKhauService();
     private INhanKhauService nhanKhauService = new NhanKhauService();
+    private ITamVangService tamVangService = new TamVangService();
+    private ITamTruService tamTruService = new TamTruService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserModel model = SessionUtil.getInstance().getData();
 
         loginLabel.setText("Logged in as:\n" + model.getFullName());
-        soLuongHoKhau.setText(String.valueOf(hoKhauService.count()));
-        soLuongNhanKhau.setText(String.valueOf(nhanKhauService.count()));
+        soLuongHoKhau.setText(hoKhauService.count() + "  hộ khẩu");
+        soLuongNhanKhau.setText(nhanKhauService.count() + "  nhân khẩu");
+        soLuongTamVang.setText(tamVangService.count() + "  nhân khẩu");
+        soLuongTamTru.setText(tamTruService.count() + "  nhân khẩu");
     }
 
     @FXML

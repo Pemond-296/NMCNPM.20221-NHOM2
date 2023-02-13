@@ -8,3 +8,7 @@
     -fx-border-width: 0px 0px 0px 3px;
     -fx-cursor: hand;
 }
+
+.itemInfo {
+    -fx-background-radius: 20;
+}

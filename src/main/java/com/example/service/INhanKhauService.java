@@ -14,9 +14,9 @@ public interface INhanKhauService {
     List<NhanKhauModel> findMonitor();
     List<NhanKhauModel> findAllByApartmentId(String id);
     void update(NhanKhauModel nhanKhauModel);
+    void updateInfo(NhanKhauModel nhanKhauModel);
     public List<NhanKhauModel> findByAge();
     List<NhanKhauModel> findByProof(MinhChungModel minhChungModel);
     List<NhanKhauModel> findNotProof(EventGiftModel eventGiftModel);
-
-
+    void delete(Long id);
 }

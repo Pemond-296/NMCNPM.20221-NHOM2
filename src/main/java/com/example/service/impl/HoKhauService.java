@@ -33,4 +33,9 @@ public class HoKhauService implements IHoKhauService {
     public void update(HoKhauModel hoKhauModel) {
         apartmentDAO.update(hoKhauModel);
     }
+
+    @Override
+    public void delete(String hoKhauId) {
+        apartmentDAO.delete(hoKhauId);
+    }
 }

@@ -32,5 +32,10 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <Button layoutX="839.0" layoutY="367.0" mnemonicParsing="false" onAction="#xoaHoKhau" prefHeight="40.0" prefWidth="110.0" text="Xoá">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

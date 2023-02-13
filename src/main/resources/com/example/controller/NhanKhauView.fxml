@@ -21,27 +21,37 @@
             <TableColumn fx:id="soCMT" prefWidth="155.99996337890627" text="CCCD/CMND" />
          </columns>
       </TableView>
-      <Button layoutX="866.0" layoutY="80.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="40.0" prefWidth="110.0" text="Thêm mới">
+      <Button layoutX="865.0" layoutY="40.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="40.0" prefWidth="110.0" text="Thêm mới">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="154.0" mnemonicParsing="false" onAction="#tamVang" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm vắng">
+      <Button layoutX="864.0" layoutY="110.0" mnemonicParsing="false" onAction="#tamVang" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm vắng">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="237.0" mnemonicParsing="false" onAction="#tamTru" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm trú">
+      <Button layoutX="864.0" layoutY="180.0" mnemonicParsing="false" onAction="#tamTru" prefHeight="40.0" prefWidth="110.0" text="ĐK tạm trú">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="323.0" mnemonicParsing="false" onAction="#khaiTu" prefHeight="40.0" prefWidth="110.0" text="Khai tử">
+      <Button layoutX="865.0" layoutY="250.0" mnemonicParsing="false" onAction="#khaiTu" prefHeight="40.0" prefWidth="110.0" text="Khai tử">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="865.0" layoutY="404.0" mnemonicParsing="false" onAction="#chuyenDi" prefHeight="40.0" prefWidth="110.0" text="Chuyển đi">
+      <Button layoutX="865.0" layoutY="320.0" mnemonicParsing="false" onAction="#chuyenDi" prefHeight="40.0" prefWidth="110.0" text="Chuyển đi">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="865.0" layoutY="390.0" mnemonicParsing="false" onAction="#chiTietNhanKhau" prefHeight="40.0" prefWidth="110.0" text="Chi tiết">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="864.0" layoutY="460.0" mnemonicParsing="false" onAction="#xoaNhanKhau" prefHeight="40.0" prefWidth="110.0" text="Xóa">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
