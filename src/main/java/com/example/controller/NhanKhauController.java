@@ -98,20 +98,44 @@ public class NhanKhauController implements Initializable {
     public void khaiTu(ActionEvent event) throws IOException {
         NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
 
-        if(model != null) {
-            PersonUtil.getInstance().setKhaiTu(model);
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("KhaiTuView.fxml")));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.showAndWait();
-        }
-
-        else {
+        if(model == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Chưa chọn nhân khẩu");
             alert.setContentText("Vui lòng chọn lại");
             alert.showAndWait();
+        }
+
+
+        else {
+            if(model.getTamTruModel().getTuNgay() != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Nhân khẩu tạm trú không thể khai tử");
+                alert.showAndWait();
+            }
+
+            else if (model.getDiaDiemModel().getNoiChuyen() != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Nhân khẩu đã chuyển đi nơi khác");
+                alert.showAndWait();
+            }
+
+            else if(model.getKhaiTuModel().getNguoiKhaiTu() != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Đã khai tử");
+                alert.showAndWait();
+            }
+
+            else {
+                PersonUtil.getInstance().setKhaiTu(model);
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("KhaiTuView.fxml")));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.showAndWait();
+            }
         }
     }
 
@@ -138,22 +162,45 @@ public class NhanKhauController implements Initializable {
 
     public void chuyenDi(ActionEvent event) throws IOException {
         NhanKhauModel model = nhanKhauTable.getSelectionModel().getSelectedItem();
-
-        if(model != null) {
-            PersonUtil.getInstance().setChuyenDi(model);
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("ChuyenDi.fxml")));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.showAndWait();
-        }
-
-        else {
+        if(model == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Chưa chọn nhân khẩu");
             alert.setContentText("Vui lòng chọn lại");
             alert.showAndWait();
         }
+
+        else {
+            if(model.getDiaDiemModel().getNoiChuyen() != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Nhân khẩu đã chuyển đi");
+                alert.showAndWait();
+            }
+
+            else if(model.getTamTruModel().getTuNgay() != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Nhân khẩu tạm trú không thể chuyển đi");
+                alert.showAndWait();
+            }
+
+            else if(model.getKhaiTuModel().getNguoiKhaiTu() != null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Đã qua đời");
+                alert.showAndWait();
+            }
+
+            else {
+                PersonUtil.getInstance().setChuyenDi(model);
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(Objects.requireNonNull(ThemNhanKhauController.class.getResource("ChuyenDi.fxml")));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.showAndWait();
+            }
+        }
+
     }
 
 

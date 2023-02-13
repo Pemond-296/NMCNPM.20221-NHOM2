@@ -66,5 +66,7 @@
             <TableColumn fx:id="quanHe" prefWidth="166.40008544921875" text="Quan hệ với chủ hộ" />
          </columns>
       </TableView>
+      <Button layoutX="652.0" layoutY="377.0" mnemonicParsing="false" onAction="#themThanhVien" prefHeight="30.0" prefWidth="60.0" text="Thêm" />
+      <Button layoutX="652.0" layoutY="443.0" mnemonicParsing="false" onAction="#xoaThanhVien" prefHeight="30.0" prefWidth="60.0" text="Xóa" />
    </children>
 </AnchorPane>
